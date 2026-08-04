@@ -1,9 +1,9 @@
 /* =========================================================================
    Portfolio — site script
-   1) Renders sub-pages (McLaren / NING / Novartis / UCL / Side Projects)
-      from data/portfolio.json into <main id="app" data-page="...">.
-   2) Wires interactions: scroll progress, scroll-reveal, mobile nav,
-      hero parallax, animated counters.
+   1) Renders sub-pages as a pinned "deck": persistent name + progress dashes
+      (top-left), big title (bottom-left), media (centre), details (right).
+      One project per screen; the active dash tracks scroll progress.
+   2) Interactions: scroll progress bar, mobile nav, hero parallax, counters.
    The home page is static HTML; this script just runs the interactions there.
    ========================================================================= */
 (function () {
@@ -11,117 +11,100 @@
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const esc = (s) => String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const stripNo = (t) => String(t || "").replace(/^\s*\d+\s*·\s*/, "");
 
-  /* ---------------------------------------------------------------- render */
-  function mediaHint(slug, i) {
-    return `assets/video/${slug}-${i}.mp4 &nbsp;·&nbsp; assets/img/${slug}-${i}.jpg`;
-  }
+  const mediaHint = (slug, i) =>
+    `assets/video/${slug}-${i}.mp4 &nbsp;·&nbsp; assets/img/${slug}-${i}.jpg`;
 
-  function projectHTML(slug, p, i) {
-    const n = String(i + 1).padStart(2, "0");
-    const ph = p.placeholder ? " is-placeholder" : "";
-    const bullets = Array.isArray(p.bullets) && p.bullets.length
-      ? `<ul>${p.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>` : "";
-    const summary = p.placeholder
-      ? `<p class="placeholder">${esc(p.summary)}</p>`
-      : `<p>${esc(p.summary)}</p>`;
-    const mediaInner = p.placeholder
-      ? `<span class="slot">Add media<br>${mediaHint(slug, i + 1)}</span>`
-      : `<span class="slot">${mediaHint(slug, i + 1)}</span>`;
+  /* --------------------------------------------------------------- slides */
+  function introSlide(page) {
+    const meta = (page.meta || [])
+      .map((m) => `<div><strong>${esc(m.k)}:</strong> ${esc(m.v)}</div>`).join("");
+    const approach = (page.approach || []).map((a) => `<li>${esc(a)}</li>`).join("");
+    const overview = (page.overview || "")
+      + (page.overviewPlaceholder ? ' <span class="placeholder">confirm / expand</span>' : "");
     return `
-      <article class="project${ph}" data-reveal>
-        <div class="project__body">
-          <div class="project__meta"><span class="pnum">${n}</span><span class="card__tag">${esc(p.tag || "")}</span></div>
-          <h3>${esc(p.title)}</h3>
-          ${summary}
-          ${bullets}
+      <section class="slide slide--intro" data-slide>
+        <div class="slide__title">
+          <span class="eyebrow">${esc(page.tag || "")}</span>
+          <h2>${esc(page.title)}</h2>
+          <div class="sub">Overview</div>
         </div>
-        <div class="project__media">${mediaInner}</div>
-      </article>`;
-  }
-
-  function attachmentsHTML(a) {
-    if (!a) return "";
-    const items = (a.items || []).map((it) => {
-      if (it.placeholder) {
-        return `<li><span class="doc is-placeholder"><span class="fileicon">📄</span>${esc(it.label)} — drop file at ${esc(it.file)}</span></li>`;
-      }
-      const icon = /\.pptx?$/i.test(it.file) ? "📊" : "📄";
-      return `<li><a href="${esc(it.file)}"><span class="fileicon">${icon}</span>${esc(it.label)}<span style="margin-left:auto">↓</span></a></li>`;
-    }).join("");
-    return `
-      <section class="section wrap" style="padding-top:0">
-        <div class="attachments" data-reveal>
-          <span class="eyebrow">Documents</span>
-          <h3 style="margin-top:.8rem">Presentations &amp; coursework</h3>
-          <p class="muted">${esc(a.note || "")}</p>
-          <ul class="attach-list">${items}</ul>
-        </div>
+        <div class="slide__media"><span class="slot">${esc(page.title)}</span></div>
+        <aside class="slide__detail">
+          <div class="d-role">${esc(page.subtitle || "")}</div>
+          <div class="d-block"><h5>Overview</h5><p>${overview}</p></div>
+          <div class="d-block"><h5>Approach</h5><ol>${approach}</ol></div>
+          <div class="d-block"><h5>Details</h5><div class="d-list">${meta}</div></div>
+        </aside>
       </section>`;
   }
 
-  function metaHTML(meta) {
-    return (meta || []).map((m) =>
-      `<div><span class="k">${esc(m.k)}</span><span class="v${m.placeholder ? " placeholder" : ""}">${esc(m.v)}</span></div>`
-    ).join("");
+  function projectSlide(slug, page, p, i) {
+    const n = String(i + 1).padStart(2, "0");
+    const focus = (p.tag || "").split("·").map((s) => s.trim()).filter(Boolean)
+      .map((f) => `<div>${esc(f)}</div>`).join("");
+    const desc = p.summary
+      ? `<div class="d-block"><h5>Description</h5><p class="${p.placeholder ? "placeholder" : ""}">${esc(p.summary)}</p></div>`
+      : "";
+    const impact = (Array.isArray(p.bullets) && p.bullets.length)
+      ? `<div class="d-block"><h5>Impact</h5><ul>${p.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul></div>`
+      : "";
+    const date = p.date ? `<div class="d-date">${esc(p.date)}</div>` : "";
+    const mediaInner = `<span class="slot">${p.placeholder ? "Add media<br>" : ""}${mediaHint(slug, i + 1)}</span>`;
+    const sub = p.subtitle || (p.tag || "").split("·")[0].trim();
+    return `
+      <section class="slide" data-slide>
+        <div class="slide__title">
+          <h2>${esc(p.title)}</h2>
+          <div class="sub">${esc(sub)}</div>
+        </div>
+        <div class="slide__media">${mediaInner}</div>
+        <aside class="slide__detail">
+          <div class="d-role">${esc(p.tag || "")}</div>
+          <div class="d-index">{${n}}</div>
+          <div class="d-ctx">${esc(page.title)} · ${esc(p.title)}</div>
+          ${date}
+          ${desc}
+          <div class="d-block"><h5>Focus</h5><div class="d-list">${focus}</div></div>
+          ${impact}
+        </aside>
+      </section>`;
   }
 
-  function pageHTML(slug, page, nav) {
-    const upcoming = slug === "mclaren"
-      ? `<div class="upcoming">🗓️ Upcoming — Industrial Placement, 2026–27</div>` : "";
-    const overview = (page.overview || "")
-      + (page.overviewPlaceholder ? ' <span class="placeholder">confirm / expand this overview</span>' : "");
-    const approach = `
-      <div class="approach">
-        <h4>Approach</h4>
-        <ol>${(page.approach || []).map((a) => `<li>${esc(a)}</li>`).join("")}</ol>
-        ${page.approachPlaceholder ? '<p class="placeholder" style="margin-top:1rem">Confirm these steps.</p>' : ""}
-      </div>`;
-    const projects = (page.projects || []).map((p, i) => projectHTML(slug, p, i)).join("");
-
-    // next-page link (wraps around the nav order)
-    const idx = nav.findIndex((n) => n.slug === slug);
-    const next = nav[(idx + 1) % nav.length];
-
+  function attachSlide(a) {
+    const items = (a.items || []).map((it) => it.placeholder
+      ? `<div>${esc(it.label)} — drop at ${esc(it.file)}</div>`
+      : `<div><a href="${esc(it.file)}">${esc(it.label)} ↓</a></div>`).join("");
     return `
-      <header class="phead wrap">
-        <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>${esc(page.title)}</span></div>
-        <span class="eyebrow">${esc(page.tag || "")}</span>
-        <h1 style="margin-top:1rem">${esc(page.title)}</h1>
-        <p class="lead">${esc(page.subtitle || "")}</p>
-        ${upcoming}
-        <div class="metabar">${metaHTML(page.meta)}</div>
-      </header>
+      <section class="slide" data-slide>
+        <div class="slide__title"><h2>Documents</h2><div class="sub">Coursework</div></div>
+        <div class="slide__media"><span class="slot">📊 Presentations &amp; PDFs<br>assets/docs/</span></div>
+        <aside class="slide__detail">
+          <div class="d-role">Presentations &amp; coursework</div>
+          <div class="d-index">{＋}</div>
+          <div class="d-block"><h5>Files</h5><div class="d-list">${items}</div></div>
+          <div class="d-block"><p class="muted">${esc(a.note || "")}</p></div>
+        </aside>
+      </section>`;
+  }
 
-      <section class="section wrap" style="padding-bottom:0">
-        <div class="pageintro">
-          <div class="overview" data-reveal>
-            <span class="eyebrow">Overview</span>
-            <p style="margin-top:1rem">${overview}</p>
-          </div>
-          <div data-reveal data-delay="1">${approach}</div>
+  function pageHTML(slug, page, profile) {
+    const slides = [introSlide(page)];
+    (page.projects || []).forEach((p, i) => slides.push(projectSlide(slug, page, p, i)));
+    if (page.attachments) slides.push(attachSlide(page.attachments));
+    const dots = slides.map((_, i) =>
+      `<button class="dot" data-i="${i}" aria-label="Go to section ${i + 1}"></button>`).join("");
+    return `
+      <div class="deck">
+        <div class="deck__rail">
+          <div class="co">${esc(page.title)}</div>
+          <div class="tag">${esc(stripNo(page.tag))}</div>
+          <div class="deck__dots">${dots}</div>
         </div>
-        <div class="projects__head">
-          <div><span class="eyebrow">Projects</span></div>
-          <span class="muted">${(page.projects || []).length} projects</span>
-        </div>
-        <div class="projects">${projects}</div>
-      </section>
-
-      ${attachmentsHTML(page.attachments)}
-
-      <section class="section wrap" style="padding-top:1rem">
-        <a class="card" href="${esc(next.slug)}.html" style="--tint:var(--sage)" data-reveal>
-          <div class="card__tag">Next</div><h3>${esc(next.label)} →</h3>
-        </a>
-      </section>
-
-      <footer class="footer">
-        <div class="wrap footer__bottom">
-          <span>© <span class="year"></span> Joshua Alcobia Gomes</span>
-          <span><a class="link" href="index.html">← Back to home</a></span>
-        </div>
-      </footer>`;
+        ${slides.join("")}
+        <div class="deck__footer">${esc(profile.name)} · <a href="index.html">Home ↑</a></div>
+      </div>`;
   }
 
   async function renderPage(app) {
@@ -132,21 +115,52 @@
       const data = await res.json();
       const page = data.pages[slug];
       if (!page) throw new Error("Unknown page: " + slug);
-      app.innerHTML = pageHTML(slug, page, data.nav);
+      app.innerHTML = pageHTML(slug, page, data.profile);
       document.title = `${page.title} — ${data.profile.name}`;
-      app.querySelectorAll(".year").forEach((e) => (e.textContent = new Date().getFullYear()));
     } catch (err) {
-      app.innerHTML = `<div class="wrap section"><div class="callout">
-        <strong>Content couldn't load.</strong> This page reads <code>data/portfolio.json</code> and
-        needs to be served over http (not opened as a file). Run <code>python -m http.server</code> in
-        the project folder, then open <code>http://localhost:8000</code>.
+      app.innerHTML = `<div class="wrap section" style="padding-top:6rem"><div class="callout">
+        <strong>Content couldn't load.</strong> This page reads <code>data/portfolio.json</code> and must be
+        served over http (not opened as a file). Run <code>python -m http.server</code> in the project folder,
+        then open <code>http://localhost:8000</code>.
         <br><span class="muted" style="font-size:.85rem">(${esc(err.message)})</span></div></div>`;
     }
   }
 
+  /* ------------------------------------------------------ deck navigation */
+  function initDeck() {
+    const dotsWrap = document.querySelector(".deck__dots");
+    const slides = [...document.querySelectorAll("[data-slide]")];
+    if (!dotsWrap || !slides.length) return;
+    const dots = [...dotsWrap.querySelectorAll(".dot")];
+    if (!reduce) document.documentElement.classList.add("deck-snap");
+    const setActive = (i) => dots.forEach((d, k) => d.classList.toggle("active", k === i));
+    setActive(0);
+
+    // Active dash = slide nearest the viewport centre (scroll-driven, reliable).
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const mid = window.innerHeight / 2;
+      let best = 0, bd = Infinity;
+      slides.forEach((s, i) => {
+        const r = s.getBoundingClientRect();
+        const d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bd) { bd = d; best = i; }
+      });
+      setActive(best);
+    };
+    document.addEventListener("scroll", () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+
+    dots.forEach((d, i) =>
+      d.addEventListener("click", () =>
+        slides[i].scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" })));
+  }
+
   /* ---------------------------------------------------------- interactions */
   function initInteractions() {
-    // Scroll progress
     const bar = document.querySelector(".progress");
     if (bar) {
       const onScroll = () => {
@@ -158,11 +172,9 @@
       onScroll();
     }
 
-    // Entrance is pure CSS (one-time fade-up, always ends visible). Content is
-    // never hidden by JS, so it can't "disappear" while scrolling. Mark done.
+    // Content is always visible; just mark any home-page reveals done.
     document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("in"));
 
-    // Mobile nav
     const toggle = document.querySelector(".nav__toggle");
     const links = document.querySelector(".nav__links");
     if (toggle && links) {
@@ -174,7 +186,6 @@
         a.addEventListener("click", () => links.classList.remove("open")));
     }
 
-    // Hero parallax
     const portrait = document.querySelector("[data-parallax]");
     if (portrait && !reduce && window.matchMedia("(pointer:fine)").matches) {
       const s = 10;
@@ -189,7 +200,6 @@
       });
     }
 
-    // Counters — run once on load (not gated on scroll, so they always play)
     const counters = document.querySelectorAll("[data-count]");
     counters.forEach((el) => {
       const target = parseFloat(el.dataset.count), suffix = el.dataset.suffix || "";
@@ -209,6 +219,7 @@
     const app = document.querySelector("main#app[data-page]");
     if (app && app.dataset.page !== "home") {
       await renderPage(app);
+      initDeck();
     }
     initInteractions();
     document.querySelectorAll(".year").forEach((e) => (e.textContent = new Date().getFullYear()));
