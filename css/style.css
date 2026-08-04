@@ -311,18 +311,19 @@ ul { padding-left: 1.1em; }
   display: grid; place-items: center; font-family: var(--font-head); font-size: .8rem; font-weight: 600;
   color: var(--ink); background: linear-gradient(135deg, var(--sage), var(--sky)); }
 
-.projects { display: grid; gap: clamp(2rem, 5vw, 3.5rem); margin-top: 1rem; }
+.projects { display: grid; gap: clamp(1.4rem, 3vw, 2rem); margin-top: 1rem; }
 .projects__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
   margin: clamp(2rem,5vw,3.5rem) 0 .5rem; flex-wrap: wrap; }
-.project { display: grid; grid-template-columns: 64px 1fr 1fr; gap: clamp(1.2rem,3vw,2.4rem);
+/* Consistent full-width stacked blocks: content left, media right (never alternating) */
+.project { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(1.4rem,3vw,2.4rem);
   align-items: center; padding: clamp(1.4rem,3vw,2rem); border: 1px solid var(--line);
   border-radius: var(--radius); background: var(--surface); backdrop-filter: blur(6px);
-  box-shadow: var(--shadow-sm); transition: box-shadow .4s var(--ease), transform .4s var(--ease-out); position: relative; }
-.project:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
-.project__index { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700;
-  color: transparent; -webkit-text-stroke: 1.5px var(--sage-deep); text-align: center; align-self: start; }
-.project__body .card__tag { display: inline-block; margin-bottom: .5rem; }
-.project__body h3 { font-size: 1.55rem; margin-bottom: .4rem; }
+  box-shadow: var(--shadow-sm); transition: box-shadow .4s var(--ease), transform .4s var(--ease-out); }
+.project:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+.project__meta { display: flex; align-items: center; gap: .7rem; margin-bottom: .55rem; }
+.project__meta .pnum { font-family: var(--font-head); font-weight: 700; font-size: .85rem; color: var(--sage-deep);
+  background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: .12rem .5rem; }
+.project__body h3 { font-size: 1.5rem; margin-bottom: .4rem; }
 .project__body p { color: var(--text-muted); }
 .project__body ul { margin-top: .8rem; display: grid; gap: .45rem; color: var(--ink-soft); font-size: .95rem; }
 .project__media { align-self: stretch; min-height: 190px; border-radius: var(--radius-sm); overflow: hidden;
@@ -330,8 +331,6 @@ ul { padding-left: 1.1em; }
   display: grid; place-items: center; color: #ffffffe0; font-size: .8rem; font-weight: 600; text-align: center; padding: 1rem; }
 .project__media video, .project__media img { width: 100%; height: 100%; object-fit: cover; }
 .project__media .slot { background: #2f453855; padding: .4rem .7rem; border-radius: 8px; backdrop-filter: blur(2px); }
-/* Zig-zag: even projects put media on the left */
-.project:nth-child(even) .project__media { order: -1; }
 .project.is-placeholder { border-style: dashed; border-color: var(--sky-deep); background: #b8d4e31a; }
 
 .upcoming { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .85rem;
@@ -353,9 +352,8 @@ ul { padding-left: 1.1em; }
 
 @media (max-width: 820px) {
   .pageintro { grid-template-columns: 1fr; }
-  .project { grid-template-columns: 44px 1fr; }
-  .project__media { grid-column: 1 / -1; order: 0 !important; min-height: 160px; }
-  .project:nth-child(even) .project__media { order: 0; }
+  .project { grid-template-columns: 1fr; }
+  .project__media { min-height: 170px; }
 }
 
 /* Placeholder note styling (remove once real content is in) */
@@ -378,18 +376,25 @@ ul { padding-left: 1.1em; }
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
 
 /* =========================================================================
-   Scroll-reveal
+   Entrance animation — gentle, one-time on load.
+   Content is ALWAYS visible (opacity ends at 1, fill both), and nothing
+   depends on scroll position, so content can never "disappear" while scrolling.
    ========================================================================= */
-[data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
+/* Content is ALWAYS fully visible (opacity never animated). The entrance is a
+   transform-only rise, so even if the animation never runs (backgrounded tab,
+   non-compositing renderer) nothing can ever be hidden. Matches the reference's
+   always-visible, single-scroll feel. */
+@keyframes riseIn { from { transform: translateY(14px); } to { transform: translateY(0); } }
+[data-reveal] { opacity: 1; animation: riseIn .55s var(--ease-out); }
 [data-reveal].in { opacity: 1; transform: none; }
-[data-reveal][data-delay="1"] { transition-delay: .08s; }
-[data-reveal][data-delay="2"] { transition-delay: .16s; }
-[data-reveal][data-delay="3"] { transition-delay: .24s; }
-[data-reveal][data-delay="4"] { transition-delay: .32s; }
 
-/* Page load intro */
-.intro-up { animation: introUp 1s var(--ease-out) both; }
-@keyframes introUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+/* Page load intro (hero) — also transform-only */
+.intro-up { animation: introUp .8s var(--ease-out); }
+@keyframes introUp { from { transform: translateY(16px); } to { transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], .intro-up { animation: none !important; transform: none !important; }
+}
 
 /* View-transition tuning */
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .5s; }

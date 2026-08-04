@@ -30,9 +30,8 @@
       : `<span class="slot">${mediaHint(slug, i + 1)}</span>`;
     return `
       <article class="project${ph}" data-reveal>
-        <div class="project__index">${n}</div>
         <div class="project__body">
-          <span class="card__tag">${esc(p.tag || "")}</span>
+          <div class="project__meta"><span class="pnum">${n}</span><span class="card__tag">${esc(p.tag || "")}</span></div>
           <h3>${esc(p.title)}</h3>
           ${summary}
           ${bullets}
@@ -159,18 +158,9 @@
       onScroll();
     }
 
-    // Scroll reveal
-    const reveals = document.querySelectorAll("[data-reveal]:not(.in)");
-    if (reveals.length && "IntersectionObserver" in window && !reduce) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-      reveals.forEach((el) => io.observe(el));
-    } else {
-      reveals.forEach((el) => el.classList.add("in"));
-    }
+    // Entrance is pure CSS (one-time fade-up, always ends visible). Content is
+    // never hidden by JS, so it can't "disappear" while scrolling. Mark done.
+    document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("in"));
 
     // Mobile nav
     const toggle = document.querySelector(".nav__toggle");
@@ -199,24 +189,19 @@
       });
     }
 
-    // Counters
+    // Counters — run once on load (not gated on scroll, so they always play)
     const counters = document.querySelectorAll("[data-count]");
-    if (counters.length && !reduce && "IntersectionObserver" in window) {
-      const co = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          const el = e.target, target = parseFloat(el.dataset.count), suffix = el.dataset.suffix || "";
-          const dur = 1200, start = performance.now();
-          const tick = (now) => {
-            const p = Math.min((now - start) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = (target % 1 === 0 ? Math.round(target * eased) : (target * eased).toFixed(1)) + suffix;
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick); co.unobserve(el);
-        });
-      }, { threshold: 0.6 });
-      counters.forEach((c) => co.observe(c));
-    }
+    counters.forEach((el) => {
+      const target = parseFloat(el.dataset.count), suffix = el.dataset.suffix || "";
+      if (reduce) { el.textContent = target + suffix; return; }
+      const dur = 1200, start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target % 1 === 0 ? Math.round(target * eased) : (target * eased).toFixed(1)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
   }
 
   /* ---------------------------------------------------------------- boot */
