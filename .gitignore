@@ -1,0 +1,22 @@
+# --- Python virtual environment ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# --- Large local media (kept out of the repo by default) ---
+# GitHub rejects files >100 MB. These raw WhatsApp captures are heavy;
+# add compressed, web-ready clips under assets/video/ instead.
+*.mp4
+!assets/video/*.mp4
+WhatsApp*.mp4
+
+# --- Tooling / local config ---
+.claude/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

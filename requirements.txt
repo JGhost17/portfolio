@@ -1,0 +1,4 @@
+# Portfolio PDF generation
+# Renders pdf/portfolio.html to assets/portfolio.pdf via headless Chromium,
+# guaranteeing the PDF matches the website's colours and fonts.
+playwright==1.48.0

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan Gomes — Mechanical Engineer</title>
+  <meta name="description" content="Portfolio of Jonathan Gomes, a mechanical engineer working across automotive and aerospace — McLaren, NING Research, UCL and side projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23A8C3A4'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%232F4538' font-family='sans-serif' font-weight='700'%3EJG%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="ambient"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+  <div class="grain"></div>
+  <div class="progress"></div>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__mark">JG</span> Jonathan&nbsp;Gomes
+    </a>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    <div class="nav__links">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="mclaren.html">McLaren</a>
+      <a href="ning.html">NING Research</a>
+      <a href="ucl.html">UCL</a>
+      <a href="side-projects.html">Side Projects</a>
+      <a href="assets/portfolio.pdf" class="btn btn--ghost" style="padding:.4rem .9rem" title="Downloadable PDF portfolio">PDF ↓</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero wrap">
+    <div class="hero__grid">
+      <div class="intro-up">
+        <span class="eyebrow">Mechanical Engineer · Automotive &amp; Aerospace</span>
+        <h1>Engineering that moves —<br /><span class="grad">on road and in air.</span></h1>
+        <p class="hero__sub">I'm Jonathan, a mechanical engineer who lives at the intersection of
+          high-performance automotive and aerospace. I turn hard physics into things that go fast,
+          fly true, and hold up under load.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#work">Explore my work <span class="arrow">→</span></a>
+          <a class="btn btn--ghost" href="assets/portfolio.pdf">Download PDF portfolio</a>
+        </div>
+        <div class="hero__stats">
+          <div><div class="n"><span data-count="4">4</span></div><div class="l">Focus areas</div></div>
+          <div><div class="n"><span data-count="3">3</span>+</div><div class="l">Years hands-on</div></div>
+          <div><div class="n"><span data-count="2">2</span></div><div class="l">Industries</div></div>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="portrait" data-parallax>
+          <div class="portrait__ph">
+            YOUR PHOTO HERE
+            <small>drop a headshot at assets/img/portrait.jpg</small>
+          </div>
+          <div class="floaty f1"><span class="dot" style="background:var(--sage-deep)"></span> Automotive</div>
+          <div class="floaty f2"><span class="dot" style="background:var(--sky-deep)"></span> Aerospace</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section wrap" id="about">
+    <div class="section__head" data-reveal>
+      <span class="eyebrow">About me</span>
+      <h2>Curiosity, engineered.</h2>
+    </div>
+    <div class="about__grid">
+      <div data-reveal>
+        <p><span class="placeholder">Placeholder — send me your bullets and I'll drop them straight in.</span></p>
+        <p>I'm a mechanical engineer drawn to the fastest, most demanding corners of the field:
+          motorsport and flight. My work spans design, simulation, testing and the messy reality of
+          making hardware perform. Whether it's shaving grams off a suspension upright or chasing
+          laminar flow, I care about the details that decide the result.</p>
+        <p>Away from the desk you'll usually find me outdoors — I take a lot of inspiration from
+          nature's own engineering, which is exactly where the calm, natural palette of this site
+          comes from.</p>
+        <div class="chips">
+          <span class="chip">CAD · SolidWorks / CATIA</span>
+          <span class="chip">FEA &amp; CFD</span>
+          <span class="chip">GD&amp;T</span>
+          <span class="chip">Rapid prototyping</span>
+          <span class="chip">MATLAB · Python</span>
+          <span class="chip">Composites</span>
+          <span class="chip">DFM / DFA</span>
+        </div>
+      </div>
+      <aside class="factcard" data-reveal data-delay="1">
+        <h4>At a glance</h4>
+        <ul class="factlist">
+          <li><span class="k">Discipline</span><span>Mechanical Engineering</span></li>
+          <li><span class="k">Focus</span><span>Automotive &amp; Aerospace</span></li>
+          <li><span class="k">Education</span><span>UCL <span class="placeholder">degree &amp; year</span></span></li>
+          <li><span class="k">Based in</span><span class="placeholder">City, Country</span></li>
+          <li><span class="k">Email</span><span>jonathan.gomesyoshi527@gmail.com</span></li>
+          <li><span class="k">Résumé</span><span><a class="card__go" href="assets/resume.pdf" style="color:var(--accent)">2-page CV ↓</a></span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="section wrap" id="work">
+    <div class="section__head" data-reveal>
+      <span class="eyebrow">Selected work</span>
+      <h2>Four chapters.</h2>
+      <p class="lead">Each space below opens into its own page — the experience, the projects and the results.</p>
+    </div>
+    <div class="cards">
+      <a class="card" href="mclaren.html" style="--tint:var(--sky)" data-reveal>
+        <div class="card__icon">🏎️</div>
+        <div class="card__tag">Automotive · Motorsport</div>
+        <h3>McLaren</h3>
+        <p>High-performance automotive engineering at the sharpest end of the industry.</p>
+        <span class="card__go">Open page <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="ning.html" style="--tint:var(--sage)" data-reveal data-delay="1">
+        <div class="card__icon">🔬</div>
+        <div class="card__tag">Research &amp; Development</div>
+        <h3>NING Research</h3>
+        <p>Applied research bridging theory and hardware, from concept to test rig.</p>
+        <span class="card__go">Open page <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="ucl.html" style="--tint:var(--sand)" data-reveal data-delay="2">
+        <div class="card__icon">🎓</div>
+        <div class="card__tag">Education · UCL</div>
+        <h3>UCL</h3>
+        <p>Academic foundations, projects and the coursework that shaped my engineering.</p>
+        <span class="card__go">Open page <span class="arrow">→</span></span>
+      </a>
+      <a class="card" href="side-projects.html" style="--tint:var(--sky)" data-reveal data-delay="3">
+        <div class="card__icon">🚀</div>
+        <div class="card__tag">Personal builds</div>
+        <h3>Side Projects</h3>
+        <p>The things I build for the love of it — automotive, aerospace and everything between.</p>
+        <span class="card__go">Open page <span class="arrow">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div>
+        <h4>Let's build something.</h4>
+        <p class="muted" style="max-width:34ch">Open to opportunities in automotive and aerospace engineering.</p>
+        <a class="btn btn--primary" href="mailto:jonathan.gomesyoshi527@gmail.com" style="margin-top:1rem">Get in touch <span class="arrow">→</span></a>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h5>Pages</h5>
+          <a class="link" href="mclaren.html">McLaren</a><br />
+          <a class="link" href="ning.html">NING Research</a><br />
+          <a class="link" href="ucl.html">UCL</a><br />
+          <a class="link" href="side-projects.html">Side Projects</a>
+        </div>
+        <div>
+          <h5>Elsewhere</h5>
+          <a class="link" href="#" data-placeholder>LinkedIn</a><br />
+          <a class="link" href="https://github.com/JGhost17">GitHub</a><br />
+          <a class="link" href="assets/portfolio.pdf">PDF portfolio</a><br />
+          <a class="link" href="assets/resume.pdf">Résumé (CV)</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer__bottom">
+      <span>© <span id="year">2026</span> Jonathan Gomes</span>
+      <span>Designed &amp; built with a Sage &amp; Sky palette 🌿</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
