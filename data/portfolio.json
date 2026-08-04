@@ -1,0 +1,215 @@
+{
+  "profile": {
+    "name": "Joshua Alcobia Gomes",
+    "first": "Joshua",
+    "role": "Mechanical Engineering Student · Automotive & Aerospace",
+    "tagline": "Second-year MEng Mechanical Engineering student at UCL (predicted First), heading to McLaren on an industrial placement for 2026–27. I work across automotive and aerospace — from CFD and rocketry to pharmaceutical modelling, machine learning and AI tooling.",
+    "email": "jg7alcobia@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/josh-alcobia-gomes/",
+    "github": "https://github.com/JGhost17",
+    "location": "London, UK",
+    "resume": "assets/resume.pdf"
+  },
+  "about": {
+    "paragraphs": [
+      "I'm a mechanical engineer drawn to the fastest, most demanding corners of the field — motorsport and flight. I'm in my second year of an MEng in Mechanical Engineering at UCL (predicted First, 83%), and I'll be joining McLaren on an industrial placement for the 2026–27 academic year.",
+      "My work spans design, simulation, testing and the reality of making things perform: CFD in ANSYS Fluent, structural and generative design in Fusion 360 and SolidWorks, and machine-learning and AI tooling built during my scientific-modelling internship at Novartis. I lead teams as happily as I run the numbers — from an 8-engineer national rocketry squad to award-winning design challenges.",
+      "Away from engineering I compete nationally in track and field, which is where a lot of the discipline behind this work comes from — and the calm, natural palette of this site reflects where I recharge."
+    ],
+    "chips": [
+      "Fusion 360 · SolidWorks · Onshape",
+      "ANSYS Fluent & Mechanical",
+      "COMSOL · OpenRocket · QBlade",
+      "Python · MATLAB · C++",
+      "CFD & FEA",
+      "Machine Learning · LLMs",
+      "3D printing · laser cutting"
+    ],
+    "facts": [
+      { "k": "Discipline", "v": "MEng Mechanical Engineering" },
+      { "k": "University", "v": "UCL · 2nd year (predicted 1st, 83%)" },
+      { "k": "Next", "v": "McLaren — Industrial Placement 2026–27" },
+      { "k": "Focus", "v": "Automotive & Aerospace" },
+      { "k": "Based in", "v": "London, UK" },
+      { "k": "Email", "v": "jg7alcobia@gmail.com" }
+    ]
+  },
+  "nav": [
+    { "slug": "mclaren", "label": "McLaren" },
+    { "slug": "ning", "label": "NING Research" },
+    { "slug": "novartis", "label": "Novartis" },
+    { "slug": "ucl", "label": "UCL" },
+    { "slug": "side-projects", "label": "Side Projects" }
+  ],
+  "cards": [
+    { "slug": "mclaren", "icon": "🏎️", "tag": "Automotive · Motorsport", "title": "McLaren", "blurb": "Industrial placement in high-performance automotive engineering (2026–27).", "tint": "sky" },
+    { "slug": "ning", "icon": "🌀", "tag": "R&D · CFD / Simulation", "title": "NING Research", "blurb": "Applied CFD and engineering simulation across real client projects.", "tint": "sage" },
+    { "slug": "novartis", "icon": "🧪", "tag": "R&D · Pharma / ML", "title": "Novartis", "blurb": "Scientific-modelling internship: machine learning, simulation and AI tooling.", "tint": "sand" },
+    { "slug": "ucl", "icon": "🎓", "tag": "Education · UCL", "title": "UCL", "blurb": "MEng Mechanical Engineering — competition teams and academic projects.", "tint": "sky" },
+    { "slug": "side-projects", "icon": "🚀", "tag": "Personal builds", "title": "Side Projects", "blurb": "The things I build for the love of it — automotive, aerospace and beyond.", "tint": "sage" }
+  ],
+  "pages": {
+    "mclaren": {
+      "tag": "01 · Automotive / Motorsport",
+      "title": "McLaren",
+      "subtitle": "High-performance automotive engineering — my industrial placement year.",
+      "meta": [
+        { "k": "Role", "v": "Industrial Placement" },
+        { "k": "Team", "v": "TBC" },
+        { "k": "Period", "v": "2026–27 academic year" },
+        { "k": "Domain", "v": "Automotive · Motorsport" }
+      ],
+      "overview": "I'll be joining McLaren for my industrial placement across the 2026–27 academic year — a full year embedded in one of the sharpest engineering environments in the world. This page will grow into a record of the projects I work on there.",
+      "approach": [
+        "Bring rigorous simulation and design fundamentals from UCL and NING Research.",
+        "Learn the pace and precision of elite motorsport engineering.",
+        "Document each project here as the placement progresses."
+      ],
+      "projects": [
+        { "title": "Placement project 1", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once my placement begins in 2026." },
+        { "title": "Placement project 2", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once my placement begins in 2026." },
+        { "title": "Placement project 3", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once my placement begins in 2026." }
+      ]
+    },
+
+    "ning": {
+      "tag": "02 · Research & Development",
+      "title": "NING Research",
+      "subtitle": "Applied CFD and engineering simulation — turning real client problems into validated models.",
+      "meta": [
+        { "k": "Role", "v": "Simulation / CFD Engineer", "placeholder": true },
+        { "k": "Field", "v": "CFD & Engineering Simulation" },
+        { "k": "Period", "v": "Start – present", "placeholder": true },
+        { "k": "Domain", "v": "R&D · Consulting" }
+      ],
+      "overview": "At NING Research I work on computational fluid dynamics and engineering-simulation projects for a range of clients — from ventilation and mixing to structural and environmental analysis.",
+      "overviewPlaceholder": true,
+      "approach": [
+        "Define the physical problem and success criteria with the client.",
+        "Build and mesh the CFD / simulation model (OpenFOAM, ANSYS).",
+        "Validate against data, then translate results into clear recommendations."
+      ],
+      "approachPlaceholder": true,
+      "projects": [
+        { "title": "Spacelogic Coughing Simulation", "tag": "CFD · Ventilation", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "OpenFOAM Mixing Tank", "tag": "CFD · Mixing", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "Topayoh", "tag": "Simulation", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "80 Kim Yam Road", "tag": "CFD · Built environment", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "Roof Rainfall Project", "tag": "CFD · Environmental", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "Sanli Mixing Tank", "tag": "CFD · Mixing", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "Safe Site — 3logytech", "tag": "Simulation · Safety", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "KiteFoil — Max Maeder (SportSG)", "tag": "CFD · Sports aero", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "Project 9", "tag": "Simulation", "placeholder": true, "summary": "Add this project's title and description." },
+        { "title": "Pad Production Line (Kenvue)", "tag": "Process simulation", "placeholder": true, "summary": "Add a short description of this project and its outcome." },
+        { "title": "Project 11", "tag": "Simulation", "placeholder": true, "summary": "Add this project's title and description." },
+        { "title": "Project 12", "tag": "Simulation", "placeholder": true, "summary": "Add this project's title and description." }
+      ]
+    },
+
+    "novartis": {
+      "tag": "03 · Pharma / Machine Learning",
+      "title": "Novartis",
+      "subtitle": "Scientific Modelling Intern — machine learning, simulation and AI tooling in pharmaceutical manufacturing.",
+      "meta": [
+        { "k": "Role", "v": "Scientific Modelling Intern" },
+        { "k": "Period", "v": "Aug – Sept 2025" },
+        { "k": "Location", "v": "Basel, Switzerland" },
+        { "k": "Domain", "v": "R&D · Pharma / ML" }
+      ],
+      "overview": "Over a summer internship in Basel I built machine-learning models, simulations and AI tools that removed manual work and cut costs across pharmaceutical R&D — spanning powder characterisation, process analytics and LLM-based automation.",
+      "approach": [
+        "Turn messy sensor and process data into clean, usable models.",
+        "Automate repetitive analysis with Python, dashboards and LLM workflows.",
+        "Validate against real batches and quantify the time and cost saved."
+      ],
+      "projects": [
+        { "title": "ML Powder Flow Classification", "tag": "Machine Learning", "summary": "Machine-learning models to predict powder flow characteristics from experimental data.", "bullets": [
+          "Used LazyClassifier for rapid model selection, then Grid Search, Lasso regularisation and Bayesian optimisation for hyperparameter tuning.",
+          "Saved CHF 40,000 per batch of APIs by predicting behaviour ahead of manufacture." ] },
+        { "title": "MCP Servers for Internal AI Tooling", "tag": "AI Infrastructure", "placeholder": true, "summary": "Add a short description of the MCP server work — what it connected and enabled." },
+        { "title": "Streamlit Analytics Dashboards", "tag": "Data / Python", "summary": "Interactive Streamlit applications that eliminated manual data searching for the department.", "bullets": [
+          "Built dropdown-driven apps for dwell-time analysis and screw customisation.",
+          "Developed Python programs for Loss-on-Drying calculations from sensor data, solving mass-balance equations for moisture content and drying efficiency." ] },
+        { "title": "AI Project Summariser (LLMs + Agentic Workflows)", "tag": "LLMs · Agents", "summary": "An AI summariser that gathers data from internal and external databases automatically.", "bullets": [
+          "Used automated workflows and LLMs to compile project context on demand.",
+          "Reduced research time from ~50 minutes to ~15, saving weeks of cumulative effort." ] },
+        { "title": "Pill CAD Design for FEA / COMSOL", "tag": "CAD · Simulation", "summary": "Tablet geometry modelled for high-performance-compute simulation.", "bullets": [
+          "Designed tablets in SolidWorks from technical drawings for COMSOL HPC simulation.",
+          "Saved thousands per batch through predictive modelling." ] }
+      ]
+    },
+
+    "ucl": {
+      "tag": "04 · Education",
+      "title": "UCL",
+      "subtitle": "MEng Mechanical Engineering — the competition teams and projects that shaped how I engineer.",
+      "meta": [
+        { "k": "Degree", "v": "MEng Mechanical Engineering" },
+        { "k": "Years", "v": "Sept 2024 – June 2028" },
+        { "k": "Predicted", "v": "First Class (83%)" },
+        { "k": "Domain", "v": "Education" }
+      ],
+      "overview": "I'm in my second year of an MEng in Mechanical Engineering at UCL, predicted a First (83%). Alongside the degree I throw myself into engineering teams and competitions — rocketry, motorsport, design challenges and more — where the theory meets real hardware.",
+      "approach": [
+        "Apply core mechanical engineering: thermofluids, solid mechanics, dynamics, materials.",
+        "Specialise toward automotive and aerospace through team projects.",
+        "Lead and deliver — from budgets and Gantt charts to manufacture and test."
+      ],
+      "projects": [
+        { "title": "UCL Racing — Rocket", "tag": "Aerospace · Team Lead", "summary": "National Rocketry Championship team lead, aerostructures & simulations engineer.", "bullets": [
+          "Led an 8-engineer team with a £1,000 budget to 8th of 50 at the National Rocketry Championship.",
+          "Validated ANSYS Fluent CFD against drag-coefficient data to 97% accuracy.",
+          "Designed the aerostructure in Fusion 360, increasing apogee by 203 m.",
+          "Ran the project in Jira with Gantt charts, risk assessments and sponsorship outreach." ] },
+        { "title": "Formula Student", "tag": "Automotive · Motorsport", "placeholder": true, "summary": "Add your Formula Student role, subsystem and contributions." },
+        { "title": "IMechE Design Challenge", "tag": "Design & Manufacture", "summary": "Design & manufacturing engineer — runner-up, Greater London Regional Final.", "bullets": [
+          "Secured National Final qualification as one of only two teams to achieve perfect accuracy.",
+          "Won both the Design Award and the Challenge Competition.",
+          "Used Fusion 360 Generative Design to cut mass by 115.87 g (60%) at a safety factor of 2.",
+          "Produced a full Bill of Materials with data visualisation to identify cost drivers." ] },
+        { "title": "UCL Mechathon 2025", "tag": "Turbines · Competition", "summary": "Won the competition (team of 6) with a 76 mm-radius wind-turbine design.", "bullets": [
+          "Achieved 29% efficiency at 3.3 V.",
+          "Used QBlade to analyse aerofoil lift-to-drag ratios and optimal angle of attack (95.8% accurate).",
+          "Developed manufacturing methods across milling, 3D printing and laser cutting." ] },
+        { "title": "Project 5", "tag": "Coursework", "placeholder": true, "summary": "Add another UCL project — title, one line, and a few bullets." },
+        { "title": "Project 6", "tag": "Coursework", "placeholder": true, "summary": "Add another UCL project — title, one line, and a few bullets." },
+        { "title": "Project 7", "tag": "Coursework", "placeholder": true, "summary": "Add another UCL project — title, one line, and a few bullets." }
+      ],
+      "attachments": {
+        "note": "Drop presentation PowerPoints and coursework PDFs into assets/docs/ and list them here.",
+        "items": [
+          { "label": "Presentation / coursework 1", "file": "assets/docs/example-1.pdf", "placeholder": true },
+          { "label": "Presentation / coursework 2", "file": "assets/docs/example-2.pdf", "placeholder": true }
+        ]
+      }
+    },
+
+    "side-projects": {
+      "tag": "05 · Personal builds",
+      "title": "Side Projects",
+      "subtitle": "The things I build for the love of it — research, robotics and everything between.",
+      "meta": [
+        { "k": "Themes", "v": "Aerospace · Robotics · Research" },
+        { "k": "Tools", "v": "CAD · Arduino · C++ · 3D print" },
+        { "k": "Status", "v": "Ongoing" }
+      ],
+      "overview": "A selection of personal and academic projects I've taken end-to-end — from theoretical research papers to fully built, programmed hardware.",
+      "approach": [
+        "Start from a question or a problem worth solving.",
+        "Model, build and iterate — CAD, electronics, code and test.",
+        "Document the result properly, challenges and all."
+      ],
+      "projects": [
+        { "title": "Internal Pressure of Thin-Walled Vessels During Collision", "tag": "Research · Impact", "summary": "Theoretical research and mathematical modelling on pressure vs. impact force.", "bullets": [
+          "Modelled the relationship between internal pressure and impact force.",
+          "Wrote a 4,000-word research paper on optimal pressure for impact reduction and its applications to safety systems." ] },
+        { "title": "Automated Fruit & Vegetable Cutting Robot", "tag": "Robotics · Automation", "summary": "A kitchen robot designed, built and programmed from scratch.", "bullets": [
+          "Built and programmed the robot with Arduino and C++.",
+          "Modelled and optimised components in CAD for functionality and durability.",
+          "Assembled and iteratively refined the mechanical systems and control algorithms." ] },
+        { "title": "Side project 3", "tag": "Making", "placeholder": true, "summary": "Add a personal build — title, one line, and a few bullets." },
+        { "title": "Side project 4", "tag": "Making", "placeholder": true, "summary": "Add a personal build — title, one line, and a few bullets." }
+      ]
+    }
+  }
+}

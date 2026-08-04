@@ -296,6 +296,68 @@ ul { padding-left: 1.1em; }
 
 .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
 
+/* =========================================================================
+   Page intro (overview + approach) + scrollable project sections
+   ========================================================================= */
+.pageintro { display: grid; grid-template-columns: 1.3fr .9fr; gap: clamp(2rem,5vw,4rem);
+  align-items: start; padding-bottom: clamp(1rem,3vw,2rem); }
+.pageintro .overview p { color: var(--ink-soft); font-size: 1.1rem; }
+.approach { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.6rem; backdrop-filter: blur(6px); box-shadow: var(--shadow-sm); }
+.approach h4 { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.approach ol { list-style: none; counter-reset: step; padding: 0; display: grid; gap: 1rem; }
+.approach li { counter-increment: step; display: flex; gap: .9rem; align-items: baseline; color: var(--ink-soft); font-size: .95rem; }
+.approach li::before { content: counter(step); flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center; font-family: var(--font-head); font-size: .8rem; font-weight: 600;
+  color: var(--ink); background: linear-gradient(135deg, var(--sage), var(--sky)); }
+
+.projects { display: grid; gap: clamp(2rem, 5vw, 3.5rem); margin-top: 1rem; }
+.projects__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  margin: clamp(2rem,5vw,3.5rem) 0 .5rem; flex-wrap: wrap; }
+.project { display: grid; grid-template-columns: 64px 1fr 1fr; gap: clamp(1.2rem,3vw,2.4rem);
+  align-items: center; padding: clamp(1.4rem,3vw,2rem); border: 1px solid var(--line);
+  border-radius: var(--radius); background: var(--surface); backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-sm); transition: box-shadow .4s var(--ease), transform .4s var(--ease-out); position: relative; }
+.project:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+.project__index { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700;
+  color: transparent; -webkit-text-stroke: 1.5px var(--sage-deep); text-align: center; align-self: start; }
+.project__body .card__tag { display: inline-block; margin-bottom: .5rem; }
+.project__body h3 { font-size: 1.55rem; margin-bottom: .4rem; }
+.project__body p { color: var(--text-muted); }
+.project__body ul { margin-top: .8rem; display: grid; gap: .45rem; color: var(--ink-soft); font-size: .95rem; }
+.project__media { align-self: stretch; min-height: 190px; border-radius: var(--radius-sm); overflow: hidden;
+  background: linear-gradient(150deg, var(--sky) 0%, var(--sage) 100%); border: 1px solid #ffffff55;
+  display: grid; place-items: center; color: #ffffffe0; font-size: .8rem; font-weight: 600; text-align: center; padding: 1rem; }
+.project__media video, .project__media img { width: 100%; height: 100%; object-fit: cover; }
+.project__media .slot { background: #2f453855; padding: .4rem .7rem; border-radius: 8px; backdrop-filter: blur(2px); }
+/* Zig-zag: even projects put media on the left */
+.project:nth-child(even) .project__media { order: -1; }
+.project.is-placeholder { border-style: dashed; border-color: var(--sky-deep); background: #b8d4e31a; }
+
+.upcoming { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .85rem;
+  color: var(--ink); background: linear-gradient(135deg, var(--sand), var(--sky)); padding: .5rem 1rem;
+  border-radius: 999px; box-shadow: var(--shadow-sm); margin-top: 1.4rem; }
+
+/* Attachments (UCL docs) */
+.attachments { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface);
+  padding: clamp(1.4rem,3vw,2rem); backdrop-filter: blur(6px); box-shadow: var(--shadow-sm); }
+.attachments h3 { font-size: 1.4rem; margin-bottom: .3rem; }
+.attach-list { list-style: none; padding: 0; margin-top: 1.2rem; display: grid; gap: .7rem; }
+.attach-list a, .attach-list .doc { display: flex; align-items: center; gap: .9rem; padding: .9rem 1.1rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; font-weight: 600;
+  transition: transform .25s var(--ease-out), box-shadow .25s; }
+.attach-list a:hover { transform: translateX(4px); box-shadow: var(--shadow-sm); }
+.attach-list .fileicon { width: 38px; height: 38px; border-radius: 9px; display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--sage), var(--sky)); font-size: 1.1rem; flex: 0 0 auto; }
+.attach-list .doc.is-placeholder { border-style: dashed; border-color: var(--sky-deep); color: var(--text-muted); font-weight: 500; }
+
+@media (max-width: 820px) {
+  .pageintro { grid-template-columns: 1fr; }
+  .project { grid-template-columns: 44px 1fr; }
+  .project__media { grid-column: 1 / -1; order: 0 !important; min-height: 160px; }
+  .project:nth-child(even) .project__media { order: 0; }
+}
+
 /* Placeholder note styling (remove once real content is in) */
 .placeholder { border: 1px dashed var(--sky-deep); background: #b8d4e322; border-radius: 10px;
   padding: .5rem .8rem; font-size: .82rem; color: var(--ink-soft); }

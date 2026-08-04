@@ -3,112 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Side Projects — Jonathan Gomes</title>
-  <meta name="description" content="Jonathan Gomes — personal automotive and aerospace engineering projects." />
+  <title>Side Projects — Joshua Alcobia Gomes</title>
+  <meta name="description" content="Joshua Alcobia Gomes — personal engineering projects: research, robotics and builds." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23A8C3A4'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%232F4538' font-family='sans-serif' font-weight='700'%3EJG%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23A8C3A4'/%3E%3Ctext x='16' y='22' font-size='13' text-anchor='middle' fill='%232F4538' font-family='sans-serif' font-weight='700'%3EJA%3C/text%3E%3C/svg%3E" />
 </head>
-<body>
+<body data-page="side-projects">
   <div class="ambient"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
   <div class="grain"></div>
   <div class="progress"></div>
 
   <nav class="nav">
-    <a class="nav__brand" href="index.html"><span class="nav__mark">JG</span> Jonathan&nbsp;Gomes</a>
+    <a class="nav__brand" href="index.html"><span class="nav__mark">JA</span> Joshua&nbsp;Alcobia&nbsp;Gomes</a>
     <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     <div class="nav__links">
       <a href="index.html">Home</a>
       <a href="mclaren.html">McLaren</a>
       <a href="ning.html">NING Research</a>
+      <a href="novartis.html">Novartis</a>
       <a href="ucl.html">UCL</a>
       <a href="side-projects.html" aria-current="page">Side Projects</a>
       <a href="assets/portfolio.pdf" class="btn btn--ghost" style="padding:.4rem .9rem">PDF ↓</a>
     </div>
   </nav>
 
-  <header class="phead wrap">
-    <div class="breadcrumb intro-up"><a href="index.html">Home</a> <span>/</span> <span>Side Projects</span></div>
-    <h1 class="intro-up">Side Projects</h1>
-    <p class="lead intro-up">The things I build for the love of it — automotive, aerospace and everything between.</p>
-    <div class="metabar intro-up">
-      <div><span class="k">Themes</span><span class="v">Automotive · Aerospace · Making</span></div>
-      <div><span class="k">Tools</span><span class="v placeholder">CAD, 3D print, electronics…</span></div>
-      <div><span class="k">Status</span><span class="v">Ongoing</span></div>
-    </div>
-  </header>
+  <main id="app" data-page="side-projects"></main>
 
-  <!-- PROJECT CARDS -->
-  <section class="section wrap">
-    <div class="section__head" data-reveal>
-      <span class="eyebrow">Builds</span>
-      <h2>A few of my projects</h2>
-      <p class="lead">Each card is a placeholder — tell me the project name and a sentence, and I'll flesh it out.</p>
-    </div>
-    <div class="cards">
-      <div class="card" style="--tint:var(--sky)" data-reveal>
-        <div class="card__icon">🏎️</div>
-        <div class="card__tag placeholder">Automotive</div>
-        <h3 class="placeholder">Project one</h3>
-        <p class="placeholder">One-line description of what you built and why.</p>
-        <span class="card__go muted">assets/video/side-1.mp4 · assets/img/side-1.jpg</span>
-      </div>
-      <div class="card" style="--tint:var(--sage)" data-reveal data-delay="1">
-        <div class="card__icon">🚀</div>
-        <div class="card__tag placeholder">Aerospace</div>
-        <h3 class="placeholder">Project two</h3>
-        <p class="placeholder">One-line description of what you built and why.</p>
-        <span class="card__go muted">assets/video/side-2.mp4 · assets/img/side-2.jpg</span>
-      </div>
-      <div class="card" style="--tint:var(--sand)" data-reveal data-delay="2">
-        <div class="card__icon">🛠️</div>
-        <div class="card__tag placeholder">Making</div>
-        <h3 class="placeholder">Project three</h3>
-        <p class="placeholder">One-line description of what you built and why.</p>
-        <span class="card__go muted">assets/video/side-3.mp4 · assets/img/side-3.jpg</span>
-      </div>
-      <div class="card" style="--tint:var(--sky)" data-reveal data-delay="3">
-        <div class="card__icon">⚙️</div>
-        <div class="card__tag placeholder">Category</div>
-        <h3 class="placeholder">Project four</h3>
-        <p class="placeholder">One-line description of what you built and why.</p>
-        <span class="card__go muted">assets/video/side-4.mp4 · assets/img/side-4.jpg</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED VIDEO -->
-  <section class="section wrap">
-    <div class="section__head" data-reveal>
-      <span class="eyebrow">Featured</span><h2>Build in motion</h2>
-      <p class="lead">Your best clip can headline here — full-width.</p>
-    </div>
-    <figure data-reveal>
-      <div class="videoframe" style="aspect-ratio:16/9">
-        <!-- Replace with: <video src="assets/video/side-featured.mp4" controls poster="assets/img/side-featured.jpg"></video> -->
-        <div class="videoframe__ph"><div class="play">▶</div>Featured video<small>assets/video/side-featured.mp4</small></div>
-      </div>
-      <figcaption class="videocap placeholder">Caption for the featured build video.</figcaption>
-    </figure>
-  </section>
-
-  <section class="section wrap">
-    <a class="card" href="index.html" style="--tint:var(--sage)" data-reveal>
-      <div class="card__tag">Back</div><h3>← Home</h3>
-      <p>Return to the overview and About Me.</p>
-    </a>
-  </section>
-
-  <footer class="footer">
-    <div class="wrap footer__bottom">
-      <span>© <span class="year">2026</span> Jonathan Gomes</span>
-      <span><a class="link" href="index.html">← Back to home</a></span>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-  <script>document.querySelectorAll(".year").forEach(e=>e.textContent=new Date().getFullYear());</script>
+  <script src="js/site.js"></script>
 </body>
 </html>
