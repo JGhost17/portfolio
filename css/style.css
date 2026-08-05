@@ -384,7 +384,7 @@ html.snap-mode .slide.enter .slide__detail { animation: slideEnter .6s var(--eas
 .deck__footer a { color: var(--accent); font-weight: 600; }
 
 .slide { min-height: calc(100vh - 64px); display: grid; align-items: center;
-  grid-template-columns: 1fr minmax(280px, 400px) 1fr; grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr minmax(300px, 500px) 1fr; grid-template-rows: 1fr auto;
   grid-template-areas: ".  media  detail" "title  media  detail";
   gap: clamp(1rem,3vw,2.5rem);
   padding: clamp(2rem,5vh,3.5rem) clamp(1.5rem,5vw,3.5rem) clamp(3.5rem,7vh,5rem);
@@ -396,11 +396,17 @@ html.snap-mode .slide.enter .slide__detail { animation: slideEnter .6s var(--eas
 .slide__media .slot { background: #2f453866; padding: .45rem .8rem; border-radius: 10px; font-weight: 600; font-size: .82rem; }
 .slide--intro .slide__media { background: linear-gradient(160deg, var(--sand), var(--sky)); }
 
+/* When a slide has real media, drop the fixed box — the photo keeps its own
+   aspect ratio (rounded corners, no cropping), capped so it stays on-screen. */
+.slide__media:has(.media) { aspect-ratio: auto; background: none; border: 0; box-shadow: none;
+  padding: 0; overflow: visible; display: flex; align-items: center; justify-content: center; }
+
 /* Media carousel (images + videos) inside a slide */
-.media { position: absolute; inset: 0; }
-.media__stage { position: absolute; inset: 0; display: grid; place-items: center;
-  background: linear-gradient(160deg, #eaf1ea, #e6eef3); }
-.media__stage img, .media__stage video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.media { position: relative; display: inline-flex; max-width: 100%; }
+.media__stage { display: flex; }
+.media__stage img, .media__stage video { display: block; width: auto; height: auto;
+  max-width: 100%; max-height: 62vh; object-fit: contain; border-radius: var(--radius);
+  box-shadow: var(--shadow-lg); background: #eef3ec; }
 .media__cap { position: absolute; top: .55rem; left: .6rem; z-index: 3; font-size: .72rem; font-weight: 600;
   color: var(--ink); background: #ffffffd0; padding: .2rem .55rem; border-radius: 7px; backdrop-filter: blur(3px); max-width: 70%; }
 .media__arm { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px;
