@@ -87,4 +87,4 @@ Push to GitHub, then **Settings → Pages → Deploy from branch → `main` / ro
 Live at `https://JGhost17.github.io/<repo>/`.
 
 ---
-Built with a Sage & Sky palette 🌿
+Built with Claude
