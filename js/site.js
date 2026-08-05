@@ -132,13 +132,62 @@
     const slides = [...document.querySelectorAll("[data-slide]")];
     if (!dotsWrap || !slides.length) return;
     const dots = [...dotsWrap.querySelectorAll(".dot")];
-    if (!reduce) document.documentElement.classList.add("deck-snap");
-    const setActive = (i) => dots.forEach((d, k) => d.classList.toggle("active", k === i));
-    setActive(0);
+    const NAV_H = 64;
+    // "Deck mode": one-section-per-scroll snap, desktop + motion allowed only.
+    const deckMode = () => window.matchMedia("(min-width: 901px)").matches && !reduce;
 
-    // Active dash = slide nearest the viewport centre (scroll-driven, reliable).
+    let index = 0, locked = false;
+    const setDots = (i) => dots.forEach((d, k) => d.classList.toggle("active", k === i));
+
+    function goTo(i, smooth = true) {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      const s = slides[index];
+      slides.forEach((el, k) => el.classList.toggle("active", k === index));
+      if (deckMode()) { s.classList.remove("enter"); void s.offsetWidth; s.classList.add("enter"); }
+      s.scrollIntoView({ behavior: smooth && !reduce ? "smooth" : "auto", block: "start" });
+      setDots(index);
+    }
+
+    if (deckMode()) document.documentElement.classList.add("snap-mode");
+    slides[0].classList.add("active");
+    setDots(0);
+
+    const step = (dir) => {
+      const target = index + dir;
+      if (target < 0 || target >= slides.length || locked) return;
+      locked = true;
+      goTo(target);
+      setTimeout(() => { locked = false; }, 820);
+    };
+
+    // Wheel: hijack to advance one section per gesture. Tall sections (content
+    // taller than the viewport) scroll natively until their edge, then snap.
+    window.addEventListener("wheel", (e) => {
+      if (!deckMode()) return;
+      if (locked) { e.preventDefault(); return; }
+      const down = e.deltaY > 0;
+      const r = slides[index].getBoundingClientRect();
+      const tall = slides[index].offsetHeight > window.innerHeight + 4;
+      if (tall) {
+        if (down && Math.ceil(r.bottom) > window.innerHeight + 1) return;   // reveal rest
+        if (!down && Math.floor(r.top) < NAV_H - 1) return;                 // reveal rest (up)
+      }
+      if (Math.abs(e.deltaY) < 8) return;
+      e.preventDefault();
+      step(down ? 1 : -1);
+    }, { passive: false });
+
+    // Keyboard
+    window.addEventListener("keydown", (e) => {
+      if (!deckMode()) return;
+      if (e.key === "ArrowDown" || e.key === "PageDown" || (e.key === " " && !e.shiftKey)) { e.preventDefault(); step(1); }
+      else if (e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); step(-1); }
+    });
+
+    // Scroll spy keeps the active dash + index in sync (mobile native scroll,
+    // momentum, and after programmatic snaps).
     let ticking = false;
-    const update = () => {
+    const spy = () => {
       ticking = false;
       const mid = window.innerHeight / 2;
       let best = 0, bd = Infinity;
@@ -147,16 +196,15 @@
         const d = Math.abs(r.top + r.height / 2 - mid);
         if (d < bd) { bd = d; best = i; }
       });
-      setActive(best);
+      if (!locked) index = best;
+      setDots(best);
     };
     document.addEventListener("scroll", () => {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      if (!ticking) { ticking = true; requestAnimationFrame(spy); }
     }, { passive: true });
-    update();
+    spy();
 
-    dots.forEach((d, i) =>
-      d.addEventListener("click", () =>
-        slides[i].scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" })));
+    dots.forEach((d, i) => d.addEventListener("click", () => { if (!locked) step(i - index); }));
   }
 
   /* ---------------------------------------------------------- interactions */
