@@ -157,7 +157,7 @@
       if (target < 0 || target >= slides.length || locked) return;
       locked = true;
       goTo(target);
-      setTimeout(() => { locked = false; }, 820);
+      setTimeout(() => { locked = false; }, 900);
     };
 
     // Wheel: hijack to advance one section per gesture. Tall sections (content
@@ -189,6 +189,7 @@
     let ticking = false;
     const spy = () => {
       ticking = false;
+      if (locked) return;   // don't fight a programmatic snap — this was the flicker
       const mid = window.innerHeight / 2;
       let best = 0, bd = Infinity;
       slides.forEach((s, i) => {
@@ -196,7 +197,7 @@
         const d = Math.abs(r.top + r.height / 2 - mid);
         if (d < bd) { bd = d; best = i; }
       });
-      if (!locked) index = best;
+      index = best;
       setDots(best);
     };
     document.addEventListener("scroll", () => {
