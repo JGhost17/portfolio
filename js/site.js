@@ -16,6 +16,32 @@
   const mediaHint = (slug, i) =>
     `assets/video/${slug}-${i}.mp4 &nbsp;·&nbsp; assets/img/${slug}-${i}.jpg`;
 
+  /* ---------------------------------------------------------- media panel */
+  const isVideo = (src) => /\.(mp4|webm|mov|m4v)$/i.test(src);
+  function cleanName(src) {
+    return src.split("/").pop().replace(/\.[^.]+$/, "")
+      .replace(/[_-]+/g, " ").replace(/\b(jpg|jpeg|png|mp4)\b/gi, "").trim();
+  }
+  function mediaItemEl(src) {
+    const url = encodeURI(src);
+    return isVideo(src)
+      ? `<video src="${url}" controls preload="metadata" playsinline></video>`
+      : `<img src="${url}" loading="lazy" alt="${esc(cleanName(src))}">`;
+  }
+  function mediaPanel(items) {
+    if (!Array.isArray(items) || !items.length) return null;
+    const multi = items.length > 1;
+    const dots = multi
+      ? `<div class="media__dots">${items.map((_, i) => `<button class="mdot" data-i="${i}" aria-label="Media ${i + 1}"></button>`).join("")}</div>` : "";
+    const arms = multi
+      ? `<button class="media__arm prev" aria-label="Previous">‹</button><button class="media__arm next" aria-label="Next">›</button>` : "";
+    return `<div class="media" data-media="${items.map(esc).join("|")}">
+      <div class="media__stage">${mediaItemEl(items[0])}</div>
+      <div class="media__cap">${esc(cleanName(items[0]))}</div>
+      ${arms}${dots}
+    </div>`;
+  }
+
   /* --------------------------------------------------------------- slides */
   function introSlide(page) {
     const meta = (page.meta || [])
@@ -51,7 +77,8 @@
       ? `<div class="d-block"><h5>Impact</h5><ul>${p.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul></div>`
       : "";
     const date = p.date ? `<div class="d-date">${esc(p.date)}</div>` : "";
-    const mediaInner = `<span class="slot">${p.placeholder ? "Add media<br>" : ""}${mediaHint(slug, i + 1)}</span>`;
+    const mediaInner = mediaPanel(p.media)
+      || `<span class="slot">${p.placeholder ? "Add media<br>" : ""}${mediaHint(slug, i + 1)}</span>`;
     const sub = p.subtitle || (p.tag || "").split("·")[0].trim();
     return `
       <section class="slide" data-slide>
@@ -208,6 +235,29 @@
     dots.forEach((d, i) => d.addEventListener("click", () => { if (!locked) step(i - index); }));
   }
 
+  /* --------------------------------------------------- media carousels */
+  function initMedia() {
+    document.querySelectorAll("[data-media]").forEach((box) => {
+      const items = box.getAttribute("data-media").split("|");
+      if (items.length < 2) return;
+      const stage = box.querySelector(".media__stage");
+      const cap = box.querySelector(".media__cap");
+      const dots = [...box.querySelectorAll(".mdot")];
+      let cur = 0;
+      const show = (i) => {
+        cur = (i + items.length) % items.length;
+        stage.innerHTML = mediaItemEl(items[cur]);
+        if (cap) cap.textContent = cleanName(items[cur]);
+        dots.forEach((d, k) => d.classList.toggle("active", k === cur));
+      };
+      dots.forEach((d, k) => d.addEventListener("click", (e) => { e.stopPropagation(); show(k); }));
+      const prev = box.querySelector(".prev"), next = box.querySelector(".next");
+      if (prev) prev.addEventListener("click", (e) => { e.stopPropagation(); show(cur - 1); });
+      if (next) next.addEventListener("click", (e) => { e.stopPropagation(); show(cur + 1); });
+      show(0);
+    });
+  }
+
   /* ---------------------------------------------------------- interactions */
   function initInteractions() {
     const bar = document.querySelector(".progress");
@@ -269,6 +319,7 @@
     if (app && app.dataset.page !== "home") {
       await renderPage(app);
       initDeck();
+      initMedia();
     }
     initInteractions();
     document.querySelectorAll(".year").forEach((e) => (e.textContent = new Date().getFullYear()));

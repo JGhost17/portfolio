@@ -389,12 +389,30 @@ html.snap-mode .slide.enter .slide__detail { animation: slideEnter .6s var(--eas
   gap: clamp(1rem,3vw,2.5rem);
   padding: clamp(2rem,5vh,3.5rem) clamp(1.5rem,5vw,3.5rem) clamp(3.5rem,7vh,5rem);
   scroll-snap-align: start; scroll-margin-top: 64px; }
-.slide__media { grid-area: media; width: 100%; aspect-ratio: 4/5; border-radius: var(--radius);
+.slide__media { grid-area: media; width: 100%; aspect-ratio: 4/3; border-radius: var(--radius);
   overflow: hidden; background: linear-gradient(160deg, var(--sky), var(--sage)); box-shadow: var(--shadow-lg);
-  border: 1px solid #ffffff55; display: grid; place-items: center; color: #fff; text-align: center; padding: 1.2rem; }
-.slide__media video, .slide__media img { width: 100%; height: 100%; object-fit: cover; }
+  border: 1px solid #ffffff55; display: grid; place-items: center; color: #fff; text-align: center;
+  position: relative; padding: 1.2rem; }
 .slide__media .slot { background: #2f453866; padding: .45rem .8rem; border-radius: 10px; font-weight: 600; font-size: .82rem; }
 .slide--intro .slide__media { background: linear-gradient(160deg, var(--sand), var(--sky)); }
+
+/* Media carousel (images + videos) inside a slide */
+.media { position: absolute; inset: 0; }
+.media__stage { position: absolute; inset: 0; display: grid; place-items: center;
+  background: linear-gradient(160deg, #eaf1ea, #e6eef3); }
+.media__stage img, .media__stage video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.media__cap { position: absolute; top: .55rem; left: .6rem; z-index: 3; font-size: .72rem; font-weight: 600;
+  color: var(--ink); background: #ffffffd0; padding: .2rem .55rem; border-radius: 7px; backdrop-filter: blur(3px); max-width: 70%; }
+.media__arm { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px;
+  border-radius: 50%; border: 0; background: #ffffffdd; box-shadow: var(--shadow-sm); cursor: pointer;
+  font-size: 1.2rem; line-height: 1; color: var(--ink); z-index: 3; display: grid; place-items: center; }
+.media__arm:hover { background: #fff; }
+.media__arm.prev { left: .5rem; } .media__arm.next { right: .5rem; }
+.media__dots { position: absolute; bottom: .55rem; left: 50%; transform: translateX(-50%);
+  display: flex; gap: .35rem; z-index: 3; }
+.media__dots button { width: 7px; height: 7px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+  background: #ffffffb0; box-shadow: 0 1px 3px #0003; transition: background .25s; }
+.media__dots button.active { background: var(--ink); }
 
 .slide__title { grid-area: title; align-self: end; }
 .slide__title .eyebrow { margin-bottom: .8rem; }
