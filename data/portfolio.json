@@ -105,7 +105,7 @@
           "media": ["assets/img/Mixing_Tank_Thermal/Thermal_ISO.png", "assets/img/Mixing_Tank_Thermal/Thermal_Front.png", "assets/img/Mixing_Tank_Thermal/Velocity_Front.png"] },
         { "title": "Safe Site — 3logytech", "tag": "Simulation · Safety", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
           "media": ["assets/img/Safe_Sight/safesightisoview.jpg"] },
-        { "title": "KiteFoil — Max Maeder (SportSG)", "tag": "CFD · Sports aero", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
+        { "title": "KiteFoil (SportSG)", "tag": "CFD · Sports aero", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
           "media": ["assets/img/SportSG_FOil/FoilISO.png", "assets/img/SportSG_FOil/Foil_Front.png", "assets/img/SportSG_FOil/Foil_Side.png"] },
         { "title": "Project 9", "tag": "Simulation", "placeholder": true, "summary": "Add this project's title and description." },
         { "title": "Pad Production Line (Kenvue)", "tag": "Process simulation", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
