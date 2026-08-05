@@ -372,10 +372,13 @@ html.snap-mode .slide.enter .slide__detail { animation: slideEnter .6s var(--eas
 .deck__rail { position: fixed; top: 76px; left: clamp(1rem,4vw,2.5rem); z-index: 60; max-width: 230px; }
 .deck__rail .co { font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; color: var(--ink); }
 .deck__rail .tag { color: var(--text-muted); font-size: .76rem; margin-top: .15rem; }
-.deck__dots { display: flex; gap: .38rem; margin-top: .9rem; flex-wrap: wrap; }
-.deck__dots button { width: 20px; height: 3px; border-radius: 2px; background: var(--line);
-  border: 0; padding: 0; cursor: pointer; transition: width .3s var(--ease), background .3s; }
-.deck__dots button.active { width: 32px; background: linear-gradient(90deg,var(--sage-deep),var(--sky-deep)); }
+/* Vertical progress rail — uniform-size dashes, active shown by colour (never
+   changes size, so it can't wrap or look uneven regardless of project count). */
+.deck__dots { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; margin-top: 1rem; }
+.deck__dots button { width: 30px; height: 3px; border-radius: 2px; background: var(--line); opacity: .7;
+  border: 0; padding: 0; cursor: pointer; transition: background .35s var(--ease), opacity .35s; }
+.deck__dots button:hover { opacity: 1; }
+.deck__dots button.active { opacity: 1; background: linear-gradient(90deg,var(--sage-deep),var(--sky-deep)); }
 .deck__footer { position: fixed; bottom: 1rem; left: clamp(1rem,4vw,2.5rem); z-index: 60;
   font-size: .74rem; color: var(--text-muted); }
 .deck__footer a { color: var(--accent); font-weight: 600; }
@@ -418,6 +421,7 @@ html.snap-mode .slide.enter .slide__detail { animation: slideEnter .6s var(--eas
   .deck__rail { position: sticky; top: 64px; left: 0; max-width: none;
     padding: .6rem clamp(1rem,4vw,1.5rem); background: #fbfaf6d9; backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line); }
+  .deck__dots { display: none; }   /* native scroll on mobile — no progress rail needed */
   .deck__footer { position: static; margin: 1.5rem clamp(1rem,4vw,1.5rem) 3rem; }
   .slide { grid-template-columns: 1fr; grid-template-areas: "title" "media" "detail";
     grid-template-rows: none; min-height: auto; gap: 1.3rem;
