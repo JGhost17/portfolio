@@ -153,86 +153,102 @@
     }
   }
 
-  /* ------------------------------------------------------ deck navigation */
+  /* ------------------------------------------------------ deck navigation
+     Section snapping driven by a critically-damped SPRING that animates from
+     the live scroll position. It is interruptible and velocity-carrying: a new
+     gesture just re-targets and keeps moving — input is never locked (§3–§6). */
   function initDeck() {
     const dotsWrap = document.querySelector(".deck__dots");
     const slides = [...document.querySelectorAll("[data-slide]")];
     if (!dotsWrap || !slides.length) return;
     const dots = [...dotsWrap.querySelectorAll(".dot")];
     const NAV_H = 64;
-    // "Deck mode": one-section-per-scroll snap, desktop + motion allowed only.
     const deckMode = () => window.matchMedia("(min-width: 901px)").matches && !reduce;
+    const clamp = (i) => Math.max(0, Math.min(slides.length - 1, i));
+    const slideTop = (s) => s.getBoundingClientRect().top + window.scrollY - NAV_H;
 
-    let index = 0, locked = false;
+    let index = 0;
     const setDots = (i) => dots.forEach((d, k) => d.classList.toggle("active", k === i));
-
-    function goTo(i, smooth = true) {
-      index = Math.max(0, Math.min(slides.length - 1, i));
-      const s = slides[index];
-      slides.forEach((el, k) => el.classList.toggle("active", k === index));
-      if (deckMode()) { s.classList.remove("enter"); void s.offsetWidth; s.classList.add("enter"); }
-      s.scrollIntoView({ behavior: smooth && !reduce ? "smooth" : "auto", block: "start" });
-      setDots(index);
-    }
-
-    if (deckMode()) document.documentElement.classList.add("snap-mode");
-    slides[0].classList.add("active");
-    setDots(0);
-
-    const step = (dir) => {
-      const target = index + dir;
-      if (target < 0 || target >= slides.length || locked) return;
-      locked = true;
-      goTo(target);
-      setTimeout(() => { locked = false; }, 900);
-    };
-
-    // Wheel: hijack to advance one section per gesture. Tall sections (content
-    // taller than the viewport) scroll natively until their edge, then snap.
-    window.addEventListener("wheel", (e) => {
-      if (!deckMode()) return;
-      if (locked) { e.preventDefault(); return; }
-      const down = e.deltaY > 0;
-      const r = slides[index].getBoundingClientRect();
-      const tall = slides[index].offsetHeight > window.innerHeight + 4;
-      if (tall) {
-        if (down && Math.ceil(r.bottom) > window.innerHeight + 1) return;   // reveal rest
-        if (!down && Math.floor(r.top) < NAV_H - 1) return;                 // reveal rest (up)
-      }
-      if (Math.abs(e.deltaY) < 8) return;
-      e.preventDefault();
-      step(down ? 1 : -1);
-    }, { passive: false });
-
-    // Keyboard
-    window.addEventListener("keydown", (e) => {
-      if (!deckMode()) return;
-      if (e.key === "ArrowDown" || e.key === "PageDown" || (e.key === " " && !e.shiftKey)) { e.preventDefault(); step(1); }
-      else if (e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); step(-1); }
-    });
-
-    // Scroll spy keeps the active dash + index in sync (mobile native scroll,
-    // momentum, and after programmatic snaps).
-    let ticking = false;
-    const spy = () => {
-      ticking = false;
-      if (locked) return;   // don't fight a programmatic snap — this was the flicker
-      const mid = window.innerHeight / 2;
-      let best = 0, bd = Infinity;
+    const nearestIndex = () => {
+      const mid = window.innerHeight / 2; let best = 0, bd = Infinity;
       slides.forEach((s, i) => {
-        const r = s.getBoundingClientRect();
-        const d = Math.abs(r.top + r.height / 2 - mid);
+        const r = s.getBoundingClientRect(); const d = Math.abs(r.top + r.height / 2 - mid);
         if (d < bd) { bd = d; best = i; }
       });
-      index = best;
-      setDots(best);
+      return best;
     };
-    document.addEventListener("scroll", () => {
-      if (!ticking) { ticking = true; requestAnimationFrame(spy); }
-    }, { passive: true });
-    spy();
 
-    dots.forEach((d, i) => d.addEventListener("click", () => { if (!locked) step(i - index); }));
+    slides[0].classList.add("active");
+    setDots(0);
+    if (deckMode()) document.documentElement.classList.add("snap-mode");
+
+    // ---- Spring integrator (damping 1.0, response ~0.5s) ----
+    const RESPONSE = 0.5, DAMP = 1.0;
+    const omega = 2 * Math.PI / RESPONSE, K = omega * omega, C = 2 * DAMP * omega;
+    let target = window.scrollY, y = window.scrollY, vel = 0, running = false, last = 0;
+
+    function frame(t) {
+      if (!last) last = t;
+      let dt = (t - last) / 1000; last = t;
+      if (dt > 0.05) dt = 0.05;
+      const steps = Math.max(1, Math.ceil(dt / 0.008)), h = dt / steps;
+      for (let s = 0; s < steps; s++) {
+        vel += (-K * (y - target) - C * vel) * h;
+        y += vel * h;
+      }
+      window.scrollTo(0, y);
+      setDots(nearestIndex());                  // dashes track the motion continuously
+      if (Math.abs(y - target) < 0.4 && Math.abs(vel) < 8) {
+        y = target; window.scrollTo(0, y); vel = 0; running = false; last = 0; return;
+      }
+      requestAnimationFrame(frame);
+    }
+    const run = () => { if (!running) { running = true; last = 0; requestAnimationFrame(frame); } };
+
+    function goToIndex(i, animate = true) {
+      index = clamp(i);
+      const s = slides[index];
+      slides.forEach((el, k) => el.classList.toggle("active", k === index));
+      if (deckMode() && animate) { s.classList.remove("enter"); void s.offsetWidth; s.classList.add("enter"); }
+      target = slideTop(s);
+      if (reduce || !animate) { y = target; vel = 0; window.scrollTo(0, y); setDots(index); return; }
+      y = window.scrollY;              // seed from the presentation (live) value
+      run();                          // vel is *kept* → velocity carries through the re-target
+    }
+
+    // ---- Wheel: retargetable one-section steps, no input lock ----
+    let lastStep = 0;
+    window.addEventListener("wheel", (e) => {
+      if (!deckMode()) return;
+      const down = e.deltaY > 0;
+      const cur = slides[index], r = cur.getBoundingClientRect();
+      const tall = cur.offsetHeight > window.innerHeight + 4;
+      if (tall && !running) {                    // let a tall section reveal itself before snapping
+        if (down && Math.ceil(r.bottom) > window.innerHeight + 1) return;
+        if (!down && Math.floor(r.top) < NAV_H - 1) return;
+      }
+      if (Math.abs(e.deltaY) < 4) return;
+      e.preventDefault();
+      const now = performance.now();
+      if (now - lastStep < 190) return;          // throttle — but never a hard lock
+      lastStep = now;
+      goToIndex((running ? nearestIndex() : index) + (down ? 1 : -1));
+    }, { passive: false });
+
+    window.addEventListener("keydown", (e) => {
+      if (!deckMode()) return;
+      if (e.key === "ArrowDown" || e.key === "PageDown" || (e.key === " " && !e.shiftKey)) { e.preventDefault(); goToIndex(index + 1); }
+      else if (e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); goToIndex(index - 1); }
+    });
+
+    // Native scroll (mobile, or tall sections) keeps the dashes + index synced.
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (running) return;
+      if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; index = nearestIndex(); setDots(index); }); }
+    }, { passive: true });
+
+    dots.forEach((d, i) => d.addEventListener("click", () => goToIndex(i)));
   }
 
   /* --------------------------------------------------- media carousels */
