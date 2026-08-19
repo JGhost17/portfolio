@@ -15,6 +15,7 @@ WhatsApp*.mp4
 .claude/
 .impeccable/config.local.json
 .impeccable/hook.cache.json
+.impeccable/review/
 
 # --- Generated PDF intermediate ---
 pdf/portfolio.generated.html

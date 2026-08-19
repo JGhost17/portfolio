@@ -63,7 +63,6 @@
     return `
       <section class="slide slide--intro" data-slide tabindex="-1">
         <div class="slide__title">
-          <span class="eyebrow">${esc(page.tag || "")}</span>
           <h2>${esc(page.title)}</h2>
           <div class="sub">Overview</div>
         </div>
@@ -164,34 +163,38 @@
         ${slides.join("")}
       </div>
       <footer class="footer">
-        <div class="wrap footer__grid">
-          <div>
-            <h4>Let's build something.</h4>
-            <p class="muted" style="max-width:34ch">Open to opportunities in automotive and aerospace engineering.</p>
-            <a class="btn btn--primary" href="mailto:${esc(profile.email)}" style="margin-top:1rem">Get in touch <span class="arrow">→</span></a>
-          </div>
-          <div class="footer__cols">
+        <div class="wrap titleblock">
+          <div class="tb-row tb-row--lead">
             <div>
-              <h5>Pages</h5>
-              <a class="link" href="index.html">Home</a><br />
-              <a class="link" href="mclaren.html">McLaren</a><br />
-              <a class="link" href="ning.html">NING Research</a><br />
-              <a class="link" href="novartis.html">Novartis</a><br />
-              <a class="link" href="ucl.html">UCL</a><br />
-              <a class="link" href="side-projects.html">Side Projects</a>
+              <h4>Let's build something.</h4>
+              <p class="muted" style="max-width:34ch">Open to opportunities in automotive and aerospace engineering.</p>
+              <a class="btn btn--primary" href="mailto:${esc(profile.email)}" style="margin-top:1rem">Get in touch <span class="arrow">→</span></a>
             </div>
-            <div>
-              <h5>Elsewhere</h5>
-              <a class="link" href="${esc(profile.linkedin)}">LinkedIn</a><br />
-              <a class="link" href="${esc(profile.github)}">GitHub</a><br />
-              <a class="link" href="assets/portfolio.pdf">PDF portfolio</a><br />
-              <a class="link" href="${esc(profile.resume)}">Résumé (CV)</a>
+            <div class="footer__cols">
+              <div>
+                <h5>Pages</h5>
+                <a class="link" href="index.html">Home</a><br />
+                <a class="link" href="mclaren.html">McLaren</a><br />
+                <a class="link" href="ning.html">NING Research</a><br />
+                <a class="link" href="novartis.html">Novartis</a><br />
+                <a class="link" href="ucl.html">UCL</a><br />
+                <a class="link" href="side-projects.html">Side Projects</a>
+              </div>
+              <div>
+                <h5>Elsewhere</h5>
+                <a class="link" href="${esc(profile.linkedin)}">LinkedIn</a><br />
+                <a class="link" href="${esc(profile.github)}">GitHub</a><br />
+                <a class="link" href="assets/portfolio.pdf">PDF portfolio</a><br />
+                <a class="link" href="${esc(profile.resume)}">Résumé (CV)</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="wrap footer__bottom">
-          <span>© <span class="year"></span> ${esc(profile.name)}</span>
-          <span><a class="link" href="index.html">← Back to home</a></span>
+          <div class="tb-row tb-row--strip">
+            <span class="tb-field"><b>Drawn by</b> ${esc(profile.name)}</span>
+            <span class="tb-field"><b>Sheet</b> ${esc(page.title)} · Rev. 2026</span>
+            <span class="tb-field"><b>©</b> <span class="year"></span></span>
+            <span class="tb-field"><a class="link" href="index.html">← Back to home</a></span>
+          </div>
         </div>
       </footer>`;
   }

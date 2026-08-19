@@ -1,39 +1,36 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-19T03:24:43Z",
+  "generatedAt": "2026-08-19T14:45:00Z",
   "title": "Design System: Joshua Alcobia Gomes — Portfolio",
   "extensions": {
     "colorMeta": {
-      "sage": { "role": "primary", "displayName": "Soft Sage", "canonical": "#A8C3A4", "tonalRamp": ["#1c2a1b", "#33492f", "#4d6947", "#6d8a63", "#8fac82", "#a8c3a4", "#c6dac1", "#e6f0e3"] },
-      "sage-deep": { "role": "primary", "displayName": "Deep Sage", "canonical": "#7FA07B", "tonalRamp": ["#151f14", "#263a24", "#3c5738", "#5a7a53", "#7fa07b", "#a3c19f", "#c7ddc4", "#e8f3e6"] },
-      "sky": { "role": "secondary", "displayName": "Misty Sky", "canonical": "#B8D4E3", "tonalRamp": ["#16232a", "#28414e", "#3f6273", "#628aa0", "#8fb2c4", "#b8d4e3", "#d6e8f0", "#eff7fa"] },
-      "sky-deep": { "role": "secondary", "displayName": "Deep Sky", "canonical": "#8FB8CE", "tonalRamp": ["#101c22", "#1f353f", "#33525f", "#4f7688", "#719eae", "#8fb8ce", "#b6d3e0", "#e0eff4"] },
-      "sand": { "role": "tertiary", "displayName": "Warm Sand", "canonical": "#E8DCC4", "tonalRamp": ["#2b2417", "#4a3f28", "#6e5f3d", "#96835a", "#c0ac81", "#e8dcc4", "#f2ead9", "#faf6ec"] },
-      "sand-soft": { "role": "tertiary", "displayName": "Soft Sand", "canonical": "#F3ECDD", "tonalRamp": ["#2f2a1e", "#514835", "#786b4f", "#a3936c", "#cabb95", "#f3ecdd", "#f8f3e9", "#fdfbf6"] },
-      "ink": { "role": "neutral", "displayName": "Forest Ink", "canonical": "#2F4538", "tonalRamp": ["#0e1610", "#1c2c1f", "#2f4538", "#43574a", "#5c6b60", "#879788", "#b7c2ba", "#dee5e0"] },
-      "ink-soft": { "role": "neutral", "displayName": "Soft Ink", "canonical": "#43574a", "tonalRamp": ["#151d18", "#293b2f", "#43574a", "#5c6f61", "#7c8d7f", "#a2b0a3", "#c9d3ca", "#eaeeea"] },
-      "text-muted": { "role": "neutral", "displayName": "Muted Moss", "canonical": "#5c6b60", "tonalRamp": ["#1a201c", "#313b34", "#4a584e", "#5c6b60", "#7c8a80", "#a3aea6", "#cbd2cc", "#e9ede9"] },
-      "bg": { "role": "neutral", "displayName": "Paper Base", "canonical": "#FBFAF6", "tonalRamp": ["#242318", "#413f2c", "#5f5c42", "#87835f", "#b6b18a", "#dfdcc4", "#f2f0e4", "#fbfaf6"] },
-      "bg-alt": { "role": "neutral", "displayName": "Warm Paper", "canonical": "#F4F1E8", "tonalRamp": ["#232016", "#3e3928", "#5c5540", "#847a5c", "#b2a785", "#dad3b8", "#eeeada", "#f4f1e8"] },
-      "line": { "role": "neutral", "displayName": "Pale Line", "canonical": "#dfe4d8", "tonalRamp": ["#1c211c", "#333a32", "#4d564a", "#6c766a", "#8f998c", "#b7bfb2", "#dfe4d8", "#f2f4ef"] },
-      "surface": { "role": "neutral", "displayName": "Glass Surface", "canonical": "rgba(255,255,255,0.8)", "tonalRamp": ["rgba(255,255,255,0.1)", "rgba(255,255,255,0.2)", "rgba(255,255,255,0.35)", "rgba(255,255,255,0.5)", "rgba(255,255,255,0.65)", "rgba(255,255,255,0.8)", "rgba(255,255,255,0.9)", "rgba(255,255,255,1)"] }
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#17181A", "tonalRamp": ["#000000", "#0c0d0e", "#17181a", "#2c2d2f", "#454749", "#6a6d70", "#9a9c9e", "#d9d9d4"] },
+      "ink-soft": { "role": "neutral", "displayName": "Soft Ink", "canonical": "#40434A", "tonalRamp": ["#0e0f11", "#1e1f22", "#2e3034", "#40434a", "#5b5e64", "#7c7f85", "#a5a7ab", "#d4d5d7"] },
+      "text-muted": { "role": "neutral", "displayName": "Muted", "canonical": "#6A6D70", "tonalRamp": ["#161718", "#2c2d2f", "#454749", "#6a6d70", "#8b8d90", "#aeb0b2", "#d3d4d5", "#efeff0"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#FAFAF8", "tonalRamp": ["#232320", "#3f3f3b", "#5e5e58", "#84847e", "#b1b1aa", "#d6d6d2", "#efefeb", "#fafaf8"] },
+      "paper-alt": { "role": "neutral", "displayName": "Paper Alt", "canonical": "#EFEFEB", "tonalRamp": ["#212120", "#3a3a37", "#575753", "#7a7a75", "#a3a39d", "#c8c8c3", "#e2e2dd", "#efefeb"] },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#FFFFFF", "tonalRamp": ["#1a1a1a", "#333333", "#4d4d4d", "#737373", "#a6a6a6", "#d9d9d9", "#f2f2f2", "#ffffff"] },
+      "line": { "role": "neutral", "displayName": "Line", "canonical": "#D9D9D4", "tonalRamp": ["#1c1c1a", "#333330", "#4d4d49", "#6c6c67", "#8f8f89", "#b7b7b0", "#d9d9d4", "#f2f2f0"] },
+      "line-strong": { "role": "neutral", "displayName": "Line Strong", "canonical": "#B9BAB5", "tonalRamp": ["#17181a", "#2c2d2c", "#454742", "#6a6c65", "#8f918a", "#b9bab5", "#d6d7d3", "#ececea"] },
+      "accent": { "role": "primary", "displayName": "Blueprint", "canonical": "#1D4FD1", "tonalRamp": ["#080f2b", "#0f224f", "#153a82", "#1a45ac", "#1d4fd1", "#4c73da", "#8aa3e8", "#c6d4f5"] },
+      "accent-soft": { "role": "primary", "displayName": "Accent Soft", "canonical": "#E8EDFB", "tonalRamp": ["#0c1530", "#1a2c5c", "#2c4a92", "#4569c4", "#8ba1de", "#c3d0f0", "#e8edfb", "#f6f8fd"] }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Hero headline, deck slide project titles. Tightest tracking in the system (-0.035em)." },
-      "headline": { "displayName": "Headline", "purpose": "Section headers on the home page and each project page's intro slide." },
-      "body": { "displayName": "Body", "purpose": "All prose — about-me copy, project summaries, bullet lists. Max readable measure ~65-75ch." },
-      "label": { "displayName": "Label", "purpose": "Eyebrows, section tags, project focus/detail labels. Always uppercase, widely tracked (+0.16em) — the sole reversal of the tightening rule." }
+      "display": { "displayName": "Display", "purpose": "Hero headline, deck slide project titles. Archivo, weight 700. Tightest tracking in the system (-0.03em)." },
+      "headline": { "displayName": "Headline", "purpose": "Section headers on the home page. Archivo, weight 700." },
+      "body": { "displayName": "Body", "purpose": "All prose — about-me copy, project summaries, bullet lists. Inter, max readable measure ~65-75ch." },
+      "label": { "displayName": "Label / Mono", "purpose": "Field labels, nav links, buttons, index numbers, dates, footer fields. JetBrains Mono — used only for genuinely technical/data content, never as prose costume." }
     },
     "shadows": [
-      { "name": "ambient-sm", "value": "0 2px 10px rgba(47,69,56,.06)", "purpose": "Resting elevation for small surfaces — fact cards, chips." },
-      { "name": "ambient", "value": "0 18px 50px -18px rgba(47,69,56,.28)", "purpose": "Default elevation for cards, buttons, the nav's bottom edge." },
-      { "name": "ambient-lg", "value": "0 40px 90px -30px rgba(47,69,56,.35)", "purpose": "Heaviest elevation — hero portrait, hover-lifted cards, deck slide media. Reserved for the single most prominent element on screen." }
+      { "name": "ambient-sm", "value": "0 1px 3px rgba(23,24,26,.08)", "purpose": "Resting elevation for small surfaces." },
+      { "name": "ambient", "value": "0 6px 20px -8px rgba(23,24,26,.18)", "purpose": "Cards on hover, floating badges." },
+      { "name": "ambient-lg", "value": "0 14px 38px -12px rgba(23,24,26,.24)", "purpose": "Heaviest elevation — deck slide media. Reserved for the single most prominent element on screen." }
     ],
     "motion": [
       { "name": "ease", "value": "cubic-bezier(.22,.61,.36,1)", "purpose": "General-purpose easing for hover/color transitions." },
       { "name": "ease-out", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "Entrance and reveal motion — decelerating, no overshoot." },
-      { "name": "spring", "value": "cubic-bezier(.34,1.26,.42,1)", "purpose": "Gentle-overshoot settle for section/slide entrances that follow a momentum gesture." },
-      { "name": "deck-spring", "value": "critically-damped spring, response ≈0.5s, damping 1.0 (JS-integrated, not CSS)", "purpose": "Deck section-to-section snapping. Animates from the live scroll position, is interruptible mid-flight, and carries velocity through a re-target — the system's core fluid interaction." }
+      { "name": "spring", "value": "cubic-bezier(.34,1.26,.42,1)", "purpose": "Gentle-overshoot settle for section/slide entrances that follow a momentum gesture. Kept from the previous system — a motion decision independent of palette." },
+      { "name": "deck-spring", "value": "critically-damped spring, response ≈0.5s, damping 1.0 (JS-integrated, not CSS)", "purpose": "Deck section-to-section snapping. Animates from the live scroll position, is interruptible mid-flight, and carries velocity through a re-target — the system's core fluid interaction, unchanged by the redesign." }
     ],
     "breakpoints": [
       { "name": "mobile", "value": "560px" },
@@ -46,81 +43,93 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Solid pill CTA — the system's highest-commitment action (e.g. 'Explore my work').",
+      "description": "Near-square ink-filled CTA — the system's highest-commitment action. Hover shifts fill to the accent blue.",
       "html": "<button class=\"ds-btn-primary\">Explore my work <span class=\"ds-arrow\">→</span></button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; font-size: .95rem; padding: .8rem 1.3rem; border-radius: 999px; border: 0; cursor: pointer; background: #2F4538; color: #F3ECDD; box-shadow: 0 18px 50px -18px rgba(47,69,56,.28); transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s cubic-bezier(.22,.61,.36,1); } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 40px 90px -30px rgba(47,69,56,.35); } .ds-btn-primary:active { transform: scale(.97); transition-duration: .09s; } .ds-arrow { transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-btn-primary:hover .ds-arrow { transform: translateX(4px); }"
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: .55rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: .92rem; padding: .78rem 1.2rem; border-radius: 3px; border: 1px solid #17181A; cursor: pointer; background: #17181A; color: #FAFAF8; transition: transform .2s cubic-bezier(.16,1,.3,1), background .2s; } .ds-btn-primary:hover { background: #1D4FD1; border-color: #1D4FD1; } .ds-btn-primary:active { transform: scale(.97); transition-duration: .09s; } .ds-arrow { transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-btn-primary:hover .ds-arrow { transform: translateX(4px); }"
     },
     {
       "name": "Ghost Button",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "Translucent secondary action, used alongside a primary button (e.g. 'Download PDF portfolio').",
+      "description": "Outline-only secondary action, used alongside a primary button.",
       "html": "<button class=\"ds-btn-ghost\">Download PDF portfolio</button>",
-      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; font-size: .95rem; padding: .8rem 1.3rem; border-radius: 999px; border: 1px solid #dfe4d8; cursor: pointer; background: #ffffffbb; color: #2F4538; transition: background .25s, box-shadow .25s cubic-bezier(.22,.61,.36,1), transform .12s cubic-bezier(.16,1,.3,1); } .ds-btn-ghost:hover { background: #fff; box-shadow: 0 2px 10px rgba(47,69,56,.06); } .ds-btn-ghost:active { transform: scale(.97); }"
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: .55rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: .92rem; padding: .78rem 1.2rem; border-radius: 3px; border: 1px solid #B9BAB5; cursor: pointer; background: transparent; color: #17181A; transition: border-color .2s, transform .2s; } .ds-btn-ghost:hover { border-color: #17181A; } .ds-btn-ghost:active { transform: scale(.97); }"
     },
     {
       "name": "Work Card",
       "kind": "card",
       "refersTo": "card",
-      "description": "Home-page navigation card linking to a project chapter (McLaren, NING Research, etc). Tints toward a per-card accent color on hover.",
-      "html": "<a class=\"ds-card\" href=\"#\" style=\"--ds-tint:#B8D4E3\"><div class=\"ds-card-icon\">🏎️</div><div class=\"ds-card-tag\">Automotive · Motorsport</div><h3>McLaren</h3><p>Industrial placement in high-performance automotive engineering.</p><span class=\"ds-card-go\">Open page <span class=\"ds-arrow\">→</span></span></a>",
-      "css": ".ds-card { position: relative; display: flex; flex-direction: column; gap: .8rem; overflow: hidden; padding: 1.6rem; border-radius: 20px; border: 1px solid #dfe4d8; background: rgba(255,255,255,0.8); backdrop-filter: blur(6px); min-height: 220px; text-decoration: none; color: inherit; transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s cubic-bezier(.22,.61,.36,1), border-color .3s; } .ds-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .45s cubic-bezier(.22,.61,.36,1); background: linear-gradient(160deg, var(--ds-tint, #A8C3A4) 0%, transparent 70%); } .ds-card:hover { transform: translateY(-8px); box-shadow: 0 40px 90px -30px rgba(47,69,56,.35); border-color: transparent; } .ds-card:hover::before { opacity: .35; } .ds-card:active { transform: translateY(-3px) scale(.99); transition-duration: .1s; } .ds-card-tag { position: relative; z-index: 1; font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #7FA07B; } .ds-card h3 { position: relative; z-index: 1; font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; margin: 0; } .ds-card p { position: relative; z-index: 1; color: #5c6b60; font-size: .95rem; margin: 0; } .ds-card-go { position: relative; z-index: 1; margin-top: auto; display: inline-flex; align-items: center; gap: .45rem; font-weight: 600; font-size: .92rem; color: #2F4538; }"
+      "description": "Home-page navigation card linking to a project chapter. A mono corner reference code (M · 01) replaces the previous emoji icon and the previous above-heading category kicker; an accent rule draws in across the top edge on hover via transform, never a gradient tint.",
+      "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-card-code\">M · 01</span><h3>McLaren</h3><div class=\"ds-card-tag\">Automotive · Motorsport</div><p>Industrial placement in high-performance automotive engineering.</p><span class=\"ds-card-go\">Open page <span class=\"ds-arrow\">→</span></span></a>",
+      "css": ".ds-card { position: relative; display: flex; flex-direction: column; gap: .6rem; overflow: hidden; padding: 1.5rem; border-radius: 3px; border: 1px solid #D9D9D4; background: #FFFFFF; min-height: 220px; text-decoration: none; color: inherit; transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s cubic-bezier(.22,.61,.36,1), border-color .2s; } .ds-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #1D4FD1; transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.16,1,.3,1); } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px -8px rgba(23,24,26,.18); border-color: #B9BAB5; } .ds-card:hover::before { transform: scaleX(1); } .ds-card-code { position: absolute; top: 1.1rem; right: 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 600; color: #6A6D70; border: 1px solid #D9D9D4; border-radius: 2px; padding: .18rem .45rem; } .ds-card h3 { position: relative; z-index: 1; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.4rem; margin: .2rem 0 0; } .ds-card-tag { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: #6A6D70; } .ds-card p { color: #6A6D70; font-size: .93rem; margin: 0; } .ds-card-go { margin-top: auto; display: inline-flex; align-items: center; gap: .45rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: .88rem; color: #17181A; }"
     },
     {
       "name": "Chip",
       "kind": "chip",
       "refersTo": "chip",
-      "description": "Small pill tag for skills and project focus labels.",
+      "description": "Small hairline-bordered tag for skills and project focus labels. Near-zero radius, mono type.",
       "html": "<span class=\"ds-chip\">CFD &amp; FEA</span>",
-      "css": ".ds-chip { display: inline-block; font-size: .82rem; font-weight: 500; padding: .4rem .8rem; border-radius: 999px; background: #fff; border: 1px solid #dfe4d8; color: #43574a; }"
+      "css": ".ds-chip { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: .8rem; font-weight: 500; padding: .35rem .7rem; border-radius: 2px; background: #FFFFFF; border: 1px solid #D9D9D4; color: #40434A; }"
     },
     {
       "name": "Navigation Bar",
       "kind": "nav",
       "refersTo": "nav",
-      "description": "Sticky translucent glass nav with underline-on-active links and a mobile hamburger fallback.",
+      "description": "Sticky solid-paper nav (no blur, no translucency — a deliberate reversal of the previous glass chrome) with a scaleX-drawn underline on the active/hovered link.",
       "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\"><span class=\"ds-nav-mark\">JA</span> Joshua Alcobia Gomes</a><div class=\"ds-nav-links\"><a href=\"#\" aria-current=\"page\">Home</a><a href=\"#\">McLaren</a><a href=\"#\">NING Research</a></div></nav>",
-      "css": ".ds-nav { position: sticky; top: 0; z-index: 90; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 2rem; backdrop-filter: blur(24px) saturate(180%); background: rgba(251,250,246,.62); border-bottom: 1px solid rgba(47,69,56,.06); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 8px 24px -18px rgba(47,69,56,.5); } .ds-nav-brand { display: flex; align-items: center; gap: .6rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: -.01em; } .ds-nav-mark { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, #A8C3A4, #B8D4E3); color: #2F4538; font-weight: 700; } .ds-nav-links { display: flex; gap: .35rem; } .ds-nav-links a { position: relative; padding: .5rem .8rem; border-radius: 999px; font-size: .93rem; font-weight: 500; color: #5c6b60; text-decoration: none; transition: color .25s, background .25s, transform .12s cubic-bezier(.16,1,.3,1); } .ds-nav-links a:hover { color: #2F4538; } .ds-nav-links a:active { transform: scale(.93); } .ds-nav-links a[aria-current='page'] { color: #2F4538; background: #ffffff9c; }"
+      "css": ".ds-nav { position: sticky; top: 0; z-index: 90; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 2rem; background: #FAFAF8; border-bottom: 1px solid #D9D9D4; } .ds-nav-brand { display: flex; align-items: center; gap: .6rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: .95rem; } .ds-nav-mark { width: 30px; height: 30px; border-radius: 2px; display: grid; place-items: center; background: #17181A; color: #FAFAF8; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .8rem; } .ds-nav-links { display: flex; } .ds-nav-links a { position: relative; padding: .5rem .75rem; font-family: 'JetBrains Mono', monospace; font-size: .88rem; font-weight: 500; color: #6A6D70; text-decoration: none; transition: color .25s; } .ds-nav-links a::after { content: ''; position: absolute; left: .75rem; right: .75rem; bottom: .28rem; height: 1px; background: #1D4FD1; transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-nav-links a:hover, .ds-nav-links a[aria-current='page'] { color: #17181A; } .ds-nav-links a:hover::after, .ds-nav-links a[aria-current='page']::after { transform: scaleX(1); }"
     },
     {
       "name": "Deck Progress Rail",
       "kind": "custom",
       "refersTo": "deck-rail",
-      "description": "Vertical stack of uniform pill bars tracking scroll position through a project page's deck. Signature navigation component.",
-      "html": "<div class=\"ds-rail\"><button class=\"ds-rail-dot ds-active\"></button><button class=\"ds-rail-dot\"></button><button class=\"ds-rail-dot\"></button><button class=\"ds-rail-dot\"></button></div>",
-      "css": ".ds-rail { display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; margin-top: 1rem; } .ds-rail-dot { width: 4px; height: 15px; border-radius: 3px; background: #dfe4d8; opacity: .55; border: 0; padding: 0; cursor: pointer; transition: background .35s cubic-bezier(.22,.61,.36,1), opacity .35s; } .ds-rail-dot:hover { opacity: .9; } .ds-rail-dot:active { opacity: 1; transform: scaleX(1.4); } .ds-rail-dot.ds-active { opacity: 1; background: linear-gradient(180deg, #7FA07B, #8FB8CE); }"
+      "description": "A ruler-tick scale bar (not a pill list) tracking scroll position through a project page's deck. Ticks grow via transform: scaleX(), never width, and take the accent color when active. Signature navigation component.",
+      "html": "<div class=\"ds-rail\"><button class=\"ds-rail-tick ds-active\"></button><button class=\"ds-rail-tick\"></button><button class=\"ds-rail-tick\"></button><button class=\"ds-rail-tick\"></button></div>",
+      "css": ".ds-rail { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; margin-top: 1.1rem; } .ds-rail-tick { width: 26px; height: 2px; background: #B9BAB5; opacity: .8; border: 0; padding: 0; cursor: pointer; transform: scaleX(.5); transform-origin: left; transition: transform .3s cubic-bezier(.22,.61,.36,1), background .3s, opacity .3s; } .ds-rail-tick:hover { transform: scaleX(.75); } .ds-rail-tick.ds-active { transform: scaleX(1); background: #1D4FD1; opacity: 1; }"
+    },
+    {
+      "name": "Title-Block Footer Strip",
+      "kind": "custom",
+      "refersTo": "titleblock",
+      "description": "A direct borrow from an engineering drawing sheet's own title block: a row of small mono fields separated by hairline dividers, closing every page. Replaced a plain copyright line.",
+      "html": "<div class=\"ds-tb-strip\"><span class=\"ds-tb-field\"><b>Drawn by</b> Joshua Alcobia Gomes</span><span class=\"ds-tb-field\"><b>Sheet</b> Portfolio · Rev. 2026</span><span class=\"ds-tb-field\"><b>©</b> 2026</span></div>",
+      "css": ".ds-tb-strip { border-top: 1px solid #B9BAB5; display: flex; flex-wrap: wrap; } .ds-tb-field { padding: .8rem 1.2rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: #6A6D70; border-left: 1px solid #B9BAB5; } .ds-tb-field:first-child { border-left: 0; padding-left: 0; } .ds-tb-field b { color: #17181A; font-weight: 600; margin-right: .35rem; }"
     }
   ],
   "narrative": {
-    "northStar": "The Quiet Portfolio",
-    "overview": "The design gets out of the way of real engineering work. Every screen leads with content — a project, a CFD render, a bullet of measurable outcome — and the interface exists only to present it clearly and let it be scanned quickly. Nothing decorative is added that doesn't earn its place: no illustration, no stock texture, no filler copy. The one indulgence the system allows itself is a soft, natural pastel atmosphere (sage, sky, sand) and a small set of fluid, spring-physics interactions (instant press feedback, an interruptible pinned 'deck' that snaps between projects) — restraint in content, craft in motion. This system currently serves both a student-placement portfolio and, longer-term, the seed of a professional consulting brand. That dual audience is why the palette stays warm and human rather than corporate-neutral, while typography and layout stay precise and legible enough to read as professional evidence, not a hobby page.",
+    "northStar": "The Drawing Sheet",
+    "overview": "The portfolio reads as an engineer's drawing sheet, not a lifestyle brand. Precision and hairline clarity replace pastel decoration as the source of warmth: graphite ink on paper, one blueprint-blue accent used exactly where it earns attention, a real title-block footer, a ruler-tick progress rail, and crosshair registration marks borrowed from print/plate conventions. This is a redesign — the previous 'Sage & Sky' pastel system is fully superseded, per Joshua's 2026-08-19 design-interview answer describing a 'clean, white and grey... schematic drawings and sketches on paper... like an engineer' direction, confirmed the same day. Only the spring-physics deck navigation and instant press feedback survive from the previous system, kept deliberately as motion decisions independent of palette.",
     "keyCharacteristics": [
-      "Pastel, nature-derived palette (sage / sky / sand) against a warm off-white base, with deep forest-ink text for contrast and legibility.",
-      "Large, tightly-tracked geometric display type (Space Grotesk) paired with a calm, near-zero-tracked body face (Inter).",
-      "Pill-shaped interactive controls everywhere (buttons, chips, nav links) — soft, rounded, never sharp-cornered.",
-      "A pinned, one-project-per-viewport 'deck' for project pages, with a vertical progress rail and spring-physics section snapping.",
-      "Translucent 'glass' chrome (blurred, saturated backdrop) on the nav and floating surfaces; flat pastel gradients as ambient background, not photography.",
-      "Real content only — every claim traces to actual project work; unfinished projects are explicitly marked, never disguised as complete."
+      "Restrained palette: near-black graphite ink on off-white paper and paper-grey, with exactly one accent (blueprint ink-blue) — never a second competing hue.",
+      "Hairline rules everywhere; near-zero corner radius; no soft glow, no glass blur, no gradients (text or fill).",
+      "Archivo for display type, JetBrains Mono for every label/index/date/field (earned technical use, not a costume), Inter for body prose.",
+      "A pinned, one-project-per-viewport 'deck' for project pages, with a ruler-tick progress rail and the same spring-physics section snapping as before.",
+      "A title block in the footer, in the direct tradition of an engineering drawing sheet's own closing strip.",
+      "No kicker/eyebrow ever sits above a heading — classification labels follow their heading or live in a corner reference tag."
     ],
     "rules": [
-      { "name": "The One Ink Rule", "body": "All text-on-light color comes from Forest Ink, Soft Ink, or Muted Moss — three steps of the same hue, never a separate gray scale. This is what keeps the palette feeling like one warm material rather than pastel accents on a generic gray UI.", "section": "colors" },
-      { "name": "The Accent-as-Tint Rule", "body": "Sage, sky, and sand are never used as solid text-background pairs for body copy; they appear as gradients, ambient blobs, hover tints, and small pill-chip fills only. Ink-on-paper carries all reading contrast.", "section": "colors" },
-      { "name": "The Optical Tightening Rule", "body": "Letter-spacing is never one fixed value. It runs from -0.035em at display size down to -0.004em at body size, then reverses to +0.16em for all-caps labels. Every type role's tracking is chosen for its own size, never copy-pasted from another role.", "section": "typography" },
-      { "name": "The Glass-Not-Glossy Rule", "body": "Floating chrome (nav, translucent card surfaces) uses backdrop-filter blur+saturate over a semi-transparent background — never a flat opaque bar. It respects prefers-reduced-transparency by falling back to a solid background with the blur removed, never by leaving a broken half-state.", "section": "elevation" }
+      { "name": "The One-Accent Rule", "body": "Blueprint blue is the system's only color beyond the ink/paper neutral scale. Color commits through hairline precision and mono labeling, not through hue variety.", "section": "colors" },
+      { "name": "No Gradients, Ever", "body": "Not on text, not on fills, not on buttons. Emphasis comes from weight, color, or a hairline rule instead.", "section": "colors" },
+      { "name": "Labels Follow Headings, Never Precede Them", "body": "A kicker sitting above a heading and restating it is refused categorically. Where a heading needs a classification, that label follows it as a subtitle line, or is displaced into a corner reference tag — never stacked above it.", "section": "typography" },
+      { "name": "Hairline Before Shadow", "body": "Every panel gets a 1px border first; shadow is additive, never the sole separator. No backdrop blur or glass translucency anywhere in this system.", "section": "elevation" }
     ],
     "dos": [
-      "Do keep all body/heading text on the Forest Ink → Soft Ink → Muted Moss scale; never introduce a separate gray.",
+      "Do keep all body/heading text on the Ink → Soft Ink → Muted scale; never introduce a separate gray family.",
+      "Do use JetBrains Mono only for genuinely technical/data content — never as a costume on prose.",
       "Do give every interactive element instant :active press feedback (scale, not a delayed transition).",
-      "Do let project media keep its native aspect ratio, rounded corners, no cropping — the frame adapts to the photo, not the other way round.",
-      "Do mark unfinished projects/pages explicitly (dashed border, placeholder styling) rather than disguising them as complete, per the real-content-only product principle.",
-      "Do respect prefers-reduced-motion (drop the spring/deck-snap for a plain fade) and prefers-reduced-transparency (solid backgrounds, no blur) as first-class states, not afterthoughts."
+      "Do let project media keep its native aspect ratio, hairline border, no cropping.",
+      "Do animate width/height-affecting states via transform: scaleX(), never width/height directly.",
+      "Do mark unfinished projects/pages explicitly (dashed hairline border, placeholder styling) rather than disguising them as complete.",
+      "Do place a category/classification label after its heading, or displace it into a corner reference tag — never as a kicker above it."
     ],
     "donts": [
-      "Don't use a hard-edged drop shadow or a dark/heavy border anywhere — depth comes from soft ambient shadow and translucency only.",
+      "Don't use a pill/fully-rounded shape anywhere — the previous system's universal pill language is retired.",
+      "Don't use a gradient on text or on any fill.",
+      "Don't add backdrop blur or glass translucency — every surface is solid.",
+      "Don't put a kicker/eyebrow label directly above a heading, under any circumstance.",
+      "Don't use an emoji as an icon — replaced by mono corner reference codes.",
       "Don't crop a project photo or video into a fixed box; size the frame to the media.",
-      "Don't invent a white/grey schematic-sketch palette under this file's authority — that direction was described by Joshua as an aspiration, not adopted; it requires a deliberate redesign pass (new-work), not a quiet blend into the current tokens.",
-      "Don't add decorative illustration, stock photography, or filler copy — every element must earn its place per 'The Quiet Portfolio' north star.",
-      "Don't fabricate metrics, testimonials, or client claims — PRODUCT.md's real-content-only principle is binding on this visual system too."
+      "Don't fabricate metrics, testimonials, or client claims."
     ]
   }
 }

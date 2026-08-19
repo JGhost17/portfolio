@@ -29,66 +29,65 @@ VIDEO_RE = re.compile(r"\.(mp4|webm|mov|m4v)$", re.I)
 
 CSS = """
 :root{
-  --sage:#A8C3A4; --sage-deep:#7FA07B; --sky:#B8D4E3; --sky-deep:#8FB8CE;
-  --sand:#E8DCC4; --ink:#2F4538; --ink-soft:#43574a; --line:#dfe4d8; --muted:#5c6b60;
-  --font-head:"Space Grotesk",sans-serif; --font-body:"Inter",sans-serif;
+  --ink:#17181A; --ink-soft:#40434A; --muted:#6A6D70; --paper:#FAFAF8; --paper-alt:#EFEFEB;
+  --line:#D9D9D4; --line-strong:#B9BAB5; --accent:#1D4FD1;
+  --font-head:"Archivo",sans-serif; --font-mono:"JetBrains Mono",monospace; --font-body:"Inter",sans-serif;
 }
 @page { size: A4; }
 *{ box-sizing:border-box; margin:0; }
 html,body{ font-family:var(--font-body); color:var(--ink); line-height:1.5; font-size:10pt;
-  -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; letter-spacing:-.01em; }
+  -webkit-print-color-adjust:exact; print-color-adjust:exact; background:var(--paper); }
+h1,h2,h3,h4{ font-family:var(--font-head); font-weight:700; line-height:1.1; letter-spacing:-.01em; }
 
-.eyebrow{ display:inline-block; font-family:var(--font-head); font-size:7.5pt; font-weight:600;
-  letter-spacing:.16em; text-transform:uppercase; color:var(--sage-deep);
-  border:1px solid var(--line); border-radius:20px; padding:1.5mm 3.5mm; background:#fff; }
+.label{ display:inline-block; font-family:var(--font-mono); font-size:7.5pt; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
 h2.title{ font-size:24pt; margin:4mm 0 2mm; }
 .lead{ color:var(--muted); font-size:10.5pt; max-width:165mm; }
-.rule{ height:1px; background:var(--line); margin:5mm 0; }
+.rule{ height:1px; background:var(--line-strong); margin:5mm 0; }
 
 /* Cover */
 .cover{ break-after:page; min-height:250mm; display:flex; flex-direction:column; justify-content:center; }
-.cover .mark{ width:20mm; height:20mm; border-radius:5.5mm; display:grid; place-items:center;
-  background:linear-gradient(135deg,var(--sage),var(--sky)); color:var(--ink);
-  font-family:var(--font-head); font-weight:700; font-size:14pt; margin-bottom:9mm; }
+.cover .mark{ width:18mm; height:18mm; border-radius:1.5mm; display:grid; place-items:center;
+  background:var(--ink); color:var(--paper);
+  font-family:var(--font-mono); font-weight:700; font-size:12pt; margin-bottom:9mm; }
 .cover h1{ font-size:40pt; letter-spacing:-.02em; }
-.cover .grad{ background:linear-gradient(120deg,var(--sage-deep),var(--sky-deep));
-  -webkit-background-clip:text; background-clip:text; color:transparent; }
-.cover .sub{ font-size:12pt; color:var(--muted); margin-top:5mm; max-width:150mm; }
+.cover .role{ font-family:var(--font-mono); font-size:9pt; font-weight:600; letter-spacing:.04em; color:var(--accent); margin-top:4mm; }
+.cover .sub{ font-size:12pt; color:var(--muted); margin-top:3mm; max-width:150mm; }
 .cover .meta{ margin-top:12mm; display:flex; gap:10mm; flex-wrap:wrap; }
-.cover .meta .k{ font-size:7.5pt; letter-spacing:.12em; text-transform:uppercase; color:var(--sage-deep); font-weight:600; }
+.cover .meta .k{ font-family:var(--font-mono); font-size:7.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; }
 .cover .meta .v{ font-weight:600; font-size:10pt; }
 
 /* About */
 .chips{ display:flex; flex-wrap:wrap; gap:2mm; margin-top:4mm; }
-.chip{ font-size:8pt; padding:1.2mm 3mm; border:1px solid var(--line); border-radius:20px; background:#fff; color:var(--ink-soft); }
+.chip{ font-family:var(--font-mono); font-size:8pt; padding:1.2mm 3mm; border:1px solid var(--line); border-radius:1mm; background:#fff; color:var(--ink-soft); }
 .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:8mm; }
-.card{ border:1px solid var(--line); border-radius:4mm; padding:5mm; background:#fff; }
-.card h4{ font-size:7.5pt; letter-spacing:.1em; text-transform:uppercase; color:var(--sage-deep); margin-bottom:2.5mm; }
+.card{ border:1px solid var(--line); border-radius:1mm; padding:5mm; background:#fff; }
+.card h4{ font-family:var(--font-mono); font-size:7.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:2.5mm; font-weight:600; }
 
 /* Section */
 .section{ break-before:page; }
+.sech2{ font-family:var(--font-mono); font-size:9pt; font-weight:600; letter-spacing:.04em; color:var(--accent); margin-top:2mm; }
 .metarow{ display:flex; flex-wrap:wrap; gap:7mm; margin:4mm 0 5mm; }
-.metarow .k{ font-size:7.5pt; letter-spacing:.12em; text-transform:uppercase; color:var(--sage-deep); font-weight:600; }
+.metarow .k{ font-family:var(--font-mono); font-size:7.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; }
 .metarow .v{ font-weight:600; }
 .overview{ color:var(--ink-soft); font-size:10.5pt; max-width:172mm; }
 .approach{ margin:4mm 0 2mm; }
-.approach .k{ font-size:7.5pt; letter-spacing:.12em; text-transform:uppercase; color:var(--sage-deep); font-weight:600; margin-bottom:2mm; }
+.approach .k{ font-family:var(--font-mono); font-size:7.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:2mm; }
 .approach ol{ margin:0; padding-left:5mm; color:var(--ink-soft); } .approach li{ margin-bottom:1.2mm; }
 .sech{ display:flex; align-items:baseline; justify-content:space-between; margin:6mm 0 3mm; }
-.sech .n{ color:var(--muted); font-size:9pt; }
+.sech .n{ color:var(--muted); font-family:var(--font-mono); font-size:9pt; }
 
-.proj{ border:1px solid var(--line); border-radius:4mm; padding:4.5mm 5mm 5mm; background:#fff;
+.proj{ border:1px solid var(--line); border-radius:1mm; padding:4.5mm 5mm 5mm; background:#fff;
   margin-bottom:4mm; break-inside:avoid; }
-.proj.ph{ border-style:dashed; border-color:var(--sky-deep); background:#b8d4e314; }
+.proj.ph{ border-style:dashed; border-color:var(--line-strong); background:var(--paper-alt); }
 .proj__img{ display:block; max-width:100%; width:auto; height:auto; max-height:70mm; object-fit:contain;
-  border-radius:3mm; margin-bottom:3.5mm; border:1px solid var(--line); background:#eef3ec; }
-.proj .tag{ font-size:7.5pt; font-weight:600; letter-spacing:.03em; text-transform:uppercase; color:var(--sage-deep); }
-.proj h3{ font-size:12.5pt; margin:1mm 0 1.5mm; }
-.proj p{ color:var(--muted); font-size:9.5pt; }
+  border-radius:1mm; margin-bottom:3.5mm; border:1px solid var(--line); background:var(--paper-alt); }
+.proj .tag{ font-family:var(--font-mono); font-size:7.5pt; font-weight:600; letter-spacing:.03em; text-transform:uppercase; color:var(--muted); margin-top:.5mm; display:block; }
+.proj h3{ font-size:12.5pt; margin:1mm 0 0; }
+.proj p{ color:var(--muted); font-size:9.5pt; margin-top:1.5mm; }
 .proj ul{ margin:2mm 0 0; padding-left:5mm; } .proj li{ margin-bottom:1mm; color:var(--ink-soft); font-size:9.5pt; }
-.ph-txt{ color:var(--sky-deep); font-style:italic; }
-.attach{ border:1px solid var(--line); border-radius:4mm; padding:5mm; background:#fff; margin-top:3mm; break-inside:avoid; }
+.ph-txt{ color:var(--muted); font-style:italic; }
+.attach{ border:1px solid var(--line); border-radius:1mm; padding:5mm; background:#fff; margin-top:3mm; break-inside:avoid; }
 .attach .item{ padding:2.5mm 0; border-top:1px solid var(--line); color:var(--ink-soft); font-size:9.5pt; }
 .attach .item:first-of-type{ border-top:0; }
 """
@@ -108,8 +107,8 @@ def project_block(p):
     summ = (f'<p class="ph-txt">{escape(p.get("summary",""))}</p>' if p.get("placeholder")
             else f'<p>{escape(p.get("summary",""))}</p>')
     bullets = ("<ul>" + "".join(f"<li>{escape(b)}</li>" for b in p["bullets"]) + "</ul>") if p.get("bullets") else ""
-    return (f'<div class="proj{ph}">{img_html}<span class="tag">{escape(p.get("tag",""))}</span>'
-            f'<h3>{escape(p.get("title",""))}</h3>{summ}{bullets}</div>')
+    return (f'<div class="proj{ph}">{img_html}'
+            f'<h3>{escape(p.get("title",""))}</h3><span class="tag">{escape(p.get("tag",""))}</span>{summ}{bullets}</div>')
 
 
 def meta_row(meta):
@@ -127,14 +126,15 @@ def build_html(data):
     p = data["profile"]; about = data["about"]; pages = data["pages"]
     order = [n["slug"] for n in data["nav"]]
     parts = ['<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">',
-             '<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">',
+             '<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">',
              f"<style>{CSS}</style></head><body>"]
 
     # Cover
     parts.append(f'''
     <section class="cover">
       <div class="mark">JA</div>
-      <h1>Joshua Alcobia&nbsp;Gomes<br><span class="grad">Mechanical Engineer</span></h1>
+      <h1>Joshua Alcobia&nbsp;Gomes<br>Mechanical Engineer</h1>
+      <div class="role">MECHANICAL ENGINEER · AUTOMOTIVE &amp; AEROSPACE</div>
       <p class="sub">{escape(p["tagline"])}</p>
       <div class="meta">
         <div><div class="k">Discipline</div><div class="v">Mechanical Engineering</div></div>
@@ -154,7 +154,6 @@ def build_html(data):
         for i, s in enumerate(order))
     parts.append(f'''
     <section class="about">
-      <span class="eyebrow">About me</span>
       <h2 class="title">Curiosity, engineered.</h2>
       <div class="overview">{about_ps}</div>
       <div class="chips">{chips}</div>
@@ -175,18 +174,18 @@ def build_html(data):
         if page.get("attachments"):
             a = page["attachments"]
             items = "".join(f'<div class="item">{escape(it["label"])}</div>' for it in a.get("items", []))
-            attach = ('<div class="attach"><h4 style="font-size:8pt;letter-spacing:.1em;text-transform:uppercase;'
-                      'color:var(--sage-deep);margin-bottom:2mm">Presentations &amp; coursework</h4>'
+            attach = ('<div class="attach"><h4 style="font-family:var(--font-mono);font-size:8pt;letter-spacing:.08em;text-transform:uppercase;'
+                      'color:var(--muted);margin-bottom:2mm;font-weight:600">Presentations &amp; coursework</h4>'
                       f'<p style="color:var(--muted);font-size:9pt">{escape(a.get("note",""))}</p>{items}</div>')
         parts.append(f'''
         <section class="section">
-          <span class="eyebrow">{escape(page.get("tag",""))}</span>
           <h2 class="title">{escape(page["title"])}</h2>
+          <div class="sech2">{escape(page.get("tag",""))}</div>
           <p class="lead">{escape(page.get("subtitle",""))}</p>
           {meta_row(page.get("meta", []))}
           <div class="overview">{escape(page.get("overview",""))}</div>
           {approach_block(page)}
-          <div class="sech"><span class="eyebrow">Projects</span><span class="n">{len(page.get("projects", []))} projects</span></div>
+          <div class="sech"><span class="label">Projects</span><span class="n">{len(page.get("projects", []))} projects</span></div>
           {projects}
           {attach}
         </section>''')
@@ -195,8 +194,8 @@ def build_html(data):
     return "\n".join(parts)
 
 
-FOOTER = ('<div style="font-size:8px; width:100%; margin:0 14mm; color:#5c6b60; '
-          'font-family:sans-serif; display:flex; justify-content:space-between;">'
+FOOTER = ('<div style="font-size:8px; width:100%; margin:0 14mm; color:#6A6D70; '
+          'font-family:monospace; display:flex; justify-content:space-between;">'
           '<span>Joshua Alcobia Gomes — Portfolio</span>'
           '<span>Page <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>')
 

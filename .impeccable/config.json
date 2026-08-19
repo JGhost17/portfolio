@@ -4,30 +4,6 @@
     "ignoreFiles": [],
     "ignoreValues": [
       {
-        "rule": "design-system-radius",
-        "value": "4px",
-        "createdAt": "2026-08-19T03:46:44.206Z",
-        "reason": "focus-visible outline radius, not a shape token — deliberately small/subtle, distinct from the card/chip radius scale"
-      },
-      {
-        "rule": "design-system-font-size",
-        "value": ".74rem",
-        "createdAt": "2026-08-19T03:48:44.657Z",
-        "reason": "reuses an already-established size in the same file (metabar .k, footer__bottom), not a new one-off"
-      },
-      {
-        "rule": "overused-font",
-        "value": "space grotesk",
-        "createdAt": "2026-08-19T03:56:25.732Z",
-        "reason": "documented in DESIGN.md as the deliberate display typeface (Space Grotesk + Inter pairing), established before this hook was wired up"
-      },
-      {
-        "rule": "side-tab",
-        "value": "border-left: 4px solid var(--sage-deep)",
-        "createdAt": "2026-08-19T03:56:25.834Z",
-        "reason": ".callout is only used for the rare fetch-error fallback message (js/site.js), functioning as an alert/warning box — appropriate semantic use of a side accent, not a decorative card tell"
-      },
-      {
         "rule": "bounce-easing",
         "value": "var(--spring)",
         "createdAt": "2026-08-19T03:56:25.941Z",
@@ -38,6 +14,18 @@
         "value": "cubic-bezier(.34, 1.26, .42, 1)",
         "createdAt": "2026-08-19T03:56:26.047Z",
         "reason": "the --spring token definition itself (same rationale as the var(--spring) usage above) — apple-design skill's deliberate momentum-easing choice"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "two-axis grid-line gradient background",
+        "createdAt": "2026-08-19T14:38:23.173Z",
+        "reason": "deliberate: the site's redesigned world is a technical/engineering drawing sheet; the faint graph-paper grid is the sanctioned measurement-surface use this rule's own description carves out, not a decorative generated-UI tell"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-08-19T14:40:32.254Z",
+        "reason": "Inter is used body-only in this system (--font-body), never as display type — the sanctioned case the guidance itself carves out (Inter-as-display is the banned pattern, Inter-as-body is the recommended workhorse); display type is Archivo"
       }
     ]
   }

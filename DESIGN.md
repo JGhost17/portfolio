@@ -1,33 +1,30 @@
 ---
 name: Joshua Alcobia Gomes — Portfolio
-description: A quiet, breadth-first engineering portfolio in a pastel "Sage & Sky" palette, built as a pinned scrolling deck.
+description: An engineer's drawing sheet, not a lifestyle brand — graphite ink on paper, one blueprint-blue accent, hairline rules, a ruler-tick deck rail and a real title-block footer.
 colors:
-  sage: "#A8C3A4"
-  sage-deep: "#7FA07B"
-  sky: "#B8D4E3"
-  sky-deep: "#8FB8CE"
-  sand: "#E8DCC4"
-  sand-soft: "#F3ECDD"
-  ink: "#2F4538"
-  ink-soft: "#43574a"
-  bg: "#FBFAF6"
-  bg-alt: "#F4F1E8"
-  surface: "#FFFFFFcc"
-  text-muted: "#5c6b60"
-  line: "#dfe4d8"
+  ink: "#17181A"
+  ink-soft: "#40434A"
+  text-muted: "#6A6D70"
+  paper: "#FAFAF8"
+  paper-alt: "#EFEFEB"
+  surface: "#FFFFFF"
+  line: "#D9D9D4"
+  line-strong: "#B9BAB5"
+  accent: "#1D4FD1"
+  accent-soft: "#E8EDFB"
 typography:
   display:
-    fontFamily: "Space Grotesk, Segoe UI, system-ui, sans-serif"
+    fontFamily: "Archivo, Segoe UI, system-ui, sans-serif"
     fontSize: "clamp(2.6rem, 6.4vw, 4.6rem)"
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.06
-    letterSpacing: "-0.035em"
+    letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Space Grotesk, Segoe UI, system-ui, sans-serif"
+    fontFamily: "Archivo, Segoe UI, system-ui, sans-serif"
     fontSize: "clamp(1.8rem, 3.6vw, 2.7rem)"
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.06
-    letterSpacing: "-0.028em"
+    letterSpacing: "-0.024em"
   body:
     fontFamily: "Inter, Segoe UI, system-ui, -apple-system, sans-serif"
     fontSize: "clamp(16px, 1.05vw, 17px)"
@@ -35,14 +32,13 @@ typography:
     lineHeight: 1.65
     letterSpacing: "-0.004em"
   label:
-    fontFamily: "Space Grotesk, Segoe UI, system-ui, sans-serif"
-    fontSize: "0.78rem"
+    fontFamily: "JetBrains Mono, Consolas, SFMono-Regular, monospace"
+    fontSize: "0.74rem"
     fontWeight: 600
-    letterSpacing: "0.16em"
+    letterSpacing: "0.06em"
 rounded:
-  sm: "12px"
-  md: "20px"
-  pill: "999px"
+  sm: "2px"
+  md: "3px"
 spacing:
   sm: "0.5rem"
   md: "1.4rem"
@@ -50,158 +46,164 @@ spacing:
 components:
   button-primary:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.sand-soft}"
-    rounded: "{rounded.pill}"
-    padding: "0.8rem 1.3rem"
+    textColor: "{colors.paper}"
+    rounded: "{rounded.md}"
+    padding: "0.78rem 1.2rem"
   button-primary-hover:
-    backgroundColor: "{colors.ink}"
+    backgroundColor: "{colors.accent}"
   button-ghost:
-    backgroundColor: "#ffffffbb"
+    backgroundColor: "transparent"
     textColor: "{colors.ink}"
-    rounded: "{rounded.pill}"
-    padding: "0.8rem 1.3rem"
+    rounded: "{rounded.md}"
+    padding: "0.78rem 1.2rem"
   card:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
     rounded: "{rounded.md}"
-    padding: "1.6rem"
+    padding: "1.5rem"
   chip:
-    backgroundColor: "#ffffff"
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.ink-soft}"
-    rounded: "{rounded.pill}"
-    padding: "0.4rem 0.8rem"
+    rounded: "{rounded.sm}"
+    padding: "0.35rem 0.7rem"
 ---
 
 # Design System: Joshua Alcobia Gomes — Portfolio
 
 ## Overview
 
-**Creative North Star: "The Quiet Portfolio"**
+**Creative North Star: "The Drawing Sheet"**
 
-The design gets out of the way of real engineering work. Every screen leads with content — a project, a CFD render, a bullet of measurable outcome — and the interface exists only to present it clearly and let it be scanned quickly. Nothing decorative is added that doesn't earn its place: no illustration, no stock texture, no filler copy. The one indulgence the system allows itself is a soft, natural pastel atmosphere (sage, sky, sand) and a small set of fluid, spring-physics interactions (instant press feedback, an interruptible pinned "deck" that snaps between projects) — restraint in *content*, craft in *motion*.
+The portfolio reads as an engineer's drawing sheet, not a lifestyle brand. Precision and hairline clarity replace pastel decoration as the source of warmth: graphite ink on paper, one blueprint-blue accent used exactly where it earns attention, a real title-block footer, a ruler-tick progress rail, and crosshair registration marks borrowed from print/plate conventions. Nothing is added that a drawing sheet wouldn't already have.
 
-This system currently serves both a student-placement portfolio and, longer-term, the seed of a professional consulting brand (see PRODUCT.md). That dual audience is why the palette stays warm and human rather than corporate-neutral, while typography and layout stay precise and legible enough to read as professional evidence, not a hobby page.
+This is a **redesign**, not the system this project launched with. The previous version ("Sage & Sky") was a pastel, nature-derived palette with soft glass chrome and pill-shaped controls. Joshua described wanting something different — *"clean, white and grey, the look of schematic drawings and sketches on paper... like an engineer"* — in a 2026-08-19 design interview, and confirmed wanting to pursue it the same day. This file documents the replacement world as built, superseding the pastel system entirely; nothing from "Sage & Sky" survives except the spring-physics deck navigation and instant press feedback, which are motion decisions independent of palette and were kept deliberately.
 
-**⚠️ Noted discrepancy (not yet resolved):** when asked to describe the palette's character for future work, Joshua described a different world than what's implemented — *"clean, white and grey, the look of schematic drawings and sketches on paper... like an engineer."* That is a technical-drafting / blueprint-sketch aesthetic, not the current pastel Sage & Sky system. This file documents the palette as it is actually built today; it does not adopt the described direction, because `document` records the incumbent system rather than replacing it. If Joshua wants to pursue the schematic/sketch direction, that is a deliberate redesign decision that should go through `/impeccable new-work` (or an explicit rebrand request) — not something to half-adopt into this file's language.
+This system serves both a student-placement portfolio today and, longer-term, the seed of a professional consulting brand (see PRODUCT.md). A drafting-sheet aesthetic serves both at once: legible and credible to a recruiter now, and distinctive enough to be remembered by future consulting contacts — the same rigor the projects themselves demonstrate, applied to how they're presented.
 
 **Key Characteristics:**
-- Pastel, nature-derived palette (sage / sky / sand) against a warm off-white base, with deep forest-ink text for contrast and legibility.
-- Large, tightly-tracked geometric display type (Space Grotesk) paired with a calm, near-zero-tracked body face (Inter).
-- Pill-shaped interactive controls everywhere (buttons, chips, nav links) — soft, rounded, never sharp-cornered.
-- A pinned, one-project-per-viewport "deck" for project pages, with a vertical progress rail and spring-physics section snapping.
-- Translucent "glass" chrome (blurred, saturated backdrop) on the nav and floating surfaces; flat pastel gradients as ambient background, not photography.
+- Restrained palette: near-black graphite ink on off-white paper and paper-grey, with exactly one accent (blueprint ink-blue) — never a second competing hue.
+- Hairline rules everywhere; near-zero corner radius; no soft glow, no glass blur, no gradients (text or fill).
+- Archivo (a confident, technical grotesk) for display type; JetBrains Mono for every label, index number, date, and field — real technical/measurement data, not a costume; Inter for body prose.
+- A pinned, one-project-per-viewport "deck" for project pages, with a ruler-tick progress rail (a scale bar, not a pill list) and the same spring-physics section snapping the previous system used.
+- A title block in the footer, in the direct tradition of an engineering drawing sheet's own closing strip (Drawn by / Sheet / date fields).
 - Real content only — every claim traces to actual project work; unfinished projects are explicitly marked, never disguised as complete.
+- No kicker/eyebrow ever sits above a heading — classification labels (a project's category, a card's field) follow their heading, or live in a corner reference tag, never precede it as a restatement.
 
 ## Colors
 
-A soft, nature-derived pastel palette (sage green, sky blue, warm sand) set against a warm off-white base, anchored by a single deep, near-black-green ink for all text and structural contrast.
+A restrained, near-monochrome palette — graphite ink and paper neutrals — carrying exactly one accent.
 
-### Primary
-- **Soft Sage** (`#A8C3A4`): the primary accent — ambient background blobs, gradient starts, default tint behind hovered cards.
-- **Deep Sage** (`#7FA07B`): the actionable accent — eyebrow labels, links, focus/active states, the "01" project index numerals, the active progress-rail bar.
+### Neutrals
+- **Ink** (`#17181A`): primary text and all headings — the system's only near-black.
+- **Soft Ink** (`#40434A`): body prose (≈9.9:1 on Paper).
+- **Muted** (`#6A6D70`): meta text, field labels, captions, timestamps (≈5.2:1 on Paper — passes AA for small text).
+- **Paper** (`#FAFAF8`): the page ground.
+- **Paper Alt** (`#EFEFEB`): footer / title-block / sticky-rail ground — one step darker than Paper.
+- **Surface** (`#FFFFFF`): card and panel ground, a clean step up from Paper.
+- **Line** (`#D9D9D4`): default hairline divider.
+- **Line Strong** (`#B9BAB5`): structural rule — rail ticks, title-block dividers, registration marks, card/media borders.
 
-### Secondary
-- **Misty Sky** (`#B8D4E3`): the secondary accent — paired with sage in gradients (hero portrait, project media placeholders, deck section media frames).
-- **Deep Sky** (`#8FB8CE`): secondary accent hover/emphasis, and doubles as the "needs content" marker color (dashed placeholder borders/backgrounds).
-
-### Tertiary
-- **Warm Sand** (`#E8DCC4`): a third ambient tint — background gradient accents, alternate card hover tints.
-- **Soft Sand** (`#F3ECDD`): warm off-white, used as text color on the dark primary button so it reads warm rather than stark white-on-black.
-
-### Neutral
-- **Forest Ink** (`#2F4538`): primary text and all headings — the system's only near-black. Never diluted into the color palette itself, so it stays legible everywhere.
-- **Soft Ink** (`#43574a`): secondary/body prose color where full-contrast ink would feel heavy (paragraph copy, bullet lists).
-- **Muted Moss** (`#5c6b60`): tertiary/meta text — captions, sub-labels, footer copy.
-- **Paper Base** (`#FBFAF6`): the page background — warm, not clinical white.
-- **Warm Paper** (`#F4F1E8`): alternate background for the footer and other structurally distinct regions.
-- **Pale Line** (`#dfe4d8`): all hairline borders and dividers — always faint, never a hard black rule.
-- **Glass Surface** (`#FFFFFFcc`): translucent card/panel background, used with `backdrop-filter` for the glass effect.
+### Accent
+- **Blueprint** (`#1D4FD1`): the system's one accent (≈6.8:1 on Paper — safe for text). Used for links, the active rail tick, the scroll-progress line, the project index numeral, hover states, and nothing else. It never appears as a second decorative hue alongside another color.
+- **Accent Soft** (`#E8EDFB`): a flat tint (never a gradient) for `::selection` and sparing hover fills.
 
 ### Named Rules
-**The One Ink Rule.** All text-on-light color comes from Forest Ink, Soft Ink, or Muted Moss — three steps of the same hue, never a separate gray scale. This is what keeps the palette feeling like one warm material rather than "pastel accents on a generic gray UI."
+**The One-Accent Rule.** Blueprint blue is the system's only color beyond the ink/paper neutral scale. It is restrained-strategy by design: color commits through hairline precision and mono labeling, not through hue variety.
 
-**The Accent-as-Tint Rule.** Sage, sky, and sand are never used as solid text-background pairs for body copy; they appear as gradients, ambient blobs, hover tints, and small pill-chip fills only. Ink-on-paper carries all reading contrast.
+**No Gradients, Ever.** Not on text, not on fills, not on buttons. The previous system's gradient headline text and gradient card-hover tints are gone; emphasis comes from weight, color, or a hairline rule instead.
 
 ## Typography
 
-**Display Font:** Space Grotesk (with Segoe UI, system-ui, sans-serif fallback)
+**Display Font:** Archivo (with Segoe UI, system-ui, sans-serif fallback)
+**Label/Data Font:** JetBrains Mono (with Consolas, SFMono-Regular, monospace fallback)
 **Body Font:** Inter (with Segoe UI, system-ui, -apple-system, sans-serif fallback)
 
-**Character:** A geometric, slightly technical display face (Space Grotesk) for anything that announces a section or project, paired with a calm, highly legible grotesk (Inter) for everything meant to be read at length. Tracking tightens as size increases — display type is deliberately tight and confident; body text sits at a hair below zero for screen legibility.
+**Character:** Archivo is a confident, no-nonsense grotesk for anything that announces a project or section — technical without being a drafting-lettering costume. JetBrains Mono is used only where the content is genuinely technical or data-like: index numbers (`{01}`), dates, field labels, nav links, footer fields, button labels — the earned use the craft floor allows, never applied as a "hacker" affectation on prose. Inter carries everything meant to be read at length.
 
 ### Hierarchy
-- **Display** (600, `clamp(2.6rem, 6.4vw, 4.6rem)`, line-height 1.06, letter-spacing -0.035em): hero headline and each deck slide's project title.
-- **Headline** (600, `clamp(1.8rem, 3.6vw, 2.7rem)`, line-height 1.06, letter-spacing -0.028em): section headers ("Curiosity, engineered.", "Five chapters.").
-- **Title** (600, ~1.5rem, letter-spacing -0.022em): card and project-body headings.
-- **Body** (400, `clamp(16px, 1.05vw, 17px)`, line-height 1.65, letter-spacing -0.004em, max ~65–75ch): all prose — about-me copy, project summaries, bullets.
-- **Label** (600, 0.78rem, letter-spacing 0.16em, uppercase): eyebrows, section tags, project focus/detail labels — always uppercase, always widely tracked, the opposite treatment from display type.
+- **Display** (700, `clamp(2.6rem, 6.4vw, 4.6rem)`, line-height 1.06, letter-spacing -0.03em): hero headline and each deck slide's project title.
+- **Headline** (700, `clamp(1.8rem, 3.6vw, 2.7rem)`, line-height 1.06, letter-spacing -0.024em): section headers.
+- **Title** (700, ~1.4–1.5rem, letter-spacing -0.02em): card and project-body headings.
+- **Body** (400, `clamp(16px, 1.05vw, 17px)`, line-height 1.65, letter-spacing -0.004em, max ~65–75ch): all prose.
+- **Label/Mono** (JetBrains Mono, 600, 0.7–0.88rem, letter-spacing 0–0.08em): field labels, nav, buttons, index numbers, dates, footer fields — always this font family whenever the content is a label or datum rather than prose.
 
 ### Named Rules
-**The Optical Tightening Rule.** Letter-spacing is never one fixed value. It runs from −0.035em at display size down to −0.004em at body size, then *reverses* to +0.16em for all-caps labels. Every type role's tracking is chosen for its own size, never copy-pasted from another role.
+**Labels Follow Headings, Never Precede Them.** A kicker sitting above a heading and restating it is refused categorically (per the craft floor). Where a heading needs a classification (a project's category, a card's field), that label is placed *after* the heading as a subtitle line, or displaced entirely into a corner reference tag (see Components) — never stacked above it.
 
 ## Layout
 
 A centered content column (`max-width: 1120px`) with generous, responsive section padding (`clamp(3.5rem, 8vw, 6.5rem)` vertical rhythm) for the home page and standard sub-sections.
 
-Project pages (McLaren, NING Research, Novartis, UCL, Side Projects) use a distinct spatial model — the **pinned deck**: each project is one full-viewport `.slide` laid out as title (bottom-left) / media (center) / detail column (right), navigated by mouse-wheel, keyboard, or a persistent vertical progress rail (top-left) rather than continuous free-scroll. This collapses to a single stacked column below 900px, where the deck's spring-snap disengages in favor of native scrolling.
+Project pages (McLaren, NING Research, Novartis, UCL, Side Projects) use the **pinned deck**: each project is one full-viewport `.slide` laid out as title (bottom-left) / media (center) / detail column (right), navigated by mouse-wheel, keyboard, or a persistent ruler-tick rail (top-left) rather than continuous free-scroll. Collapses to a single stacked column below 900px, where the deck's spring-snap disengages in favor of native scrolling.
 
-Grid/card sections (home page work cards, galleries) use responsive CSS grid, typically 2 or 3 columns collapsing to 1 on mobile.
+Grid/card sections (home page work cards) use responsive CSS grid, 2 columns collapsing to 1 on mobile.
+
+A faint graph-paper grid (`rgba(23,24,26,.05)`, 32px cells) sits behind every page as a fixed background layer, and four small crosshair registration marks anchor the viewport's corners on desktop — both borrowed directly from print/drafting-sheet conventions, not decorative filler.
 
 ## Elevation & Depth
 
-A hybrid of soft ambient shadow and true translucency — no hard-edged material layering. Depth is conveyed through blur and glow rather than sharp drop shadows or borders.
+Depth comes from hairline borders first, shadow second — the opposite emphasis from the previous glass/glow system. Shadows are tight and real (offset + blur, never a zero-offset colored halo), reserved for genuinely elevated surfaces (media, floating badges, open mobile nav).
 
 ### Shadow Vocabulary
-- **Ambient-sm** (`0 2px 10px rgba(47,69,56,.06)`): resting elevation for small surfaces (fact cards, chips).
-- **Ambient** (`0 18px 50px -18px rgba(47,69,56,.28)`): default elevation for cards, buttons, the nav's bottom edge.
-- **Ambient-lg** (`0 40px 90px -30px rgba(47,69,56,.35)`): hero portrait, hover-lifted cards, deck slide media — the system's heaviest, reserved for the single most prominent element on screen.
+- **Ambient-sm** (`0 1px 3px rgba(23,24,26,.08)`): resting elevation for small surfaces.
+- **Ambient** (`0 6px 20px -8px rgba(23,24,26,.18)`): cards on hover, floating badges.
+- **Ambient-lg** (`0 14px 38px -12px rgba(23,24,26,.24)`): deck slide media — the system's heaviest, reserved for the single most prominent element on screen.
 
 ### Named Rules
-**The Glass-Not-Glossy Rule.** Floating chrome (nav, translucent card surfaces) uses `backdrop-filter: blur() saturate()` over a semi-transparent background — never a flat opaque bar. It respects `prefers-reduced-transparency` by falling back to a solid background with the blur removed, never by leaving a broken half-state.
+**Hairline Before Shadow.** Every panel gets a 1px border first (`--line` at rest, `--line-strong` on hover/emphasis); shadow is additive, never the sole separator. No backdrop blur or glass translucency anywhere in this system — the nav and rail are solid paper.
 
 ## Shapes
 
-Universally soft and rounded — no sharp corners anywhere in the system. Cards and media frames use a large 20px radius; small chips/tags use 12px; every interactive pill (buttons, nav links, chips, progress-rail dashes) uses a full 999px pill radius. Borders, where present, are always a single pale hairline (`--line`, `#dfe4d8`) — never a heavier or darker rule.
+Near-zero radius throughout (`--radius: 3px`, `--radius-sm: 2px`) — no pill shapes anywhere. This is a deliberate reversal of the previous system's universal pill/rounded language: a technical drawing has square sheets, square title-block cells, and straight rules.
 
 ## Components
 
 ### Buttons
-- **Shape:** full pill (`border-radius: 999px`).
-- **Primary:** solid Forest Ink background, Soft Sand text, ambient shadow; lifts 2px and deepens its shadow on hover.
-- **Ghost:** translucent white background, ink text, pale border; brightens to solid white with a small shadow on hover.
-- **Press feedback:** every button scales to 0.97 instantly on `:active` (pointer-down, not release) — the system's tactile signature.
+- **Shape:** near-square (`3px` radius), always a solid 1px border.
+- **Primary:** ink fill, paper text; hover shifts the fill to the accent blue (not a lift/shadow trick).
+- **Ghost:** transparent, line-strong border, ink text; hover darkens the border to ink.
+- **Press feedback:** every button scales to 0.97 instantly on `:active` — kept from the previous system, a motion decision independent of palette.
+- **Font:** always JetBrains Mono.
+
+### Corner Reference Tags
+The replacement for the previous "eyebrow" kicker on home-page work cards: a small mono code (`M · 01`, `N · 02`, `PDF`) in the card's top-right corner, echoing a drawing sheet's own reference-number convention. It never sits inline above the card's heading — displaced by both position and content (an index code, not a category restatement).
 
 ### Chips
-- **Style:** white background, pale border, pill radius, ink-soft text — used for skill tags and project focus labels.
-- **State:** static (no selected/unselected variant currently implemented).
+- **Style:** white background, hairline border, near-zero radius, mono text — used for skill tags.
 
 ### Cards / Containers
-- **Corner Style:** 20px radius.
-- **Background:** translucent glass surface (`#FFFFFFcc`) with backdrop blur.
-- **Shadow Strategy:** Ambient-sm at rest, Ambient-lg + an 8px lift on hover; a color-tinted gradient (`--tint`, per-card) fades in on hover to hint the destination's theme.
-- **Border:** pale hairline at rest, transparent on hover (the shadow carries the separation instead).
+- **Corner Style:** 3px radius, 1px hairline border.
+- **Background:** solid Surface (`#FFFFFF`) — no translucency.
+- **Hover:** a 2px accent-blue rule draws in from the left across the card's top edge (`scaleX` transform, not a `width` transition); border strengthens to Line Strong; no color-tinted gradient wash.
 
 ### Deck Slide (signature component)
-The core custom component: one project = one full-viewport section with a title (bottom-left, large display type, a lighter ghost-subtitle beneath it), a centered media carousel that sizes to each photo/video's own aspect ratio (never cropped, rounded corners, ambient-lg shadow), and a right-hand detail column (role, a `{01}`-style index, description, focus tags, impact bullets). A vertical rail of uniform pill-shaped bars at top-left tracks progress; the active bar is colored, not resized. Section transitions are a critically-damped spring (not a CSS transition) — interruptible, animates from the live scroll position, carries velocity through a re-target — so wheel/keyboard/dash-click navigation always feels continuous rather than locked.
+Unchanged in structure from the previous system, restyled in material: one project = one full-viewport section with a title (bottom-left, Archivo display type, a mono all-caps subtitle beneath it — not a kicker, since nothing bigger follows it), a centered media carousel sized to each photo/video's own aspect ratio (hairline border, `Ambient-lg` shadow), and a right-hand mono detail column (role, a `{01}`-style index in accent blue, description, focus tags, impact bullets). A **ruler-tick rail** — hairline ticks that grow via `transform: scaleX()` and take the accent color when active, not a pill list — tracks progress at top-left. Section transitions remain the critically-damped spring from the previous system (interruptible, velocity-carrying) — a motion decision this redesign kept deliberately, since it is independent of palette and was praised in the prior design critique.
+
+### Title-Block Footer (signature component)
+A direct borrow from an engineering drawing sheet's own title block: the footer's closing strip (`.tb-row--strip`) is a row of small mono fields separated by hairline vertical dividers — *Drawn by*, *Sheet* (page name · revision), *©*, and a page-specific closer (Built with Claude on home, ← Back to home on sub-pages). This replaced a plain copyright line with something that is actually load-bearing to the concept, not decoration.
 
 ### Navigation
-- **Style:** sticky glass bar (blur 24px, saturate 180%, translucent paper background), pale bottom hairline, soft ambient shadow.
-- **Typography:** label-weight links; the active page gets a small underline that grows from the center on hover/active.
-- **States:** links scale down slightly on `:active` for instant tactile feedback; hover shifts color from muted to full ink.
-- **Mobile:** collapses to a hamburger toggle revealing a floating glass menu card.
+- **Style:** solid paper background, 1px hairline bottom border — no blur, no translucency (a deliberate reversal of the previous glass-chrome nav).
+- **Typography:** JetBrains Mono links; the active/hovered link gets a 1px accent underline that draws in via `scaleX`.
+- **Mobile:** collapses to a hamburger toggle revealing a solid-paper menu card (hairline border, no blur).
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep all body/heading text on the Forest Ink → Soft Ink → Muted Moss scale; never introduce a separate gray.
+- **Do** keep all body/heading text on the Ink → Soft Ink → Muted scale; never introduce a separate gray family.
+- **Do** use JetBrains Mono only for genuinely technical/data content (labels, numbers, dates) — never as a "hacker" costume on prose.
 - **Do** give every interactive element instant `:active` press feedback (scale, not a delayed transition).
-- **Do** let project media keep its native aspect ratio, rounded corners, no cropping — the frame adapts to the photo, not the other way round.
-- **Do** mark unfinished projects/pages explicitly (dashed border, `.placeholder`/`.is-placeholder` styling) rather than disguising them as complete, per the real-content-only product principle.
-- **Do** respect `prefers-reduced-motion` (drop the spring/deck-snap for a plain fade) and `prefers-reduced-transparency` (solid backgrounds, no blur) as first-class states, not afterthoughts.
+- **Do** let project media keep its native aspect ratio, hairline border, no cropping.
+- **Do** animate width/height-affecting states (the deck rail ticks, the scroll progress bar, nav underlines) via `transform: scaleX()`, never `width`/`height` directly.
+- **Do** mark unfinished projects/pages explicitly (dashed hairline border, `.placeholder` styling) rather than disguising them as complete.
+- **Do** place a category/classification label *after* its heading, or displace it into a corner reference tag — never as a kicker above it.
+- **Do** respect `prefers-reduced-motion` as a first-class state.
 
 ### Don't:
-- **Don't** use a hard-edged drop shadow or a dark/heavy border anywhere — depth comes from soft ambient shadow and translucency only.
+- **Don't** use a pill/fully-rounded shape anywhere — the previous system's universal pill language is retired.
+- **Don't** use a gradient on text or on any fill — solid color and weight carry all emphasis now.
+- **Don't** add backdrop blur or glass translucency — every surface in this system is solid.
+- **Don't** put a kicker/eyebrow label directly above a heading, under any circumstance.
+- **Don't** use an emoji as an icon — the previous system's card emoji (🏎️🌀🧪) are gone, replaced by mono corner reference codes.
 - **Don't** crop a project photo or video into a fixed box; size the frame to the media.
-- **Don't** invent a white/grey "schematic sketch" palette under this file's authority — that direction was described by Joshua as an aspiration, not adopted; it requires a deliberate redesign pass (`new-work`), not a quiet blend into the current tokens.
-- **Don't** add decorative illustration, stock photography, or filler copy — every element must earn its place per "The Quiet Portfolio" north star.
 - **Don't** fabricate metrics, testimonials, or client claims — PRODUCT.md's real-content-only principle is binding on this visual system too.

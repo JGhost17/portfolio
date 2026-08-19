@@ -7,13 +7,24 @@
   <meta name="description" content="Portfolio of Joshua Alcobia Gomes, a mechanical engineering student (UCL, MEng) working across automotive and aerospace — McLaren, NING Research, Novartis, UCL and side projects." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23A8C3A4'/%3E%3Ctext x='16' y='22' font-size='13' text-anchor='middle' fill='%232F4538' font-family='sans-serif' font-weight='700'%3EJA%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%2317181A'/%3E%3Ctext x='16' y='22' font-size='13' text-anchor='middle' fill='%23FAFAF8' font-family='monospace' font-weight='700'%3EJA%3C/text%3E%3C/svg%3E" />
 </head>
 <body data-page="home">
-  <div class="ambient"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-  <div class="grain"></div>
+  <!--
+  THESIS: An engineer's drawing sheet, not a lifestyle brand — precision and hairline clarity replace pastel decoration as the source of warmth.
+  OWN-WORLD: Graphite ink #17181A on paper #FAFAF8/#EFEFEB, one blueprint-blue accent #1D4FD1, hairline rules, near-zero radius, Archivo display + JetBrains Mono labels/data + Inter body, crosshair registration marks, a title-block footer, ruler-tick deck rail.
+  STORY: A recruiter or reviewer reads real engineering evidence — CFD renders, competition work — presented with drawing-sheet rigor, then contacts Joshua.
+  FIRST VIEWPORT: Archivo headline left, hairline hatch-fill technical portrait placeholder right, mono role/stat labels beneath — no kicker above the headline.
+  FORM: Redesign of the incumbent pastel "Sage & Sky" system; direction pinned by Joshua's 2026-08-19 interview answer ("white and grey... schematic drawings and sketches... like an engineer"), code-led (no image-generation tool available this session).
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+  -->
+  <div class="gridpaper" aria-hidden="true"></div>
+  <div class="regmarks" aria-hidden="true">
+    <span class="reg reg--tl"></span><span class="reg reg--tr"></span>
+    <span class="reg reg--bl"></span><span class="reg reg--br"></span>
+  </div>
   <div class="progress"></div>
 
   <!-- ============ NAV ============ -->
@@ -35,8 +46,8 @@
   <header class="hero wrap">
     <div class="hero__grid">
       <div class="intro-up">
-        <span class="eyebrow">Mechanical Engineer · Automotive &amp; Aerospace</span>
-        <h1>Engineering that moves —<br /><span class="grad">on road and in air.</span></h1>
+        <h1>Engineering that moves —<br />on road and in air.</h1>
+        <div class="hero__role">MECHANICAL ENGINEER · AUTOMOTIVE &amp; AEROSPACE</div>
         <p class="hero__sub">I'm Joshua — a second-year MEng Mechanical Engineering student at UCL, heading to
           McLaren on placement for 2026–27. I turn hard physics into things that go fast, fly true and hold up
           under load, across automotive, aerospace and beyond.</p>
@@ -57,8 +68,8 @@
             YOUR PHOTO HERE
             <small>drop a headshot at assets/img/portrait.jpg</small>
           </div>
-          <div class="floaty f1"><span class="dot" style="background:var(--sage-deep)"></span> Automotive</div>
-          <div class="floaty f2"><span class="dot" style="background:var(--sky-deep)"></span> Aerospace</div>
+          <div class="floaty f1"><span class="tick"></span> Automotive</div>
+          <div class="floaty f2"><span class="tick"></span> Aerospace</div>
         </div>
       </div>
     </div>
@@ -67,7 +78,6 @@
   <!-- ============ ABOUT ============ -->
   <section class="section wrap" id="about">
     <div class="section__head" data-reveal>
-      <span class="eyebrow">About me</span>
       <h2>Curiosity, engineered.</h2>
     </div>
     <div class="about__grid">
@@ -81,7 +91,7 @@
           happily as I run the numbers — from an 8-engineer national rocketry squad to award-winning design
           challenges.</p>
         <p>Away from engineering I compete nationally in track and field, which is where a lot of the discipline
-          behind this work comes from — and the calm, natural palette of this site reflects where I recharge.</p>
+          behind this work comes from.</p>
         <div class="chips">
           <span class="chip">Fusion 360 · SolidWorks · Onshape</span>
           <span class="chip">ANSYS Fluent &amp; Mechanical</span>
@@ -99,8 +109,8 @@
           <li><span class="k">Next</span><span>McLaren — Placement 2026–27</span></li>
           <li><span class="k">Focus</span><span>Automotive &amp; Aerospace</span></li>
           <li><span class="k">Based in</span><span>London, UK</span></li>
-          <li><span class="k">Email</span><span><a class="card__go" style="color:var(--accent)" href="mailto:jg7alcobia@gmail.com">jg7alcobia@gmail.com</a></span></li>
-          <li><span class="k">Résumé</span><span><a class="card__go" href="assets/resume.pdf" style="color:var(--accent)">2-page CV ↓</a></span></li>
+          <li><span class="k">Email</span><span><a href="mailto:jg7alcobia@gmail.com">jg7alcobia@gmail.com</a></span></li>
+          <li><span class="k">Résumé</span><span><a href="assets/resume.pdf">2-page CV ↓</a></span></li>
         </ul>
       </aside>
     </div>
@@ -109,51 +119,50 @@
   <!-- ============ WORK ============ -->
   <section class="section wrap" id="work">
     <div class="section__head" data-reveal>
-      <span class="eyebrow">Selected work</span>
       <h2>Five chapters.</h2>
       <p class="lead">Each space below opens into its own scrollable page — the overview, the approach, and every project.</p>
     </div>
     <div class="cards">
-      <a class="card" href="mclaren.html" style="--tint:var(--sky)" data-reveal>
-        <div class="card__icon">🏎️</div>
-        <div class="card__tag">Automotive · Motorsport</div>
+      <a class="card" href="mclaren.html" data-reveal>
+        <span class="card__code">M · 01</span>
         <h3>McLaren</h3>
+        <div class="card__tag">Automotive · Motorsport</div>
         <p>Industrial placement in high-performance automotive engineering (2026–27).</p>
         <span class="card__go">Open page <span class="arrow">→</span></span>
       </a>
-      <a class="card" href="ning.html" style="--tint:var(--sage)" data-reveal data-delay="1">
-        <div class="card__icon">🌀</div>
-        <div class="card__tag">R&amp;D · CFD / Simulation</div>
+      <a class="card" href="ning.html" data-reveal data-delay="1">
+        <span class="card__code">N · 02</span>
         <h3>NING Research</h3>
+        <div class="card__tag">R&amp;D · CFD / Simulation</div>
         <p>Applied CFD and engineering simulation across real client projects.</p>
         <span class="card__go">Open page <span class="arrow">→</span></span>
       </a>
-      <a class="card" href="novartis.html" style="--tint:var(--sand)" data-reveal data-delay="2">
-        <div class="card__icon">🧪</div>
-        <div class="card__tag">R&amp;D · Pharma / ML</div>
+      <a class="card" href="novartis.html" data-reveal data-delay="2">
+        <span class="card__code">N · 03</span>
         <h3>Novartis</h3>
+        <div class="card__tag">R&amp;D · Pharma / ML</div>
         <p>Scientific-modelling internship: machine learning, simulation and AI tooling.</p>
         <span class="card__go">Open page <span class="arrow">→</span></span>
       </a>
-      <a class="card" href="ucl.html" style="--tint:var(--sky)" data-reveal>
-        <div class="card__icon">🎓</div>
-        <div class="card__tag">Education · UCL</div>
+      <a class="card" href="ucl.html" data-reveal>
+        <span class="card__code">U · 04</span>
         <h3>UCL</h3>
+        <div class="card__tag">Education · UCL</div>
         <p>MEng Mechanical Engineering — competition teams and academic projects.</p>
         <span class="card__go">Open page <span class="arrow">→</span></span>
       </a>
-      <a class="card" href="side-projects.html" style="--tint:var(--sage)" data-reveal data-delay="1">
-        <div class="card__icon">🚀</div>
-        <div class="card__tag">Personal builds</div>
+      <a class="card" href="side-projects.html" data-reveal data-delay="1">
+        <span class="card__code">S · 05</span>
         <h3>Side Projects</h3>
+        <div class="card__tag">Personal builds</div>
         <p>The things I build for the love of it — automotive, aerospace and beyond.</p>
         <span class="card__go">Open page <span class="arrow">→</span></span>
       </a>
-      <a class="card" href="assets/portfolio.pdf" style="--tint:var(--sand)" data-reveal data-delay="2">
-        <div class="card__icon">📄</div>
-        <div class="card__tag">Print / share</div>
+      <a class="card" href="assets/portfolio.pdf" data-reveal data-delay="2">
+        <span class="card__code">PDF</span>
         <h3>PDF Portfolio</h3>
-        <p>The full portfolio as a multi-page PDF — same palette, ready for interviews.</p>
+        <div class="card__tag">Print / share</div>
+        <p>The full portfolio as a multi-page PDF — same system, ready for interviews.</p>
         <span class="card__go">Download <span class="arrow">↓</span></span>
       </a>
     </div>
@@ -161,33 +170,37 @@
 
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
-    <div class="wrap footer__grid">
-      <div>
-        <h4>Let's build something.</h4>
-        <p class="muted" style="max-width:34ch">Open to opportunities in automotive and aerospace engineering.</p>
-        <a class="btn btn--primary" href="mailto:jg7alcobia@gmail.com" style="margin-top:1rem">Get in touch <span class="arrow">→</span></a>
-      </div>
-      <div class="footer__cols">
+    <div class="wrap titleblock">
+      <div class="tb-row tb-row--lead">
         <div>
-          <h5>Pages</h5>
-          <a class="link" href="mclaren.html">McLaren</a><br />
-          <a class="link" href="ning.html">NING Research</a><br />
-          <a class="link" href="novartis.html">Novartis</a><br />
-          <a class="link" href="ucl.html">UCL</a><br />
-          <a class="link" href="side-projects.html">Side Projects</a>
+          <h4>Let's build something.</h4>
+          <p class="muted" style="max-width:34ch">Open to opportunities in automotive and aerospace engineering.</p>
+          <a class="btn btn--primary" href="mailto:jg7alcobia@gmail.com" style="margin-top:1rem">Get in touch <span class="arrow">→</span></a>
         </div>
-        <div>
-          <h5>Elsewhere</h5>
-          <a class="link" href="https://www.linkedin.com/in/josh-alcobia-gomes/">LinkedIn</a><br />
-          <a class="link" href="https://github.com/JGhost17">GitHub</a><br />
-          <a class="link" href="assets/portfolio.pdf">PDF portfolio</a><br />
-          <a class="link" href="assets/resume.pdf">Résumé (CV)</a>
+        <div class="footer__cols">
+          <div>
+            <h5>Pages</h5>
+            <a class="link" href="mclaren.html">McLaren</a><br />
+            <a class="link" href="ning.html">NING Research</a><br />
+            <a class="link" href="novartis.html">Novartis</a><br />
+            <a class="link" href="ucl.html">UCL</a><br />
+            <a class="link" href="side-projects.html">Side Projects</a>
+          </div>
+          <div>
+            <h5>Elsewhere</h5>
+            <a class="link" href="https://www.linkedin.com/in/josh-alcobia-gomes/">LinkedIn</a><br />
+            <a class="link" href="https://github.com/JGhost17">GitHub</a><br />
+            <a class="link" href="assets/portfolio.pdf">PDF portfolio</a><br />
+            <a class="link" href="assets/resume.pdf">Résumé (CV)</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="wrap footer__bottom">
-      <span>© <span class="year">2026</span> Joshua Alcobia Gomes</span>
-      <span>Built with Claude</span>
+      <div class="tb-row tb-row--strip">
+        <span class="tb-field"><b>Drawn by</b> Joshua Alcobia Gomes</span>
+        <span class="tb-field"><b>Sheet</b> Portfolio · Rev. 2026</span>
+        <span class="tb-field"><b>©</b> <span class="year">2026</span></span>
+        <span class="tb-field">Built with Claude</span>
+      </div>
     </div>
   </footer>
 
