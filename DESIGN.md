@@ -13,6 +13,29 @@ colors:
   accent: "#1D4FD1"
   accent-soft: "#E8EDFB"
 typography:
+  scale:
+    step-70: ".7rem"
+    step-72: ".72rem"
+    step-74: ".74rem"
+    step-76: ".76rem"
+    step-78: ".78rem"
+    step-80: ".8rem"
+    step-82: ".82rem"
+    step-84: ".84rem"
+    step-88: ".88rem"
+    step-92: ".92rem"
+    step-93: ".93rem"
+    step-95: ".95rem"
+    step-100: "1rem"
+    step-108: "1.08rem"
+    step-110: "1.1rem"
+    step-130: "1.3rem"
+    step-140: "1.4rem"
+    step-170: "1.7rem"
+    step-105: "1.05rem"
+    step-125: "1.25rem"
+    step-200: "2rem"
+    step-340: "3.4rem"
   display:
     fontFamily: "Archivo, Segoe UI, system-ui, sans-serif"
     fontSize: "clamp(2.6rem, 6.4vw, 4.6rem)"
@@ -126,6 +149,8 @@ A restrained, near-monochrome palette — graphite ink and paper neutrals — ca
 - **Title** (700, ~1.4–1.5rem, letter-spacing -0.02em): card and project-body headings.
 - **Body** (400, `clamp(16px, 1.05vw, 17px)`, line-height 1.65, letter-spacing -0.004em, max ~65–75ch): all prose.
 - **Label/Mono** (JetBrains Mono, 600, 0.7–0.88rem, letter-spacing 0–0.08em): field labels, nav, buttons, index numbers, dates, footer fields — always this font family whenever the content is a label or datum rather than prose.
+
+The four named roles above are the ones worth memorizing; the frontmatter's `typography.scale` enumerates the full realistic ramp underneath them (`.7rem` through `1.7rem`, plus two ad hoc fluid clamps) — the actual continuous scale small UI text needs (meta labels, nav, captions, lead paragraphs), not a constraint to flatten everything into four sizes.
 
 ### Named Rules
 **Labels Follow Headings, Never Precede Them.** A kicker sitting above a heading and restating it is refused categorically (per the craft floor). Where a heading needs a classification (a project's category, a card's field), that label is placed *after* the heading as a subtitle line, or displaced entirely into a corner reference tag (see Components) — never stacked above it.

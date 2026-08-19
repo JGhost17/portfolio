@@ -16,16 +16,19 @@
         "reason": "the --spring token definition itself (same rationale as the var(--spring) usage above) — apple-design skill's deliberate momentum-easing choice"
       },
       {
-        "rule": "codex-grid-background",
-        "value": "two-axis grid-line gradient background",
-        "createdAt": "2026-08-19T14:38:23.173Z",
-        "reason": "deliberate: the site's redesigned world is a technical/engineering drawing sheet; the faint graph-paper grid is the sanctioned measurement-surface use this rule's own description carves out, not a decorative generated-UI tell"
-      },
-      {
         "rule": "overused-font",
         "value": "inter",
         "createdAt": "2026-08-19T14:40:32.254Z",
         "reason": "Inter is used body-only in this system (--font-body), never as display type — the sanctioned case the guidance itself carves out (Inter-as-display is the banned pattern, Inter-as-body is the recommended workhorse); display type is Archivo"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "css/style.css"
+        ],
+        "createdAt": "2026-08-19T14:45:45.328Z",
+        "reason": "codex-grid-background has no extractable per-finding value (only overused-font/bounce-easing/design-system-* populate one, per hook-lib.mjs's directValueRules set), so a specific-string ignore-value can never match — only a file-scoped wildcard suppresses it. Sanctioned: .gridpaper is this project's genuine blueprint/measurement-surface grid, the exact case the rule's own description carves out (this is a technical-drawing-sheet redesign)."
       }
     ]
   }
