@@ -14,6 +14,30 @@
         "value": ".74rem",
         "createdAt": "2026-08-19T03:48:44.657Z",
         "reason": "reuses an already-established size in the same file (metabar .k, footer__bottom), not a new one-off"
+      },
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "createdAt": "2026-08-19T03:56:25.732Z",
+        "reason": "documented in DESIGN.md as the deliberate display typeface (Space Grotesk + Inter pairing), established before this hook was wired up"
+      },
+      {
+        "rule": "side-tab",
+        "value": "border-left: 4px solid var(--sage-deep)",
+        "createdAt": "2026-08-19T03:56:25.834Z",
+        "reason": ".callout is only used for the rare fetch-error fallback message (js/site.js), functioning as an alert/warning box — appropriate semantic use of a side accent, not a decorative card tell"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "var(--spring)",
+        "createdAt": "2026-08-19T03:56:25.941Z",
+        "reason": "deliberate momentum-driven spring per the apple-design skill (Designing Fluid Interfaces): used only on section entrances that follow a scroll gesture, matching the skill's explicit guidance to reserve bounce for momentum-carrying interactions"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(.34, 1.26, .42, 1)",
+        "createdAt": "2026-08-19T03:56:26.047Z",
+        "reason": "the --spring token definition itself (same rationale as the var(--spring) usage above) — apple-design skill's deliberate momentum-easing choice"
       }
     ]
   }

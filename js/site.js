@@ -369,7 +369,7 @@
       const onScroll = () => {
         const h = document.documentElement;
         const max = h.scrollHeight - h.clientHeight;
-        bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+        bar.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
       };
       document.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
