@@ -91,28 +91,39 @@
       ],
       "approachPlaceholder": true,
       "projects": [
-        { "title": "Spacelogic Coughing Simulation", "tag": "CFD · Ventilation", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/img/Space_Logic/SpaceLogic_Iso.png", "assets/img/Space_Logic/Spacelogic_Coughing.png", "assets/video/Spacelogic_Case1.mp4"] },
-        { "title": "OpenFOAM Mixing Tank", "tag": "CFD · Mixing", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/img/OpenFoam_Mixing/Mesh_Side_View.jpg", "assets/img/OpenFoam_Mixing/Mesh_Top_View.jpg"] },
-        { "title": "Topayoh", "tag": "Simulation", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/img/Topayou/Ansys_Zoomed_Out.png", "assets/img/Topayou/Ansys_Zoomed_In.png", "assets/img/Topayou/FlowEFD_Out.png", "assets/img/Topayou/FloEFD_In.png"] },
-        { "title": "80 Kim Yam Road", "tag": "CFD · Built environment", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/img/Kim_Yam/80_Kim_Yam_Iso.jpg", "assets/img/Kim_Yam/Velocity_Streamlines_Iso_View.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Side_Vel.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Top_Viewjpg.jpg"] },
-        { "title": "Roof Rainfall Project", "tag": "CFD · Environmental", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/video/Rainfall Project.mp4", "assets/video/Rainfall Project_Particles.mp4"] },
-        { "title": "Sanli Mixing Tank", "tag": "CFD · Mixing", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/img/Mixing_Tank_Thermal/Thermal_ISO.png", "assets/img/Mixing_Tank_Thermal/Thermal_Front.png", "assets/img/Mixing_Tank_Thermal/Velocity_Front.png"] },
-        { "title": "Safe Site — 3logytech", "tag": "Simulation · Safety", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/img/Safe_Sight/safesightisoview.jpg"] },
-        { "title": "KiteFoil (SportSG)", "tag": "CFD · Sports aero", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/img/SportSG_FOil/FoilISO.png", "assets/img/SportSG_FOil/Foil_Front.png", "assets/img/SportSG_FOil/Foil_Side.png"] },
-        { "title": "Project 9", "tag": "Simulation", "placeholder": true, "summary": "Add this project's title and description." },
-        { "title": "Pad Production Line (Kenvue)", "tag": "Process simulation", "placeholder": true, "summary": "Add a short description of this project and its outcome.",
-          "media": ["assets/video/Kenvue Positioning Glue Initial Animation.mp4"] },
-        { "title": "Project 11", "tag": "Simulation", "placeholder": true, "summary": "Add this project's title and description." },
-        { "title": "Project 12", "tag": "Simulation", "placeholder": true, "summary": "Add this project's title and description." }
-      ]
+        { "title": "Coughing Dispersal Simulation", "tag": "CFD · Ventilation", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: healthcare / built-environment ventilation.",
+          "media": ["assets/img/Space_Logic/SpaceLogic_Iso.png", "assets/img/Space_Logic/Spacelogic_Coughing.png", "assets/video/Spacelogic_Case1.mp4"],
+          "captions": ["Isometric view", "Coughing dispersal plot", "Simulation animation"] },
+        { "title": "OpenFOAM Mixing Tank", "tag": "CFD · Mixing", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: industrial process engineering.",
+          "media": ["assets/img/OpenFoam_Mixing/Mesh_Side_View.jpg", "assets/img/OpenFoam_Mixing/Mesh_Top_View.jpg"],
+          "captions": ["Mesh, side view", "Mesh, top view"] },
+        { "title": "District-Scale Simulation Study", "tag": "Simulation", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: urban / built-environment simulation, Singapore.",
+          "media": ["assets/img/Topayou/Ansys_Zoomed_Out.png", "assets/img/Topayou/Ansys_Zoomed_In.png", "assets/img/Topayou/FlowEFD_Out.png", "assets/img/Topayou/FloEFD_In.png"],
+          "captions": ["ANSYS, zoomed out", "ANSYS, zoomed in", "FloEFD, zoomed out", "FloEFD, zoomed in"] },
+        { "title": "Mixed-Use Development Ventilation Study", "tag": "CFD · Built environment", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: real estate / built-environment ventilation, Singapore.",
+          "media": ["assets/img/Kim_Yam/80_Kim_Yam_Iso.jpg", "assets/img/Kim_Yam/Velocity_Streamlines_Iso_View.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Side_Vel.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Top_Viewjpg.jpg"],
+          "captions": ["Isometric view", "Velocity streamlines, isometric", "Side velocity field", "Top view"] },
+        { "title": "Roof Rainfall Project", "tag": "CFD · Multiphase", "summary": "Multiphase CFD study of rainfall on a roof, chaining three solvers to follow water from airborne droplet to standing pool.",
+          "bullets": [
+            "Coupled Discrete Phase Model → Eulerian Wall Film → Volume of Fluid (DPM → EWF → VOF), so falling droplets, the thin film they form on the surface, and bulk pooling water were each handled by the appropriate physics model.",
+            "Built as a feasibility test to prove the handoff between the three models could be made to work end-to-end."
+          ],
+          "media": ["assets/video/Rainfall Project.mp4", "assets/video/Rainfall Project_Particles.mp4", "assets/video/EWF-Filling-Video.mp4", "assets/video/VOF-Filling-Video.mp4"],
+          "captions": ["DPM: falling droplets", "DPM: particle tracking", "EWF: wall film filling", "VOF: standing pool filling"] },
+        { "title": "Industrial Mixing Tank — Thermal Study", "tag": "CFD · Mixing", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: industrial process engineering.",
+          "media": ["assets/img/Mixing_Tank_Thermal/Thermal_ISO.png", "assets/img/Mixing_Tank_Thermal/Thermal_Front.png", "assets/img/Mixing_Tank_Thermal/Velocity_Front.png"],
+          "captions": ["Thermal field, isometric", "Thermal field, front", "Velocity field, front"] },
+        { "title": "Site Safety Monitoring Simulation", "tag": "Simulation · Safety", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: construction safety technology.",
+          "media": ["assets/img/Safe_Sight/safesightisoview.jpg"],
+          "captions": ["Isometric view"] },
+        { "title": "KiteFoil Aerodynamics", "tag": "CFD · Sports aero", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: sports equipment / marine aerodynamics.",
+          "media": ["assets/img/SportSG_FOil/FoilISO.png", "assets/img/SportSG_FOil/Foil_Front.png", "assets/img/SportSG_FOil/Foil_Side.png"],
+          "captions": ["Isometric view", "Front view", "Side view"] },
+        { "title": "Pad Production Line Simulation", "tag": "Process simulation", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: consumer healthcare manufacturing.",
+          "media": ["assets/video/Kenvue Positioning Glue Initial Animation.mp4"],
+          "captions": ["Positioning glue — simulation animation"] }
+      ],
+      "moreComing": "A few more NING Research projects are still being written up."
     },
 
     "novartis": {
@@ -135,7 +146,7 @@
         { "title": "ML Powder Flow Classification", "tag": "Machine Learning", "summary": "Machine-learning models to predict powder flow characteristics from experimental data.", "bullets": [
           "Used LazyClassifier for rapid model selection, then Grid Search, Lasso regularisation and Bayesian optimisation for hyperparameter tuning.",
           "Saved CHF 40,000 per batch of APIs by predicting behaviour ahead of manufacture." ] },
-        { "title": "MCP Servers for Internal AI Tooling", "tag": "AI Infrastructure", "placeholder": true, "summary": "Add a short description of the MCP server work — what it connected and enabled." },
+        { "title": "MCP Servers for Internal AI Tooling", "tag": "AI Infrastructure", "placeholder": true, "summary": "Full write-up in progress." },
         { "title": "Streamlit Analytics Dashboards", "tag": "Data / Python", "summary": "Interactive Streamlit applications that eliminated manual data searching for the department.", "bullets": [
           "Built dropdown-driven apps for dwell-time analysis and screw customisation.",
           "Developed Python programs for Loss-on-Drying calculations from sensor data, solving mass-balance equations for moisture content and drying efficiency." ] },
@@ -170,7 +181,7 @@
           "Validated ANSYS Fluent CFD against drag-coefficient data to 97% accuracy.",
           "Designed the aerostructure in Fusion 360, increasing apogee by 203 m.",
           "Ran the project in Jira with Gantt charts, risk assessments and sponsorship outreach." ] },
-        { "title": "Formula Student", "tag": "Automotive · Motorsport", "placeholder": true, "summary": "Add your Formula Student role, subsystem and contributions." },
+        { "title": "Formula Student", "tag": "Automotive · Motorsport", "placeholder": true, "summary": "Full write-up in progress." },
         { "title": "IMechE Design Challenge", "tag": "Design & Manufacture", "summary": "Design & manufacturing engineer — runner-up, Greater London Regional Final.", "bullets": [
           "Secured National Final qualification as one of only two teams to achieve perfect accuracy.",
           "Won both the Design Award and the Challenge Competition.",
@@ -179,11 +190,9 @@
         { "title": "UCL Mechathon 2025", "tag": "Turbines · Competition", "summary": "Won the competition (team of 6) with a 76 mm-radius wind-turbine design.", "bullets": [
           "Achieved 29% efficiency at 3.3 V.",
           "Used QBlade to analyse aerofoil lift-to-drag ratios and optimal angle of attack (95.8% accurate).",
-          "Developed manufacturing methods across milling, 3D printing and laser cutting." ] },
-        { "title": "Project 5", "tag": "Coursework", "placeholder": true, "summary": "Add another UCL project — title, one line, and a few bullets." },
-        { "title": "Project 6", "tag": "Coursework", "placeholder": true, "summary": "Add another UCL project — title, one line, and a few bullets." },
-        { "title": "Project 7", "tag": "Coursework", "placeholder": true, "summary": "Add another UCL project — title, one line, and a few bullets." }
+          "Developed manufacturing methods across milling, 3D printing and laser cutting." ] }
       ],
+      "moreComing": "More UCL coursework and projects being written up.",
       "attachments": {
         "note": "Drop presentation PowerPoints and coursework PDFs into assets/docs/ and list them here.",
         "items": [
@@ -215,10 +224,9 @@
         { "title": "Automated Fruit & Vegetable Cutting Robot", "tag": "Robotics · Automation", "summary": "A kitchen robot designed, built and programmed from scratch.", "bullets": [
           "Built and programmed the robot with Arduino and C++.",
           "Modelled and optimised components in CAD for functionality and durability.",
-          "Assembled and iteratively refined the mechanical systems and control algorithms." ] },
-        { "title": "Side project 3", "tag": "Making", "placeholder": true, "summary": "Add a personal build — title, one line, and a few bullets." },
-        { "title": "Side project 4", "tag": "Making", "placeholder": true, "summary": "Add a personal build — title, one line, and a few bullets." }
-      ]
+          "Assembled and iteratively refined the mechanical systems and control algorithms." ] }
+      ],
+      "moreComing": "More side projects being written up."
     }
   }
 }

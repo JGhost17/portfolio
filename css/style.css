@@ -1,5 +1,5 @@
 /* =========================================================================
-   Jonathan Gomes — Portfolio
+   Joshua Alcobia Gomes — Portfolio
    Palette: "Sage & Sky"  (pastel · nature · aerospace/automotive)
    This same palette drives the printable PDF (see /pdf).
    ========================================================================= */
@@ -22,7 +22,8 @@
   --text:        var(--ink);
   --text-muted:  #5c6b60;
   --line:        #dfe4d8;
-  --accent:      var(--sage-deep);
+  --accent:      var(--sage-deep);       /* decorative use only: gradients, borders, fills — NOT text */
+  --accent-text: #4F6B4B;                /* ≈5.7:1 on --bg — use for any text-bearing accent role (labels, links) */
   --accent-2:    var(--sky-deep);
 
   /* ---- Type ---- */
@@ -151,7 +152,7 @@ ul { padding-left: 1.1em; }
 .section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
 .eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-head);
   font-size: .78rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--accent); padding: .4rem .8rem; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--accent-text); padding: .4rem .8rem; border: 1px solid var(--line); border-radius: 999px;
   background: #ffffff8c; }
 .section__head { max-width: 620px; margin-bottom: 2.6rem; }
 .section__head h2 { font-size: clamp(1.8rem, 3.6vw, 2.7rem); margin: 1rem 0 .6rem; }
@@ -224,7 +225,7 @@ ul { padding-left: 1.1em; }
   background: #fff; border: 1px solid var(--line); color: var(--ink-soft); }
 .factcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 1.5rem; backdrop-filter: blur(6px); box-shadow: var(--shadow-sm); }
-.factcard h4 { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; }
+.factcard h4 { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); margin-bottom: .8rem; }
 .factlist { list-style: none; padding: 0; display: grid; gap: .9rem; }
 .factlist li { display: flex; gap: .8rem; align-items: baseline; }
 .factlist .k { min-width: 96px; font-weight: 600; color: var(--ink); }
@@ -244,7 +245,7 @@ ul { padding-left: 1.1em; }
 .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
 .card:hover::before { opacity: .35; }
 .card > * { position: relative; z-index: 1; }
-.card__tag { font-size: .78rem; font-weight: 600; letter-spacing: .04em; color: var(--accent);
+.card__tag { font-size: .78rem; font-weight: 600; letter-spacing: .04em; color: var(--accent-text);
   text-transform: uppercase; }
 .card h3 { font-size: 1.5rem; }
 .card p { color: var(--text-muted); font-size: .95rem; }
@@ -260,12 +261,12 @@ ul { padding-left: 1.1em; }
    ========================================================================= */
 .phead { position: relative; padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(2rem, 4vw, 3rem); }
 .breadcrumb { display: flex; gap: .5rem; align-items: center; font-size: .85rem; color: var(--text-muted); margin-bottom: 1.4rem; }
-.breadcrumb a { color: var(--accent); font-weight: 600; }
+.breadcrumb a { color: var(--accent-text); font-weight: 600; }
 .phead h1 { font-size: clamp(2.4rem, 6vw, 4rem); view-transition-name: page-title; }
 .phead .lead { margin-top: 1rem; max-width: 60ch; }
 .metabar { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 1.8rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
 .metabar div span { display: block; }
-.metabar .k { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.metabar .k { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); font-weight: 600; }
 .metabar .v { font-weight: 600; color: var(--ink); }
 
 /* =========================================================================
@@ -308,7 +309,7 @@ ul { padding-left: 1.1em; }
 .tl { position: relative; padding-left: 2.4rem; }
 .tl::before { content: ""; position: absolute; left: 3px; top: 4px; width: 14px; height: 14px; border-radius: 50%;
   background: var(--sage); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--sage-deep); }
-.tl .when { font-size: .8rem; color: var(--accent); font-weight: 600; }
+.tl .when { font-size: .8rem; color: var(--accent-text); font-weight: 600; }
 .tl h4 { font-size: 1.15rem; margin: .2rem 0; }
 
 .callout { background: linear-gradient(135deg, #ffffffcc, #ffffff88); border: 1px solid var(--line);
@@ -326,7 +327,7 @@ ul { padding-left: 1.1em; }
 .pageintro .overview p { color: var(--ink-soft); font-size: 1.1rem; }
 .approach { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 1.6rem; backdrop-filter: blur(6px); box-shadow: var(--shadow-sm); }
-.approach h4 { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.approach h4 { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 1rem; }
 .approach ol { list-style: none; counter-reset: step; padding: 0; display: grid; gap: 1rem; }
 .approach li { counter-increment: step; display: flex; gap: .9rem; align-items: baseline; color: var(--ink-soft); font-size: .95rem; }
 .approach li::before { content: counter(step); flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
@@ -343,7 +344,7 @@ ul { padding-left: 1.1em; }
   box-shadow: var(--shadow-sm); transition: box-shadow .4s var(--ease), transform .4s var(--ease-out); }
 .project:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
 .project__meta { display: flex; align-items: center; gap: .7rem; margin-bottom: .55rem; }
-.project__meta .pnum { font-family: var(--font-head); font-weight: 700; font-size: .85rem; color: var(--sage-deep);
+.project__meta .pnum { font-family: var(--font-head); font-weight: 700; font-size: .85rem; color: var(--accent-text);
   background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: .12rem .5rem; }
 .project__body h3 { font-size: 1.5rem; margin-bottom: .4rem; }
 .project__body p { color: var(--text-muted); }
@@ -402,9 +403,13 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
   border: 0; padding: 0; cursor: pointer; transition: background .35s var(--ease), opacity .35s; }
 .deck__dots button:hover { opacity: .9; }
 .deck__dots button.active { opacity: 1; background: linear-gradient(180deg,var(--sage-deep),var(--sky-deep)); }
+.deck__count { margin-top: .6rem; font-size: .74rem; font-weight: 600; color: var(--text-muted);
+  font-variant-numeric: tabular-nums; }
+/* Visible on all breakpoints so mobile keeps a position indicator even though
+   the rail bars themselves are desktop-only (deck-mode gated). */
 .deck__footer { position: fixed; bottom: 1rem; left: clamp(1rem,4vw,2.5rem); z-index: 60;
   font-size: .74rem; color: var(--text-muted); }
-.deck__footer a { color: var(--accent); font-weight: 600; }
+.deck__footer a { color: var(--accent-text); font-weight: 600; }
 
 .slide { min-height: calc(100vh - 64px); display: grid; align-items: center;
   grid-template-columns: 1fr minmax(300px, 500px) 1fr; grid-template-rows: 1fr auto;
@@ -447,7 +452,9 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
 .slide__title .eyebrow { margin-bottom: .8rem; }
 .slide__title h2 { font-size: clamp(2rem,5vw,3.4rem); line-height: 1.02; }
 .slide__title .sub { font-family: var(--font-head); font-weight: 600; line-height: 1.05;
-  font-size: clamp(1.3rem,3.2vw,2.1rem); color: var(--ink); opacity: .26; margin-top: .1rem; }
+  font-size: clamp(1.3rem,3.2vw,2.1rem); color: var(--text-muted); margin-top: .1rem; }
+  /* was color:ink @ opacity .26 (~1.6:1, fails WCAG AA) — solid --text-muted keeps the
+     "ghost" hierarchy (small weight against the huge title above) at ~5.5:1, passing AA */
 
 .slide__detail { grid-area: detail; align-self: center; justify-self: start; max-width: 300px; }
 .d-role { font-family: var(--font-head); font-weight: 600; font-size: 1.02rem; color: var(--ink); }
@@ -455,13 +462,13 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
 .d-ctx { font-weight: 600; color: var(--ink); }
 .d-date { color: var(--text-muted); font-size: .8rem; margin-top: .1rem; }
 .d-block { margin-top: 1.15rem; }
-.d-block h5 { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sage-deep);
+.d-block h5 { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text);
   font-weight: 600; margin-bottom: .4rem; }
 .d-block p { color: var(--ink-soft); font-size: .92rem; }
 .d-block ul, .d-block ol { margin: 0; padding-left: 1.1em; color: var(--ink-soft); font-size: .92rem; display: grid; gap: .3rem; }
 .d-list { display: grid; gap: .28rem; }
 .d-list div { color: var(--ink-soft); font-size: .92rem; }
-.d-list a { color: var(--accent); font-weight: 600; }
+.d-list a { color: var(--accent-text); font-weight: 600; }
 .slide__detail .placeholder { display: inline-block; }
 
 @media (max-width: 900px) {
@@ -492,7 +499,7 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
 .footer a.link { color: var(--text-muted); display: inline-flex; gap: .4rem; padding: .2rem 0; transition: color .2s; }
 .footer a.link:hover { color: var(--ink); }
 .footer__cols { display: flex; gap: 3rem; flex-wrap: wrap; }
-.footer__cols h5 { font-family: var(--font-head); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem; }
+.footer__cols h5 { font-family: var(--font-head); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); margin-bottom: .6rem; }
 .footer__bottom { border-top: 1px solid var(--line); padding: 1.2rem 0; font-size: .82rem; color: var(--text-muted);
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
 
@@ -546,4 +553,17 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
     transition-duration: .01ms !important; scroll-behavior: auto !important; }
   [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Accessibility: visible keyboard focus everywhere (was: UA default only — the
+   critique found 0 authored focus rules; this is deliberately generous so the
+   4x15px progress-rail bars and 7x7px carousel dots stay reachable). */
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.deck__dots button:focus-visible,
+.media__dots button:focus-visible {
+  outline-offset: 5px;
 }

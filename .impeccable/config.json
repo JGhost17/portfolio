@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-radius",
+        "value": "4px",
+        "createdAt": "2026-08-19T03:46:44.206Z",
+        "reason": "focus-visible outline radius, not a shape token — deliberately small/subtle, distinct from the card/chip radius scale"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".74rem",
+        "createdAt": "2026-08-19T03:48:44.657Z",
+        "reason": "reuses an already-established size in the same file (metabar .k, footer__bottom), not a new one-off"
+      }
+    ]
+  }
+}

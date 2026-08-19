@@ -13,6 +13,8 @@ WhatsApp*.mp4
 
 # --- Tooling / local config ---
 .claude/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
 
 # --- Generated PDF intermediate ---
 pdf/portfolio.generated.html

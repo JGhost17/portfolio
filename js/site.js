@@ -22,35 +22,46 @@
     return src.split("/").pop().replace(/\.[^.]+$/, "")
       .replace(/[_-]+/g, " ").replace(/\b(jpg|jpeg|png|mp4)\b/gi, "").trim();
   }
-  function mediaItemEl(src) {
+  function mediaItemEl(src, altOverride) {
     const url = encodeURI(src);
     return isVideo(src)
       ? `<video src="${url}" controls preload="metadata" playsinline></video>`
-      : `<img src="${url}" loading="lazy" alt="${esc(cleanName(src))}">`;
+      : `<img src="${url}" loading="lazy" alt="${esc(altOverride || cleanName(src))}">`;
   }
-  function mediaPanel(items) {
+  // `captions[i]` overrides the filename-derived caption for media[i] — needed
+  // wherever a real filename would leak information the title has been
+  // written to omit (e.g. an anonymized client name still sitting on disk).
+  function captionFor(items, captions, i) {
+    return (Array.isArray(captions) && captions[i]) ? captions[i] : cleanName(items[i]);
+  }
+  function mediaPanel(items, captions) {
     if (!Array.isArray(items) || !items.length) return null;
     const multi = items.length > 1;
     const dots = multi
       ? `<div class="media__dots">${items.map((_, i) => `<button class="mdot" data-i="${i}" aria-label="Media ${i + 1}"></button>`).join("")}</div>` : "";
     const arms = multi
       ? `<button class="media__arm prev" aria-label="Previous">‹</button><button class="media__arm next" aria-label="Next">›</button>` : "";
-    return `<div class="media" data-media="${items.map(esc).join("|")}">
-      <div class="media__stage">${mediaItemEl(items[0])}</div>
-      <div class="media__cap">${esc(cleanName(items[0]))}</div>
+    const capsAttr = Array.isArray(captions) ? ` data-captions="${captions.map(esc).join("|")}"` : "";
+    return `<div class="media" data-media="${items.map(esc).join("|")}"${capsAttr}>
+      <div class="media__stage">${mediaItemEl(items[0], captionFor(items, captions, 0))}</div>
+      <div class="media__cap">${esc(captionFor(items, captions, 0))}</div>
       ${arms}${dots}
     </div>`;
   }
 
   /* --------------------------------------------------------------- slides */
   function introSlide(page) {
+    // Meta fields carry their own `placeholder` flag (e.g. an unconfirmed
+    // "Period"). Honor it — an unmarked placeholder rendered as fact is a
+    // false credential, not an honest unknown.
     const meta = (page.meta || [])
-      .map((m) => `<div><strong>${esc(m.k)}:</strong> ${esc(m.v)}</div>`).join("");
+      .map((m) => `<div class="${m.placeholder ? "placeholder" : ""}"><strong>${esc(m.k)}:</strong> ${esc(m.v)}</div>`).join("");
     const approach = (page.approach || []).map((a) => `<li>${esc(a)}</li>`).join("");
     const overview = (page.overview || "")
       + (page.overviewPlaceholder ? ' <span class="placeholder">confirm / expand</span>' : "");
+    const approachNote = page.approachPlaceholder ? '<p class="placeholder" style="margin-top:.5rem">confirm these steps</p>' : "";
     return `
-      <section class="slide slide--intro" data-slide>
+      <section class="slide slide--intro" data-slide tabindex="-1">
         <div class="slide__title">
           <span class="eyebrow">${esc(page.tag || "")}</span>
           <h2>${esc(page.title)}</h2>
@@ -60,8 +71,22 @@
         <aside class="slide__detail">
           <div class="d-role">${esc(page.subtitle || "")}</div>
           <div class="d-block"><h5>Overview</h5><p>${overview}</p></div>
-          <div class="d-block"><h5>Approach</h5><ol>${approach}</ol></div>
+          <div class="d-block"><h5>Approach</h5><ol>${approach}</ol>${approachNote}</div>
           <div class="d-block"><h5>Details</h5><div class="d-list">${meta}</div></div>
+        </aside>
+      </section>`;
+  }
+
+  function moreComingSlide(text) {
+    return `
+      <section class="slide" data-slide tabindex="-1">
+        <div class="slide__title">
+          <h2>More soon</h2>
+          <div class="sub">In progress</div>
+        </div>
+        <div class="slide__media"><span class="slot">✎</span></div>
+        <aside class="slide__detail">
+          <div class="d-block"><p>${esc(text)}</p></div>
         </aside>
       </section>`;
   }
@@ -77,11 +102,11 @@
       ? `<div class="d-block"><h5>Impact</h5><ul>${p.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul></div>`
       : "";
     const date = p.date ? `<div class="d-date">${esc(p.date)}</div>` : "";
-    const mediaInner = mediaPanel(p.media)
+    const mediaInner = mediaPanel(p.media, p.captions)
       || `<span class="slot">${p.placeholder ? "Add media<br>" : ""}${mediaHint(slug, i + 1)}</span>`;
     const sub = p.subtitle || (p.tag || "").split("·")[0].trim();
     return `
-      <section class="slide" data-slide>
+      <section class="slide" data-slide tabindex="-1" data-title="${esc(p.title)}">
         <div class="slide__title">
           <h2>${esc(p.title)}</h2>
           <div class="sub">${esc(sub)}</div>
@@ -104,7 +129,7 @@
       ? `<div>${esc(it.label)} — drop at ${esc(it.file)}</div>`
       : `<div><a href="${esc(it.file)}">${esc(it.label)} ↓</a></div>`).join("");
     return `
-      <section class="slide" data-slide>
+      <section class="slide" data-slide tabindex="-1" data-title="Documents">
         <div class="slide__title"><h2>Documents</h2><div class="sub">Coursework</div></div>
         <div class="slide__media"><span class="slot">📊 Presentations &amp; PDFs<br>assets/docs/</span></div>
         <aside class="slide__detail">
@@ -119,19 +144,56 @@
   function pageHTML(slug, page, profile) {
     const slides = [introSlide(page)];
     (page.projects || []).forEach((p, i) => slides.push(projectSlide(slug, page, p, i)));
+    if (page.moreComing) slides.push(moreComingSlide(page.moreComing));
     if (page.attachments) slides.push(attachSlide(page.attachments));
+    const total = slides.length;
+    // Rail buttons carry a real title where the slide has one (recognition,
+    // not pure recall) — "Overview", each project's name, "More soon", "Documents".
+    const titles = ["Overview", ...(page.projects || []).map((p) => p.title),
+      ...(page.moreComing ? ["More soon"] : []), ...(page.attachments ? ["Documents"] : [])];
     const dots = slides.map((_, i) =>
-      `<button class="dot" data-i="${i}" aria-label="Go to section ${i + 1}"></button>`).join("");
+      `<button class="dot" data-i="${i}" aria-label="${esc(titles[i] || `Section ${i + 1}`)}" title="${esc(titles[i] || "")}"></button>`).join("");
     return `
       <div class="deck">
         <div class="deck__rail">
-          <div class="co">${esc(page.title)}</div>
+          <h1 class="co">${esc(page.title)}</h1>
           <div class="tag">${esc(stripNo(page.tag))}</div>
-          <div class="deck__dots">${dots}</div>
+          <div class="deck__dots" role="tablist" aria-label="${esc(page.title)} sections">${dots}</div>
+          <div class="deck__count" aria-live="polite"><span data-current>1</span> / ${total}</div>
         </div>
         ${slides.join("")}
-        <div class="deck__footer">${esc(profile.name)} · <a href="index.html">Home ↑</a></div>
-      </div>`;
+      </div>
+      <footer class="footer">
+        <div class="wrap footer__grid">
+          <div>
+            <h4>Let's build something.</h4>
+            <p class="muted" style="max-width:34ch">Open to opportunities in automotive and aerospace engineering.</p>
+            <a class="btn btn--primary" href="mailto:${esc(profile.email)}" style="margin-top:1rem">Get in touch <span class="arrow">→</span></a>
+          </div>
+          <div class="footer__cols">
+            <div>
+              <h5>Pages</h5>
+              <a class="link" href="index.html">Home</a><br />
+              <a class="link" href="mclaren.html">McLaren</a><br />
+              <a class="link" href="ning.html">NING Research</a><br />
+              <a class="link" href="novartis.html">Novartis</a><br />
+              <a class="link" href="ucl.html">UCL</a><br />
+              <a class="link" href="side-projects.html">Side Projects</a>
+            </div>
+            <div>
+              <h5>Elsewhere</h5>
+              <a class="link" href="${esc(profile.linkedin)}">LinkedIn</a><br />
+              <a class="link" href="${esc(profile.github)}">GitHub</a><br />
+              <a class="link" href="assets/portfolio.pdf">PDF portfolio</a><br />
+              <a class="link" href="${esc(profile.resume)}">Résumé (CV)</a>
+            </div>
+          </div>
+        </div>
+        <div class="wrap footer__bottom">
+          <span>© <span class="year"></span> ${esc(profile.name)}</span>
+          <span><a class="link" href="index.html">← Back to home</a></span>
+        </div>
+      </footer>`;
   }
 
   async function renderPage(app) {
@@ -168,7 +230,14 @@
     const slideTop = (s) => s.getBoundingClientRect().top + window.scrollY - NAV_H;
 
     let index = 0;
-    const setDots = (i) => dots.forEach((d, k) => d.classList.toggle("active", k === i));
+    const countEl = document.querySelector("[data-current]");
+    const setDots = (i) => {
+      dots.forEach((d, k) => {
+        d.classList.toggle("active", k === i);
+        if (k === i) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current");
+      });
+      if (countEl) countEl.textContent = i + 1;
+    };
     const nearestIndex = () => {
       const mid = window.innerHeight / 2; let best = 0, bd = Infinity;
       slides.forEach((s, i) => {
@@ -217,10 +286,14 @@
     }
 
     // ---- Wheel: retargetable one-section steps, no input lock ----
+    // At the last slide, scrolling further down must fall through to native
+    // scroll so the page footer (contact info) below the deck stays reachable
+    // — the deck must never trap the visitor past its own last section.
     let lastStep = 0;
     window.addEventListener("wheel", (e) => {
       if (!deckMode()) return;
       const down = e.deltaY > 0;
+      if (down && index === slides.length - 1 && !running) return;   // let native scroll reach the footer
       const cur = slides[index], r = cur.getBoundingClientRect();
       const tall = cur.offsetHeight > window.innerHeight + 4;
       if (tall && !running) {                    // let a tall section reveal itself before snapping
@@ -237,8 +310,11 @@
 
     window.addEventListener("keydown", (e) => {
       if (!deckMode()) return;
-      if (e.key === "ArrowDown" || e.key === "PageDown" || (e.key === " " && !e.shiftKey)) { e.preventDefault(); goToIndex(index + 1); }
-      else if (e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); goToIndex(index - 1); }
+      const wantsDown = e.key === "ArrowDown" || e.key === "PageDown" || (e.key === " " && !e.shiftKey);
+      const wantsUp = e.key === "ArrowUp" || e.key === "PageUp";
+      if (wantsDown && index === slides.length - 1) return;   // let native scroll reach the footer
+      if (wantsDown) { e.preventDefault(); goToIndex(index + 1); }
+      else if (wantsUp) { e.preventDefault(); goToIndex(index - 1); }
     });
 
     // Native scroll (mobile, or tall sections) keeps the dashes + index synced.
@@ -248,13 +324,25 @@
       if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; index = nearestIndex(); setDots(index); }); }
     }, { passive: true });
 
-    dots.forEach((d, i) => d.addEventListener("click", () => goToIndex(i)));
+    // Move focus to the target slide once it settles, so keyboard/screen-reader
+    // users landing via a rail click don't stay stranded back on the rail
+    // button while the page scrolls elsewhere (reading order == focus order).
+    dots.forEach((d, i) => d.addEventListener("click", () => {
+      goToIndex(i);
+      const target = slides[i];
+      const focusWhenSettled = () => {
+        if (running) { requestAnimationFrame(focusWhenSettled); return; }
+        target.focus({ preventScroll: true });
+      };
+      requestAnimationFrame(focusWhenSettled);
+    }));
   }
 
   /* --------------------------------------------------- media carousels */
   function initMedia() {
     document.querySelectorAll("[data-media]").forEach((box) => {
       const items = box.getAttribute("data-media").split("|");
+      const captions = box.hasAttribute("data-captions") ? box.getAttribute("data-captions").split("|") : null;
       if (items.length < 2) return;
       const stage = box.querySelector(".media__stage");
       const cap = box.querySelector(".media__cap");
@@ -262,8 +350,8 @@
       let cur = 0;
       const show = (i) => {
         cur = (i + items.length) % items.length;
-        stage.innerHTML = mediaItemEl(items[cur]);
-        if (cap) cap.textContent = cleanName(items[cur]);
+        stage.innerHTML = mediaItemEl(items[cur], captionFor(items, captions, cur));
+        if (cap) cap.textContent = captionFor(items, captions, cur);
         dots.forEach((d, k) => d.classList.toggle("active", k === cur));
       };
       dots.forEach((d, k) => d.addEventListener("click", (e) => { e.stopPropagation(); show(k); }));

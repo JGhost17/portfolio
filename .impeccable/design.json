@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-19T03:24:43Z",
+  "title": "Design System: Joshua Alcobia Gomes — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "sage": { "role": "primary", "displayName": "Soft Sage", "canonical": "#A8C3A4", "tonalRamp": ["#1c2a1b", "#33492f", "#4d6947", "#6d8a63", "#8fac82", "#a8c3a4", "#c6dac1", "#e6f0e3"] },
+      "sage-deep": { "role": "primary", "displayName": "Deep Sage", "canonical": "#7FA07B", "tonalRamp": ["#151f14", "#263a24", "#3c5738", "#5a7a53", "#7fa07b", "#a3c19f", "#c7ddc4", "#e8f3e6"] },
+      "sky": { "role": "secondary", "displayName": "Misty Sky", "canonical": "#B8D4E3", "tonalRamp": ["#16232a", "#28414e", "#3f6273", "#628aa0", "#8fb2c4", "#b8d4e3", "#d6e8f0", "#eff7fa"] },
+      "sky-deep": { "role": "secondary", "displayName": "Deep Sky", "canonical": "#8FB8CE", "tonalRamp": ["#101c22", "#1f353f", "#33525f", "#4f7688", "#719eae", "#8fb8ce", "#b6d3e0", "#e0eff4"] },
+      "sand": { "role": "tertiary", "displayName": "Warm Sand", "canonical": "#E8DCC4", "tonalRamp": ["#2b2417", "#4a3f28", "#6e5f3d", "#96835a", "#c0ac81", "#e8dcc4", "#f2ead9", "#faf6ec"] },
+      "sand-soft": { "role": "tertiary", "displayName": "Soft Sand", "canonical": "#F3ECDD", "tonalRamp": ["#2f2a1e", "#514835", "#786b4f", "#a3936c", "#cabb95", "#f3ecdd", "#f8f3e9", "#fdfbf6"] },
+      "ink": { "role": "neutral", "displayName": "Forest Ink", "canonical": "#2F4538", "tonalRamp": ["#0e1610", "#1c2c1f", "#2f4538", "#43574a", "#5c6b60", "#879788", "#b7c2ba", "#dee5e0"] },
+      "ink-soft": { "role": "neutral", "displayName": "Soft Ink", "canonical": "#43574a", "tonalRamp": ["#151d18", "#293b2f", "#43574a", "#5c6f61", "#7c8d7f", "#a2b0a3", "#c9d3ca", "#eaeeea"] },
+      "text-muted": { "role": "neutral", "displayName": "Muted Moss", "canonical": "#5c6b60", "tonalRamp": ["#1a201c", "#313b34", "#4a584e", "#5c6b60", "#7c8a80", "#a3aea6", "#cbd2cc", "#e9ede9"] },
+      "bg": { "role": "neutral", "displayName": "Paper Base", "canonical": "#FBFAF6", "tonalRamp": ["#242318", "#413f2c", "#5f5c42", "#87835f", "#b6b18a", "#dfdcc4", "#f2f0e4", "#fbfaf6"] },
+      "bg-alt": { "role": "neutral", "displayName": "Warm Paper", "canonical": "#F4F1E8", "tonalRamp": ["#232016", "#3e3928", "#5c5540", "#847a5c", "#b2a785", "#dad3b8", "#eeeada", "#f4f1e8"] },
+      "line": { "role": "neutral", "displayName": "Pale Line", "canonical": "#dfe4d8", "tonalRamp": ["#1c211c", "#333a32", "#4d564a", "#6c766a", "#8f998c", "#b7bfb2", "#dfe4d8", "#f2f4ef"] },
+      "surface": { "role": "neutral", "displayName": "Glass Surface", "canonical": "rgba(255,255,255,0.8)", "tonalRamp": ["rgba(255,255,255,0.1)", "rgba(255,255,255,0.2)", "rgba(255,255,255,0.35)", "rgba(255,255,255,0.5)", "rgba(255,255,255,0.65)", "rgba(255,255,255,0.8)", "rgba(255,255,255,0.9)", "rgba(255,255,255,1)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline, deck slide project titles. Tightest tracking in the system (-0.035em)." },
+      "headline": { "displayName": "Headline", "purpose": "Section headers on the home page and each project page's intro slide." },
+      "body": { "displayName": "Body", "purpose": "All prose — about-me copy, project summaries, bullet lists. Max readable measure ~65-75ch." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, section tags, project focus/detail labels. Always uppercase, widely tracked (+0.16em) — the sole reversal of the tightening rule." }
+    },
+    "shadows": [
+      { "name": "ambient-sm", "value": "0 2px 10px rgba(47,69,56,.06)", "purpose": "Resting elevation for small surfaces — fact cards, chips." },
+      { "name": "ambient", "value": "0 18px 50px -18px rgba(47,69,56,.28)", "purpose": "Default elevation for cards, buttons, the nav's bottom edge." },
+      { "name": "ambient-lg", "value": "0 40px 90px -30px rgba(47,69,56,.35)", "purpose": "Heaviest elevation — hero portrait, hover-lifted cards, deck slide media. Reserved for the single most prominent element on screen." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.22,.61,.36,1)", "purpose": "General-purpose easing for hover/color transitions." },
+      { "name": "ease-out", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "Entrance and reveal motion — decelerating, no overshoot." },
+      { "name": "spring", "value": "cubic-bezier(.34,1.26,.42,1)", "purpose": "Gentle-overshoot settle for section/slide entrances that follow a momentum gesture." },
+      { "name": "deck-spring", "value": "critically-damped spring, response ≈0.5s, damping 1.0 (JS-integrated, not CSS)", "purpose": "Deck section-to-section snapping. Animates from the live scroll position, is interruptible mid-flight, and carries velocity through a re-target — the system's core fluid interaction." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "560px" },
+      { "name": "deck-collapse", "value": "900px" },
+      { "name": "tablet", "value": "820px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid pill CTA — the system's highest-commitment action (e.g. 'Explore my work').",
+      "html": "<button class=\"ds-btn-primary\">Explore my work <span class=\"ds-arrow\">→</span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; font-size: .95rem; padding: .8rem 1.3rem; border-radius: 999px; border: 0; cursor: pointer; background: #2F4538; color: #F3ECDD; box-shadow: 0 18px 50px -18px rgba(47,69,56,.28); transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s cubic-bezier(.22,.61,.36,1); } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 40px 90px -30px rgba(47,69,56,.35); } .ds-btn-primary:active { transform: scale(.97); transition-duration: .09s; } .ds-arrow { transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-btn-primary:hover .ds-arrow { transform: translateX(4px); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Translucent secondary action, used alongside a primary button (e.g. 'Download PDF portfolio').",
+      "html": "<button class=\"ds-btn-ghost\">Download PDF portfolio</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; font-size: .95rem; padding: .8rem 1.3rem; border-radius: 999px; border: 1px solid #dfe4d8; cursor: pointer; background: #ffffffbb; color: #2F4538; transition: background .25s, box-shadow .25s cubic-bezier(.22,.61,.36,1), transform .12s cubic-bezier(.16,1,.3,1); } .ds-btn-ghost:hover { background: #fff; box-shadow: 0 2px 10px rgba(47,69,56,.06); } .ds-btn-ghost:active { transform: scale(.97); }"
+    },
+    {
+      "name": "Work Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Home-page navigation card linking to a project chapter (McLaren, NING Research, etc). Tints toward a per-card accent color on hover.",
+      "html": "<a class=\"ds-card\" href=\"#\" style=\"--ds-tint:#B8D4E3\"><div class=\"ds-card-icon\">🏎️</div><div class=\"ds-card-tag\">Automotive · Motorsport</div><h3>McLaren</h3><p>Industrial placement in high-performance automotive engineering.</p><span class=\"ds-card-go\">Open page <span class=\"ds-arrow\">→</span></span></a>",
+      "css": ".ds-card { position: relative; display: flex; flex-direction: column; gap: .8rem; overflow: hidden; padding: 1.6rem; border-radius: 20px; border: 1px solid #dfe4d8; background: rgba(255,255,255,0.8); backdrop-filter: blur(6px); min-height: 220px; text-decoration: none; color: inherit; transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s cubic-bezier(.22,.61,.36,1), border-color .3s; } .ds-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .45s cubic-bezier(.22,.61,.36,1); background: linear-gradient(160deg, var(--ds-tint, #A8C3A4) 0%, transparent 70%); } .ds-card:hover { transform: translateY(-8px); box-shadow: 0 40px 90px -30px rgba(47,69,56,.35); border-color: transparent; } .ds-card:hover::before { opacity: .35; } .ds-card:active { transform: translateY(-3px) scale(.99); transition-duration: .1s; } .ds-card-tag { position: relative; z-index: 1; font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #7FA07B; } .ds-card h3 { position: relative; z-index: 1; font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; margin: 0; } .ds-card p { position: relative; z-index: 1; color: #5c6b60; font-size: .95rem; margin: 0; } .ds-card-go { position: relative; z-index: 1; margin-top: auto; display: inline-flex; align-items: center; gap: .45rem; font-weight: 600; font-size: .92rem; color: #2F4538; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Small pill tag for skills and project focus labels.",
+      "html": "<span class=\"ds-chip\">CFD &amp; FEA</span>",
+      "css": ".ds-chip { display: inline-block; font-size: .82rem; font-weight: 500; padding: .4rem .8rem; border-radius: 999px; background: #fff; border: 1px solid #dfe4d8; color: #43574a; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky translucent glass nav with underline-on-active links and a mobile hamburger fallback.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\"><span class=\"ds-nav-mark\">JA</span> Joshua Alcobia Gomes</a><div class=\"ds-nav-links\"><a href=\"#\" aria-current=\"page\">Home</a><a href=\"#\">McLaren</a><a href=\"#\">NING Research</a></div></nav>",
+      "css": ".ds-nav { position: sticky; top: 0; z-index: 90; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 2rem; backdrop-filter: blur(24px) saturate(180%); background: rgba(251,250,246,.62); border-bottom: 1px solid rgba(47,69,56,.06); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 8px 24px -18px rgba(47,69,56,.5); } .ds-nav-brand { display: flex; align-items: center; gap: .6rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: -.01em; } .ds-nav-mark { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, #A8C3A4, #B8D4E3); color: #2F4538; font-weight: 700; } .ds-nav-links { display: flex; gap: .35rem; } .ds-nav-links a { position: relative; padding: .5rem .8rem; border-radius: 999px; font-size: .93rem; font-weight: 500; color: #5c6b60; text-decoration: none; transition: color .25s, background .25s, transform .12s cubic-bezier(.16,1,.3,1); } .ds-nav-links a:hover { color: #2F4538; } .ds-nav-links a:active { transform: scale(.93); } .ds-nav-links a[aria-current='page'] { color: #2F4538; background: #ffffff9c; }"
+    },
+    {
+      "name": "Deck Progress Rail",
+      "kind": "custom",
+      "refersTo": "deck-rail",
+      "description": "Vertical stack of uniform pill bars tracking scroll position through a project page's deck. Signature navigation component.",
+      "html": "<div class=\"ds-rail\"><button class=\"ds-rail-dot ds-active\"></button><button class=\"ds-rail-dot\"></button><button class=\"ds-rail-dot\"></button><button class=\"ds-rail-dot\"></button></div>",
+      "css": ".ds-rail { display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; margin-top: 1rem; } .ds-rail-dot { width: 4px; height: 15px; border-radius: 3px; background: #dfe4d8; opacity: .55; border: 0; padding: 0; cursor: pointer; transition: background .35s cubic-bezier(.22,.61,.36,1), opacity .35s; } .ds-rail-dot:hover { opacity: .9; } .ds-rail-dot:active { opacity: 1; transform: scaleX(1.4); } .ds-rail-dot.ds-active { opacity: 1; background: linear-gradient(180deg, #7FA07B, #8FB8CE); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Portfolio",
+    "overview": "The design gets out of the way of real engineering work. Every screen leads with content — a project, a CFD render, a bullet of measurable outcome — and the interface exists only to present it clearly and let it be scanned quickly. Nothing decorative is added that doesn't earn its place: no illustration, no stock texture, no filler copy. The one indulgence the system allows itself is a soft, natural pastel atmosphere (sage, sky, sand) and a small set of fluid, spring-physics interactions (instant press feedback, an interruptible pinned 'deck' that snaps between projects) — restraint in content, craft in motion. This system currently serves both a student-placement portfolio and, longer-term, the seed of a professional consulting brand. That dual audience is why the palette stays warm and human rather than corporate-neutral, while typography and layout stay precise and legible enough to read as professional evidence, not a hobby page.",
+    "keyCharacteristics": [
+      "Pastel, nature-derived palette (sage / sky / sand) against a warm off-white base, with deep forest-ink text for contrast and legibility.",
+      "Large, tightly-tracked geometric display type (Space Grotesk) paired with a calm, near-zero-tracked body face (Inter).",
+      "Pill-shaped interactive controls everywhere (buttons, chips, nav links) — soft, rounded, never sharp-cornered.",
+      "A pinned, one-project-per-viewport 'deck' for project pages, with a vertical progress rail and spring-physics section snapping.",
+      "Translucent 'glass' chrome (blurred, saturated backdrop) on the nav and floating surfaces; flat pastel gradients as ambient background, not photography.",
+      "Real content only — every claim traces to actual project work; unfinished projects are explicitly marked, never disguised as complete."
+    ],
+    "rules": [
+      { "name": "The One Ink Rule", "body": "All text-on-light color comes from Forest Ink, Soft Ink, or Muted Moss — three steps of the same hue, never a separate gray scale. This is what keeps the palette feeling like one warm material rather than pastel accents on a generic gray UI.", "section": "colors" },
+      { "name": "The Accent-as-Tint Rule", "body": "Sage, sky, and sand are never used as solid text-background pairs for body copy; they appear as gradients, ambient blobs, hover tints, and small pill-chip fills only. Ink-on-paper carries all reading contrast.", "section": "colors" },
+      { "name": "The Optical Tightening Rule", "body": "Letter-spacing is never one fixed value. It runs from -0.035em at display size down to -0.004em at body size, then reverses to +0.16em for all-caps labels. Every type role's tracking is chosen for its own size, never copy-pasted from another role.", "section": "typography" },
+      { "name": "The Glass-Not-Glossy Rule", "body": "Floating chrome (nav, translucent card surfaces) uses backdrop-filter blur+saturate over a semi-transparent background — never a flat opaque bar. It respects prefers-reduced-transparency by falling back to a solid background with the blur removed, never by leaving a broken half-state.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep all body/heading text on the Forest Ink → Soft Ink → Muted Moss scale; never introduce a separate gray.",
+      "Do give every interactive element instant :active press feedback (scale, not a delayed transition).",
+      "Do let project media keep its native aspect ratio, rounded corners, no cropping — the frame adapts to the photo, not the other way round.",
+      "Do mark unfinished projects/pages explicitly (dashed border, placeholder styling) rather than disguising them as complete, per the real-content-only product principle.",
+      "Do respect prefers-reduced-motion (drop the spring/deck-snap for a plain fade) and prefers-reduced-transparency (solid backgrounds, no blur) as first-class states, not afterthoughts."
+    ],
+    "donts": [
+      "Don't use a hard-edged drop shadow or a dark/heavy border anywhere — depth comes from soft ambient shadow and translucency only.",
+      "Don't crop a project photo or video into a fixed box; size the frame to the media.",
+      "Don't invent a white/grey schematic-sketch palette under this file's authority — that direction was described by Joshua as an aspiration, not adopted; it requires a deliberate redesign pass (new-work), not a quiet blend into the current tokens.",
+      "Don't add decorative illustration, stock photography, or filler copy — every element must earn its place per 'The Quiet Portfolio' north star.",
+      "Don't fabricate metrics, testimonials, or client claims — PRODUCT.md's real-content-only principle is binding on this visual system too."
+    ]
+  }
+}
