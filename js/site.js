@@ -43,9 +43,11 @@
       ? `<button class="media__arm prev" aria-label="Previous">‹</button><button class="media__arm next" aria-label="Next">›</button>` : "";
     const capsAttr = Array.isArray(captions) ? ` data-captions="${captions.map(esc).join("|")}"` : "";
     return `<div class="media" data-media="${items.map(esc).join("|")}"${capsAttr}>
-      <div class="media__stage">${mediaItemEl(items[0], captionFor(items, captions, 0))}</div>
+      <div class="media__frame">
+        <div class="media__stage">${mediaItemEl(items[0], captionFor(items, captions, 0))}</div>
+        ${arms}${dots}
+      </div>
       <div class="media__cap">${esc(captionFor(items, captions, 0))}</div>
-      ${arms}${dots}
     </div>`;
   }
 
@@ -166,8 +168,8 @@
         <div class="wrap titleblock">
           <div class="tb-row tb-row--lead">
             <div>
-              <h4>Let's build something.</h4>
-              <p class="muted" style="max-width:34ch">Open to opportunities in automotive and aerospace engineering.</p>
+              <h4>Let's build something together.</h4>
+              <p class="muted" style="max-width:34ch">Open to opportunities across automotive, aerospace, motorsport and robotics.</p>
               <a class="btn btn--primary" href="mailto:${esc(profile.email)}" style="margin-top:1rem">Get in touch <span class="arrow">→</span></a>
             </div>
             <div class="footer__cols">
@@ -254,8 +256,8 @@
     setDots(0);
     if (deckMode()) document.documentElement.classList.add("snap-mode");
 
-    // ---- Spring integrator (damping 1.0, response ~0.28s) ----
-    const RESPONSE = 0.28, DAMP = 1.0;
+    // ---- Spring integrator (damping 1.0, response ~0.08s) ----
+    const RESPONSE = 0.08, DAMP = 1.0;
     const omega = 2 * Math.PI / RESPONSE, K = omega * omega, C = 2 * DAMP * omega;
     let target = window.scrollY, y = window.scrollY, vel = 0, running = false, last = 0;
 
@@ -298,7 +300,7 @@
       const down = e.deltaY > 0;
       if (down && index === slides.length - 1 && !running) return;   // let native scroll reach the footer
       const cur = slides[index], r = cur.getBoundingClientRect();
-      const tall = cur.offsetHeight > window.innerHeight + 4;
+      const tall = cur.offsetHeight > window.innerHeight + 24;
       if (tall && !running) {                    // let a tall section reveal itself before snapping
         if (down && Math.ceil(r.bottom) > window.innerHeight + 1) return;
         if (!down && Math.floor(r.top) < NAV_H - 1) return;
@@ -306,7 +308,7 @@
       if (Math.abs(e.deltaY) < 4) return;
       e.preventDefault();
       const now = performance.now();
-      if (now - lastStep < 130) return;          // throttle — but never a hard lock
+      if (now - lastStep < 90) return;           // throttle — but never a hard lock
       lastStep = now;
       goToIndex((running ? nearestIndex() : index) + (down ? 1 : -1));
     }, { passive: false });

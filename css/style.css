@@ -314,15 +314,17 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
 .slide__media:has(.media) { aspect-ratio: auto; background: none; border: 0; box-shadow: none;
   padding: 0; overflow: visible; display: flex; align-items: center; justify-content: center; }
 
-/* Media carousel (images + videos) inside a slide */
-.media { position: relative; display: inline-flex; max-width: 100%; }
+/* Media carousel (images + videos) inside a slide.
+   Caption sits *below* the frame, never over it — an overlay label hides part
+   of the very render it is describing. */
+.media { position: relative; display: inline-flex; flex-direction: column; max-width: 100%; }
+.media__frame { position: relative; display: flex; }
 .media__stage { display: flex; }
 .media__stage img, .media__stage video { display: block; width: auto; height: auto;
-  max-width: 100%; max-height: 62vh; object-fit: contain; border-radius: var(--radius);
+  max-width: 100%; max-height: 56vh; object-fit: contain; border-radius: var(--radius);
   box-shadow: var(--shadow-lg); background: var(--paper-alt); border: 1px solid var(--line); }
-.media__cap { position: absolute; top: .55rem; left: .55rem; z-index: 3; font-family: var(--font-mono);
-  font-size: .7rem; font-weight: 600; color: var(--ink); background: var(--surface); border: 1px solid var(--line);
-  padding: .2rem .5rem; border-radius: var(--radius-sm); max-width: 70%; }
+.media__cap { margin-top: .6rem; font-family: var(--font-mono); font-size: .72rem; font-weight: 600;
+  color: var(--text-muted); text-align: left; }
 .media__arm { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px;
   border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--surface); cursor: pointer;
   font-size: 1.1rem; line-height: 1; color: var(--ink); z-index: 3; display: grid; place-items: center; }
@@ -339,7 +341,15 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
 .slide__title .sub { font-family: var(--font-mono); font-weight: 600; line-height: 1.05;
   font-size: .95rem; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); margin-top: .5rem; }
 
-.slide__detail { grid-area: detail; align-self: center; justify-self: start; max-width: 300px; }
+/* The detail column is the tallest thing on a slide. Cap it to the viewport and
+   let it scroll inside its own box, so a long overview can never push the slide
+   past one screen and break the one-project-per-viewport deck. */
+.slide__detail { grid-area: detail; align-self: center; justify-self: start; max-width: 300px;
+  max-height: calc(100vh - 148px); overflow-y: auto; overscroll-behavior: contain;
+  scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; padding-right: .4rem; }
+.slide__detail::-webkit-scrollbar { width: 4px; }
+.slide__detail::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 2px; }
+.slide__detail::-webkit-scrollbar-track { background: transparent; }
 .d-role { font-family: var(--font-mono); font-weight: 600; font-size: .82rem; color: var(--text-muted); }
 .d-index { color: var(--accent); font-family: var(--font-mono); font-size: .8rem; margin: .3rem 0 1.1rem; letter-spacing: .05em; }
 .d-ctx { font-weight: 600; color: var(--ink); font-size: .92rem; }
@@ -370,7 +380,6 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
 /* Placeholder note styling (remove once real content is in) */
 .placeholder { border: 1px dashed var(--line-strong); background: var(--paper-alt); border-radius: var(--radius-sm);
   padding: .5rem .8rem; font-size: .82rem; font-family: var(--font-mono); color: var(--ink-soft); }
-.placeholder::before { content: "✎ "; color: var(--accent); }
 
 /* =========================================================================
    Footer — a real title block, in the tradition of an engineering drawing sheet

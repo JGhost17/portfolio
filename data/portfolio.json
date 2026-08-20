@@ -12,25 +12,26 @@
   },
   "about": {
     "paragraphs": [
-      "I'm a mechanical engineer drawn to the fastest, most demanding corners of the field — motorsport and flight. I'm in my second year of an MEng in Mechanical Engineering at UCL (predicted First, 83%), and I'll be joining McLaren on an industrial placement for the 2026–27 academic year.",
-      "My work spans design, simulation, testing and the reality of making things perform: CFD in ANSYS Fluent, structural and generative design in Fusion 360 and SolidWorks, and machine-learning and AI tooling built during my scientific-modelling internship at Novartis. I lead teams as happily as I run the numbers — from an 8-engineer national rocketry squad to award-winning design challenges.",
-      "Away from engineering I compete nationally in track and field, which is where a lot of the discipline behind this work comes from."
+      "I'm a mechanical engineer who has always been fascinated by every incremental gain, whatever I'm working on. The highest-stakes work demands the most attention to detail, and that's exactly where I excel. I finished my first two years at UCL with 83% and 82% (First Class Honours predicted), and I'm now on industrial placement at McLaren for 2026–27, before returning to UCL for third year.",
+      "I've worked across consulting, pharmaceutical and automotive, picking up whatever software the job demands. I enjoy leading teams as much as learning from the people around me, and there's always more to pick up.",
+      "Away from engineering I compete nationally in track and field, which is where a lot of the discipline behind this work comes from. I also enjoy football, reading, cooking and hiking."
     ],
     "chips": [
-      "Fusion 360 · SolidWorks · Onshape",
+      "Fusion 360 · SolidWorks · Onshape · AutoCAD · ANSYS SpaceClaim",
       "ANSYS Fluent & Mechanical",
-      "COMSOL · OpenRocket · QBlade",
+      "COMSOL · FloEFD · OpenRocket · QBlade",
       "Python · MATLAB · C++",
       "CFD & FEA",
-      "Machine Learning · LLMs",
+      "Machine Learning · LLMs · Agentic Workflows",
       "3D printing · laser cutting"
     ],
     "facts": [
       { "k": "Discipline", "v": "MEng Mechanical Engineering" },
-      { "k": "University", "v": "UCL · 2nd year (predicted 1st, 83%)" },
-      { "k": "Next", "v": "McLaren — Industrial Placement 2026–27" },
-      { "k": "Focus", "v": "Automotive & Aerospace" },
+      { "k": "University", "v": "UCL · 3rd year (83% & 82%, First Class Honours predicted)" },
+      { "k": "Current", "v": "McLaren Automotive, Industrial Placement (2026–27)" },
+      { "k": "Focus", "v": "Aerospace · Automotive · Motorsport · Robotics" },
       { "k": "Based in", "v": "London, UK" },
+      { "k": "Previously", "v": "Singapore · Basel" },
       { "k": "Email", "v": "jg7alcobia@gmail.com" }
     ]
   },
@@ -42,65 +43,81 @@
     { "slug": "side-projects", "label": "Side Projects" }
   ],
   "cards": [
-    { "slug": "mclaren", "icon": "🏎️", "tag": "Automotive · Motorsport", "title": "McLaren", "blurb": "Industrial placement in high-performance automotive engineering (2026–27).", "tint": "sky" },
-    { "slug": "ning", "icon": "🌀", "tag": "R&D · CFD / Simulation", "title": "NING Research", "blurb": "Applied CFD and engineering simulation across real client projects.", "tint": "sage" },
-    { "slug": "novartis", "icon": "🧪", "tag": "R&D · Pharma / ML", "title": "Novartis", "blurb": "Scientific-modelling internship: machine learning, simulation and AI tooling.", "tint": "sand" },
-    { "slug": "ucl", "icon": "🎓", "tag": "Education · UCL", "title": "UCL", "blurb": "MEng Mechanical Engineering — competition teams and academic projects.", "tint": "sky" },
-    { "slug": "side-projects", "icon": "🚀", "tag": "Personal builds", "title": "Side Projects", "blurb": "The things I build for the love of it — automotive, aerospace and beyond.", "tint": "sage" }
+    { "slug": "mclaren", "tag": "Automotive · Motorsport", "title": "McLaren", "blurb": "Industrial placement in automotive engineering.", "tint": "sky" },
+    { "slug": "ning", "tag": "CAD / CFD / Simulation", "title": "NING Research", "blurb": "Applied CFD and engineering simulation across real client projects.", "tint": "sage" },
+    { "slug": "novartis", "tag": "R&D · Pharma / ML", "title": "Novartis", "blurb": "Scientific-modelling internship: machine learning, simulation and AI tooling.", "tint": "sand" },
+    { "slug": "ucl", "tag": "Education", "title": "UCL", "blurb": "MEng Mechanical Engineering, including competition teams and academic projects.", "tint": "sky" },
+    { "slug": "side-projects", "tag": "Personal builds", "title": "Side Projects", "blurb": "The things I build for the love of it.", "tint": "sage" }
   ],
   "pages": {
     "mclaren": {
       "tag": "01 · Automotive / Motorsport",
       "title": "McLaren",
-      "subtitle": "High-performance automotive engineering — my industrial placement year.",
+      "subtitle": "My industrial placement year in high-performance automotive engineering.",
       "meta": [
         { "k": "Role", "v": "Industrial Placement" },
         { "k": "Team", "v": "TBC" },
         { "k": "Period", "v": "2026–27 academic year" },
         { "k": "Domain", "v": "Automotive · Motorsport" }
       ],
-      "overview": "I'll be joining McLaren for my industrial placement across the 2026–27 academic year — a full year embedded in one of the sharpest engineering environments in the world. This page will grow into a record of the projects I work on there.",
+      "overview": "I'm working at McLaren for my industrial placement across the 2026–27 academic year, in a department that's still to be confirmed. It's a full year embedded in one of the sharpest engineering environments in the world, and this page will grow into a record of the projects I work on there.",
       "approach": [
-        "Bring rigorous simulation and design fundamentals from UCL and NING Research.",
-        "Learn the pace and precision of elite motorsport engineering.",
-        "Document each project here as the placement progresses."
+        "Apply the design, simulation and iterative-process fundamentals built at UCL and NING Research, and keep expanding them.",
+        "Learn the specific skills high-performance automotive and motorsport demand, and start contributing.",
+        "Continue developing soft skills."
       ],
       "projects": [
-        { "title": "Placement project 1", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once my placement begins in 2026." },
-        { "title": "Placement project 2", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once my placement begins in 2026." },
-        { "title": "Placement project 3", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once my placement begins in 2026." }
+        { "title": "Placement project 1", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once I can share them." },
+        { "title": "Placement project 2", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once I can share them." },
+        { "title": "Placement project 3", "tag": "Coming soon", "placeholder": true, "summary": "Project details will appear here once I can share them." }
       ]
     },
 
     "ning": {
       "tag": "02 · Research & Development",
       "title": "NING Research",
-      "subtitle": "Applied CFD and engineering simulation — turning real client problems into validated models.",
+      "subtitle": "Applied CFD and engineering simulation, turning real client problems into validated models.",
       "meta": [
-        { "k": "Role", "v": "Simulation / CFD Engineer", "placeholder": true },
+        { "k": "Role", "v": "Simulation / CFD Engineer" },
         { "k": "Field", "v": "CFD & Engineering Simulation" },
-        { "k": "Period", "v": "Start – present", "placeholder": true },
         { "k": "Domain", "v": "R&D · Consulting" }
       ],
-      "overview": "At NING Research I work on computational fluid dynamics and engineering-simulation projects for a range of clients — from ventilation and mixing to structural and environmental analysis.",
-      "overviewPlaceholder": true,
+      "overview": "At NING Research I worked on computational fluid dynamics and engineering-simulation projects for a range of clients, from multinational corporations to Olympic medallists.",
       "approach": [
         "Define the physical problem and success criteria with the client.",
         "Build and mesh the CFD / simulation model (OpenFOAM, ANSYS).",
-        "Validate against data, then translate results into clear recommendations."
+        "Validate against data, then translate results into clear recommendations and reports."
       ],
-      "approachPlaceholder": true,
       "projects": [
-        { "title": "Coughing Dispersal Simulation", "tag": "CFD · Ventilation", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: healthcare / built-environment ventilation.",
+        { "title": "Coughing Dispersal Simulation", "tag": "CFD · Ventilation", "summary": "A Discrete Phase Model study of how cough particles disperse through a room, tested against government compliance standards. Industry: healthcare / built-environment ventilation.",
+          "bullets": [
+            "Varied particle size and the cough velocity profile across cases to cover a realistic range of conditions.",
+            "Wrote a user-defined function (UDF) to track particles through the recirculatory fans.",
+            "Adjusted boundary conditions per case to test compliance under different ventilation setups."
+          ],
           "media": ["assets/img/Space_Logic/SpaceLogic_Iso.png", "assets/img/Space_Logic/Spacelogic_Coughing.png", "assets/video/Spacelogic_Case1.mp4"],
           "captions": ["Isometric view", "Coughing dispersal plot", "Simulation animation"] },
-        { "title": "OpenFOAM Mixing Tank", "tag": "CFD · Mixing", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: industrial process engineering.",
+        { "title": "OpenFOAM Mixing Tank", "tag": "CFD · Mixing", "summary": "An end-to-end mixing-tank study, from CAD through simulation to a machine-learning model predicting mixing extent. Industry: industrial process engineering.",
+          "bullets": [
+            "Built impeller mixing zones from the CAD model and meshed in OpenFOAM.",
+            "Simulated using interFoam with AMI sliding interfaces for the rotating impeller.",
+            "Post-processed in ParaView, then fed the results into a machine-learning algorithm to predict mixing extent."
+          ],
           "media": ["assets/img/OpenFoam_Mixing/Mesh_Side_View.jpg", "assets/img/OpenFoam_Mixing/Mesh_Top_View.jpg"],
           "captions": ["Mesh, side view", "Mesh, top view"] },
-        { "title": "District-Scale Simulation Study", "tag": "Simulation", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: urban / built-environment simulation, Singapore.",
+        { "title": "Hotel Rooftop Chiller Ventilation Study", "tag": "CFD · Ventilation", "summary": "A rooftop ventilation study for a hotel adding chiller units so it could expand its room count. Industry: hospitality / built environment, Singapore.",
+          "bullets": [
+            "Tested and orientated the cooling units to eliminate recirculation of exhaust air.",
+            "Determined the efficiency of each layout to confirm the chillers stayed within their performance envelope.",
+            "Verified the final arrangement met the client's expectations before installation."
+          ],
           "media": ["assets/img/Topayou/Ansys_Zoomed_Out.png", "assets/img/Topayou/Ansys_Zoomed_In.png", "assets/img/Topayou/FlowEFD_Out.png", "assets/img/Topayou/FloEFD_In.png"],
           "captions": ["ANSYS, zoomed out", "ANSYS, zoomed in", "FloEFD, zoomed out", "FloEFD, zoomed in"] },
-        { "title": "Mixed-Use Development Ventilation Study", "tag": "CFD · Built environment", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: real estate / built-environment ventilation, Singapore.",
+        { "title": "Sports Hall Thermal Comfort Study", "tag": "CFD · Built environment", "summary": "A thermal-comfort comparison for a large sports hall in Toa Payoh, testing two air-delivery methods across two solvers. Industry: sports / built-environment ventilation, Singapore.",
+          "bullets": [
+            "Compared thermal comfort from small perforated tubing against a porous membrane.",
+            "Ran the same cases in both FloEFD and ANSYS Fluent to compare solver results."
+          ],
           "media": ["assets/img/Kim_Yam/80_Kim_Yam_Iso.jpg", "assets/img/Kim_Yam/Velocity_Streamlines_Iso_View.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Side_Vel.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Top_Viewjpg.jpg"],
           "captions": ["Isometric view", "Velocity streamlines, isometric", "Side velocity field", "Top view"] },
         { "title": "Roof Rainfall Project", "tag": "CFD · Multiphase", "summary": "Multiphase CFD study of rainfall on a roof, chaining three solvers to follow water from airborne droplet to standing pool.",
@@ -108,20 +125,39 @@
             "Coupled Discrete Phase Model → Eulerian Wall Film → Volume of Fluid (DPM → EWF → VOF), so falling droplets, the thin film they form on the surface, and bulk pooling water were each handled by the appropriate physics model.",
             "Built as a feasibility test to prove the handoff between the three models could be made to work end-to-end."
           ],
-          "media": ["assets/video/Rainfall Project.mp4", "assets/video/Rainfall Project_Particles.mp4", "assets/video/EWF-Filling-Video.mp4", "assets/video/VOF-Filling-Video.mp4"],
-          "captions": ["DPM: falling droplets", "DPM: particle tracking", "EWF: wall film filling", "VOF: standing pool filling"] },
-        { "title": "Industrial Mixing Tank — Thermal Study", "tag": "CFD · Mixing", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: industrial process engineering.",
+          "media": ["assets/video/VOF-Filling-Video.mp4", "assets/video/EWF-Filling-Video.mp4", "assets/video/Rainfall Project_Particles.mp4", "assets/video/Rainfall Project.mp4"],
+          "captions": ["VOF: standing pool filling", "EWF: wall film filling", "DPM: particle tracking", "DPM: falling droplets"] },
+        { "title": "Reservoir Mixer Thermal Stratification Study", "tag": "CFD · Mixing", "summary": "A mixer designed to prevent thermal stratification in Singapore's water-supply tanks, evaluated across flow and mixing combinations. Industry: water utilities, Singapore.",
+          "bullets": [
+            "Designed an initial mixer model for installation in the storage tanks.",
+            "Compared three configurations: no flow with mixing, flow without mixing, and flow with mixing.",
+            "Results showed a mixer was not strictly required, though one was still recommended on the basis of supplementary research."
+          ],
           "media": ["assets/img/Mixing_Tank_Thermal/Thermal_ISO.png", "assets/img/Mixing_Tank_Thermal/Thermal_Front.png", "assets/img/Mixing_Tank_Thermal/Velocity_Front.png"],
           "captions": ["Thermal field, isometric", "Thermal field, front", "Velocity field, front"] },
-        { "title": "Site Safety Monitoring Simulation", "tag": "Simulation · Safety", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: construction safety technology.",
+        { "title": "Safety Monitoring Unit Thermal Study", "tag": "CFD · Thermal", "summary": "Internal-component CFD in FloEFD, checking whether the existing thermal management could regulate component temperatures. Industry: construction safety technology.",
+          "bullets": [
+            "Modelled the internal components and their heat loads in FloEFD.",
+            "Assessed whether the current cooling approach held components within their operating temperature range."
+          ],
           "media": ["assets/img/Safe_Sight/safesightisoview.jpg"],
           "captions": ["Isometric view"] },
-        { "title": "KiteFoil Aerodynamics", "tag": "CFD · Sports aero", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: sports equipment / marine aerodynamics.",
+        { "title": "KiteFoil Aerodynamics", "tag": "CFD · Sports aero", "summary": "Aerodynamic modelling of a kite foil, testing surface geometries and rider positions to reduce drag. Industry: elite sports equipment.",
+          "bullets": [
+            "Modelled the foil and investigated surface geometries to maximise aerodynamic efficiency.",
+            "Reviewed research literature on drag-reduction techniques, then ran CFD studies on each.",
+            "Simulated the athlete's orientation through the race to assess its aerodynamic effect."
+          ],
           "media": ["assets/img/SportSG_FOil/FoilISO.png", "assets/img/SportSG_FOil/Foil_Front.png", "assets/img/SportSG_FOil/Foil_Side.png"],
           "captions": ["Isometric view", "Front view", "Side view"] },
-        { "title": "Pad Production Line Simulation", "tag": "Process simulation", "placeholder": true, "summary": "Full write-up in progress — imagery above. Industry: consumer healthcare manufacturing.",
+        { "title": "Sanitary Pad Glue Application Thermal Study", "tag": "Thermal · Process simulation", "summary": "A thermal study of glue application on a sanitary pad production line, run alongside the FEA team to qualify cheaper materials. Industry: consumer healthcare manufacturing.",
+          "bullets": [
+            "Tested a wide range of process variables to keep production running with alternative materials.",
+            "Worked in conjunction with the FEA team so thermal and structural results lined up.",
+            "Supported a material change aimed at reducing cost."
+          ],
           "media": ["assets/video/Kenvue Positioning Glue Initial Animation.mp4"],
-          "captions": ["Positioning glue — simulation animation"] }
+          "captions": ["Positioning glue, simulation animation"] }
       ],
       "moreComing": "A few more NING Research projects are still being written up."
     },
