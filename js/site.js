@@ -254,8 +254,8 @@
     setDots(0);
     if (deckMode()) document.documentElement.classList.add("snap-mode");
 
-    // ---- Spring integrator (damping 1.0, response ~0.5s) ----
-    const RESPONSE = 0.5, DAMP = 1.0;
+    // ---- Spring integrator (damping 1.0, response ~0.28s) ----
+    const RESPONSE = 0.28, DAMP = 1.0;
     const omega = 2 * Math.PI / RESPONSE, K = omega * omega, C = 2 * DAMP * omega;
     let target = window.scrollY, y = window.scrollY, vel = 0, running = false, last = 0;
 
@@ -306,7 +306,7 @@
       if (Math.abs(e.deltaY) < 4) return;
       e.preventDefault();
       const now = performance.now();
-      if (now - lastStep < 190) return;          // throttle — but never a hard lock
+      if (now - lastStep < 130) return;          // throttle — but never a hard lock
       lastStep = now;
       goToIndex((running ? nearestIndex() : index) + (down ? 1 : -1));
     }, { passive: false });
