@@ -158,7 +158,7 @@ ul { padding-left: 1.1em; }
 /* Instant press feedback — fires on pointer-down, settles fast */
 .btn:active { transform: scale(.97); transition-duration: .09s; }
 .card:active { transform: translateY(-2px) scale(.99); transition-duration: .1s; }
-.media__arm:active { transform: translateY(-50%) scale(.88); }
+.media__arm:active { transform: scale(.82); }
 .media__dots button:active { transform: scale(.8); }
 .deck__dots button:active { background: var(--accent); }
 .card__go, .card__go .arrow { transition: transform .3s var(--ease-out); }
@@ -319,26 +319,32 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
   padding: 0; overflow: visible; display: flex; align-items: center; justify-content: center; }
 
 /* Media carousel (images + videos) inside a slide.
-   Caption sits *below* the frame, never over it — an overlay label hides part
-   of the very render it is describing. */
-.media { position: relative; display: inline-flex; flex-direction: column; max-width: 100%; }
-.media__frame { position: relative; display: flex; }
-.media__stage { display: flex; }
+   Nothing overlays the render: the caption sits below the frame and the arrows
+   sit outside it, so no control ever covers the image it belongs to. */
+.media { position: relative; display: inline-flex; flex-direction: column; max-width: 100%;
+  --arm-w: 30px; --arm-gap: .55rem; }
+.media__row { display: flex; align-items: center; gap: var(--arm-gap); max-width: 100%; }
+.media__frame { position: relative; display: flex; min-width: 0; }
+.media__stage { display: flex; min-width: 0; }
 /* Capped against the slide's real available height (100vh - 148px), less room
    for the caption beneath, so media can never be what overflows the viewport. */
 .media__stage img, .media__stage video { display: block; width: auto; height: auto;
   max-width: 100%; max-height: min(56vh, calc(100vh - 200px)); object-fit: contain;
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg); background: var(--paper-alt); border: 1px solid var(--line); }
-.media__cap { margin-top: .6rem; font-family: var(--font-mono); font-size: .72rem; font-weight: 600;
+/* Caption + dots share one row beneath the frame, inset by the arrow gutter so
+   they line up with the image edges rather than the wider control row. */
+.media__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  margin-top: .6rem; }
+.media:has(.media__arm) .media__bar { padding: 0 calc(var(--arm-w) + var(--arm-gap)); }
+.media__cap { font-family: var(--font-mono); font-size: .72rem; font-weight: 600;
   color: var(--text-muted); text-align: left; }
-.media__arm { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px;
-  border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--surface); cursor: pointer;
-  font-size: 1.1rem; line-height: 1; color: var(--ink); z-index: 3; display: grid; place-items: center; }
-.media__arm:hover { border-color: var(--accent); color: var(--accent); }
-.media__arm.prev { left: .5rem; } .media__arm.next { right: .5rem; }
-.media__dots { position: absolute; bottom: .55rem; left: 50%; transform: translateX(-50%);
-  display: flex; gap: .4rem; z-index: 3; }
+.media__arm { flex: 0 0 auto; width: var(--arm-w); height: var(--arm-w); border: 0; padding: 0;
+  background: none; cursor: pointer; color: var(--text-muted); display: grid; place-items: center;
+  transition: color .2s var(--ease), transform .14s var(--ease-out); }
+.media__arm svg { width: 17px; height: 17px; }
+.media__arm:hover { color: var(--accent); }
+.media__dots { display: flex; gap: .4rem; flex: 0 0 auto; }
 .media__dots button { width: 14px; height: 2px; border: 0; padding: 0; cursor: pointer;
   background: var(--line-strong); transition: background .25s; }
 .media__dots button.active { background: var(--accent); }

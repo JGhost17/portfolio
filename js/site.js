@@ -34,20 +34,35 @@
   function captionFor(items, captions, i) {
     return (Array.isArray(captions) && captions[i]) ? captions[i] : cleanName(items[i]);
   }
+  // Drawn chevrons, not "‹"/"›" glyphs — one consistent stroke weight with
+  // round caps and joins, so the tips read as filleted rather than cut off.
+  const chevron = (d) =>
+    `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">` +
+    `<path d="${d}" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
   function mediaPanel(items, captions) {
     if (!Array.isArray(items) || !items.length) return null;
     const multi = items.length > 1;
+    // Controls sit outside the frame: nothing overlays the render itself.
+    const prev = multi
+      ? `<button class="media__arm prev" aria-label="Previous">${chevron("M15 5 8 12 15 19")}</button>` : "";
+    const next = multi
+      ? `<button class="media__arm next" aria-label="Next">${chevron("M9 5 16 12 9 19")}</button>` : "";
     const dots = multi
       ? `<div class="media__dots">${items.map((_, i) => `<button class="mdot" data-i="${i}" aria-label="Media ${i + 1}"></button>`).join("")}</div>` : "";
-    const arms = multi
-      ? `<button class="media__arm prev" aria-label="Previous">‹</button><button class="media__arm next" aria-label="Next">›</button>` : "";
     const capsAttr = Array.isArray(captions) ? ` data-captions="${captions.map(esc).join("|")}"` : "";
     return `<div class="media" data-media="${items.map(esc).join("|")}"${capsAttr}>
-      <div class="media__frame">
-        <div class="media__stage">${mediaItemEl(items[0], captionFor(items, captions, 0))}</div>
-        ${arms}${dots}
+      <div class="media__row">
+        ${prev}
+        <div class="media__frame">
+          <div class="media__stage">${mediaItemEl(items[0], captionFor(items, captions, 0))}</div>
+        </div>
+        ${next}
       </div>
-      <div class="media__cap">${esc(captionFor(items, captions, 0))}</div>
+      <div class="media__bar">
+        <div class="media__cap">${esc(captionFor(items, captions, 0))}</div>
+        ${dots}
+      </div>
     </div>`;
   }
 
