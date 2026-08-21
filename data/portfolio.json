@@ -167,31 +167,31 @@
     "novartis": {
       "tag": "03 · Pharma / Machine Learning",
       "title": "Novartis",
-      "subtitle": "Scientific Modelling Intern — machine learning, simulation and AI tooling in pharmaceutical manufacturing.",
+      "subtitle": "Scientific Modelling Intern: machine learning, simulation and AI tooling in pharmaceutical manufacturing.",
       "meta": [
         { "k": "Role", "v": "Scientific Modelling Intern" },
         { "k": "Period", "v": "Aug – Sept 2025" },
         { "k": "Location", "v": "Basel, Switzerland" },
         { "k": "Domain", "v": "R&D · Pharma / Machine Learning" }
       ],
-      "overview": "Over a summer internship in Basel I built machine-learning models, simulations and AI tools that removed manual work and cut costs across pharmaceutical R&D — spanning powder characterisation, process analytics and LLM-based automation.",
+      "overview": "Over a summer internship in Basel, I built machine-learning models, simulations and AI tools spanning powder characterisation, process analytics and LLM-based automation, removing manual work and cutting costs across pharmaceutical R&D.",
       "approach": [
-        "Turn messy sensor and process data into clean, usable models.",
-        "Automate repetitive analysis with Python, dashboards and LLM workflows.",
-        "Validate against real batches and quantify the time and cost saved."
+        "Identify the key inefficiency behind each problem.",
+        "Sort through the data and automate repetitive analysis with Python, dashboards and LLM workflows.",
+        "Validate the solution against real data and real users before rolling it out."
       ],
       "projects": [
         { "title": "ML Powder Flow Classification", "tag": "Machine Learning", "summary": "Machine-learning models to predict powder flow characteristics from experimental data.", "bullets": [
           "Used LazyClassifier for rapid model selection, then Grid Search, Lasso regularisation and Bayesian optimisation for hyperparameter tuning.",
           "Saved CHF 40,000 per batch of active pharmaceutical ingredients by predicting behaviour ahead of manufacture." ] },
-        { "title": "MCP Servers for Internal AI Tooling", "tag": "AI Infrastructure", "placeholder": true, "summary": "Full write-up in progress." },
+        { "title": "MCP Servers for Internal AI Tooling", "tag": "AI Infrastructure", "summary": "Investigated linking open-source LLMs to MCP servers and reported back on how the team could put them to work internally." },
         { "title": "Streamlit Analytics Dashboards", "tag": "Data / Python", "summary": "Interactive Streamlit applications that eliminated manual data searching for the department.", "bullets": [
           "Built dropdown-driven applications for dwell-time analysis and screw customisation.",
           "Developed Python programs for Loss-on-Drying calculations from sensor data, solving mass-balance equations for moisture content and drying efficiency." ] },
         { "title": "AI Project Summariser (LLMs + Agentic Workflows)", "tag": "LLMs · Agents", "summary": "An AI summariser that gathers data from internal and external databases automatically.", "bullets": [
           "Used automated workflows and LLMs to compile project context on demand.",
           "Reduced research time from ~50 minutes to ~15, saving weeks of cumulative effort." ] },
-        { "title": "Pill CAD Design for FEA / COMSOL", "tag": "CAD · Simulation", "summary": "Tablet geometry modelled for high-performance-compute simulation.", "bullets": [
+        { "title": "Pill CAD Design for FEA / COMSOL", "tag": "CAD · Simulation", "summary": "Tablet geometry modelled for high-performance computing (HPC) simulation.", "bullets": [
           "Designed tablets in SolidWorks from technical drawings for COMSOL HPC simulation.",
           "Saved thousands per batch through predictive modelling." ] }
       ]
@@ -209,18 +209,21 @@
       ],
       "overview": "I'm in my third year of an MEng in Mechanical Engineering at UCL, First Class Honours predicted (83% & 82%). Alongside the degree, I throw myself into engineering teams and competitions (rocketry, motorsport, design challenges and more) where the theory meets real hardware.",
       "approach": [
-        "Apply core mechanical engineering: thermofluids, solid mechanics, dynamics, materials.",
-        "Specialise toward automotive and aerospace through team projects.",
-        "Lead and deliver — from budgets and Gantt charts to manufacture and test."
+        "Apply core mechanical engineering: thermofluids, solid mechanics, dynamics, materials, always approaching problems from first principles.",
+        "Develop the soft and hard skills to work comfortably across engineering disciplines, and specialise toward automotive and aerospace through team projects.",
+        "Collaborate toward a common goal, focusing on the engineering deliverables: budgets, Gantt charts, manufacture and test."
       ],
       "projects": [
-        { "title": "UCL Racing — Rocket", "tag": "Aerospace · Team Lead", "summary": "National Rocketry Championship team lead, aerostructures & simulations engineer.", "bullets": [
+        { "title": "UCL Racing Rocketry Team", "tag": "Aerospace · Team Lead", "summary": "National Rocketry Championship team lead, aerostructures & simulations engineer.", "bullets": [
           "Led an 8-engineer team with a £1,000 budget to 8th of 50 at the National Rocketry Championship.",
           "Validated Computational Fluid Dynamics (CFD) results from ANSYS Fluent against drag-coefficient data to 97% accuracy.",
           "Designed the aerostructure in Fusion 360, increasing apogee by 203 m.",
           "Ran the project in Jira with Gantt charts, risk assessments and sponsorship outreach." ] },
-        { "title": "Formula Student", "tag": "Automotive · Motorsport", "placeholder": true, "summary": "Full write-up in progress." },
-        { "title": "IMechE Design Challenge", "tag": "Design & Manufacture", "summary": "Design & manufacturing engineer — runner-up, Greater London Regional Final.", "bullets": [
+        { "title": "Formula Student", "tag": "Automotive · Motorsport", "summary": "Suspension and powertrain-mounting design for the team's Formula Student EV.", "bullets": [
+          "Restructured the rear suspension within budget, cutting manufacturing cost while keeping packaging space clear for the new EV system.",
+          "Designed a motor mount for the EMRAX motor, simulating both cooling performance and structural stability."
+        ] },
+        { "title": "IMechE Design Challenge", "tag": "Design & Manufacture", "summary": "Design & manufacturing engineer, runner-up at the Greater London Regional Final.", "bullets": [
           "Secured National Final qualification as one of only two teams to achieve perfect accuracy.",
           "Won both the Design Award and the Challenge Competition.",
           "Used Fusion 360 Generative Design to cut mass by 115.87 g (60%) at a safety factor of 2.",
@@ -232,44 +235,41 @@
       ],
       "moreComing": "More UCL coursework and projects being written up.",
       "attachments": {
-        "note": "Drop presentation PowerPoints and coursework PDFs into assets/docs/ and list them here.",
-        "items": [
-          { "label": "Presentation / coursework 1", "file": "assets/docs/example-1.pdf", "placeholder": true },
-          { "label": "Presentation / coursework 2", "file": "assets/docs/example-2.pdf", "placeholder": true }
-        ]
+        "note": "Presentation and coursework uploads are coming soon. Get in touch if you'd like to see the work sooner.",
+        "items": []
       }
     },
 
     "side-projects": {
       "tag": "05 · Personal builds",
       "title": "Side Projects",
-      "subtitle": "The things I build for the love of it — research, robotics and everything between.",
+      "subtitle": "The things I build for the love of it: research, robotics and everything between.",
       "meta": [
         { "k": "Themes", "v": "Aerospace · Robotics · Research" },
         { "k": "Tools", "v": "CAD · Arduino · C++ · 3D print" },
         { "k": "Status", "v": "Ongoing" }
       ],
-      "overview": "A selection of personal and academic projects I've taken end-to-end — from theoretical research papers to fully built, programmed hardware.",
+      "overview": "A selection of personal and academic projects I've taken end-to-end, from theoretical research papers to fully built, programmed hardware.",
       "approach": [
         "Start from a question or a problem worth solving.",
-        "Model, build and iterate — CAD, electronics, code and test.",
+        "Model, build and iterate: CAD, electronics, code and test.",
         "Document the result properly, challenges and all."
       ],
       "projects": [
-        { "title": "Internal Pressure of Thin-Walled Vessels During Collision", "tag": "Research · Impact", "summary": "Theoretical research and mathematical modelling on pressure versus impact force.", "bullets": [
-          "Modelled the relationship between internal pressure and impact force.",
-          "Wrote a 4,000-word research paper on optimal pressure for impact reduction and its applications to safety systems." ] },
-        { "title": "Automated Fruit & Vegetable Cutting Robot", "tag": "Robotics · Automation", "summary": "A kitchen robot designed, built and programmed from scratch.", "bullets": [
-          "Built and programmed the robot with Arduino and C++.",
-          "Modelled and optimised components in CAD for functionality and durability.",
-          "Assembled and iteratively refined the mechanical systems and control algorithms." ] },
         { "title": "Pump Impeller CFD with a Moving Reference Frame", "tag": "CFD · Rotating machinery", "summary": "A self-directed Computational Fluid Dynamics (CFD) study of a pump impeller, built at NING Research to learn how the moving reference frame method works rather than for a client.",
           "bullets": [
             "Set up the rotating zone with a moving reference frame (MRF) to model the spinning impeller.",
             "Started it after asking about MRF at a workshop, with a coursework problem in mind; I built it to understand the method properly, though it never went into the coursework itself."
           ],
           "media": ["assets/img/Side_Projects/IsoCrossSectionPump.png", "assets/img/Side_Projects/Side Profile Pump.png"],
-          "captions": ["Isometric cross-section", "Side profile"] }
+          "captions": ["Isometric cross-section", "Side profile"] },
+        { "title": "Internal Pressure of Thin-Walled Vessels During Collision", "tag": "Research · Impact", "summary": "Theoretical research and mathematical modelling on pressure versus impact force.", "bullets": [
+          "Modelled the relationship between internal pressure and impact force.",
+          "Wrote a 4,000-word research paper on optimal pressure for impact reduction and its applications to safety systems." ] },
+        { "title": "Automated Fruit & Vegetable Cutting Robot", "tag": "Robotics · Automation", "summary": "A kitchen robot designed, built and programmed from scratch.", "bullets": [
+          "Built and programmed the robot with Arduino and C++.",
+          "Modelled and optimised components in CAD for functionality and durability.",
+          "Assembled and iteratively refined the mechanical systems and control algorithms." ] }
       ],
       "moreComing": "More side projects being written up."
     }

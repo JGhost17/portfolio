@@ -141,16 +141,17 @@
 
   function attachSlide(a) {
     const items = (a.items || []).map((it) => it.placeholder
-      ? `<div>${esc(it.label)} — drop at ${esc(it.file)}</div>`
+      ? `<div class="placeholder">${esc(it.label)} — coming soon</div>`
       : `<div><a href="${esc(it.file)}">${esc(it.label)} ↓</a></div>`).join("");
+    const filesBlock = items ? `<div class="d-block"><h5>Files</h5><div class="d-list">${items}</div></div>` : "";
     return `
       <section class="slide" data-slide tabindex="-1" data-title="Documents">
         <div class="slide__title"><h2>Documents</h2><div class="sub">Coursework</div></div>
-        <div class="slide__media"><span class="slot">📊 Presentations &amp; PDFs<br>assets/docs/</span></div>
+        <div class="slide__media"><span class="slot">📊 Presentations &amp; PDFs</span></div>
         <aside class="slide__detail">
           <div class="d-role">Presentations &amp; coursework</div>
           <div class="d-index">{＋}</div>
-          <div class="d-block"><h5>Files</h5><div class="d-list">${items}</div></div>
+          ${filesBlock}
           <div class="d-block"><p class="muted">${esc(a.note || "")}</p></div>
         </aside>
       </section>`;
