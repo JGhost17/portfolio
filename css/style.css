@@ -177,9 +177,10 @@ ul { padding-left: 1.1em; }
 .hero__stats .n { font-family: var(--font-mono); font-size: 1.7rem; font-weight: 700; color: var(--ink); }
 .hero__stats .l { font-size: .8rem; color: var(--text-muted); font-family: var(--font-mono); }
 
-/* Portrait / hero visual card. Falls back to a hatch-fill "no image" frame
-   (see .portrait__ph, still used on any page without a real photo) when there
-   is no <img> — here there is, so object-fit: cover crops it into the frame. */
+/* Portrait / hero visual card. Falls back to a hatch-fill "no photo yet" frame
+   (see .portrait__ph, still used on any page without a real photo) when the
+   markup omits an image element; here one is present, so object-fit: cover
+   crops it into the frame. */
 .portrait {
   position: relative; aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden;
   background: var(--surface); border: 1px solid var(--line-strong);
