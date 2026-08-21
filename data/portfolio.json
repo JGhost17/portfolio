@@ -159,7 +159,8 @@
           "media": ["assets/video/Kenvue Positioning Glue Initial Animation.mp4"],
           "captions": ["Positioning glue, simulation animation"] },
         { "title": "GENSET and Data Hall CFD", "tag": "CAD · CFD · Thermal", "placeholder": true, "summary": "CAD and CFD study of a generator set and data hall. Industry: data centre infrastructure.",
-          "mediaNote": "Geometry imagery to follow." }
+          "media": ["assets/img/GENSET_DataHall/GENSETandDATAHallIsoView.png", "assets/img/GENSET_DataHall/GENSETandDataHallPlanView.png"],
+          "captions": ["Isometric view", "Site plan view"] }
       ]
     },
 
@@ -262,12 +263,13 @@
           "Built and programmed the robot with Arduino and C++.",
           "Modelled and optimised components in CAD for functionality and durability.",
           "Assembled and iteratively refined the mechanical systems and control algorithms." ] },
-        { "title": "Pump Impeller CFD with a Moving Reference Frame", "tag": "CFD · Rotating machinery", "placeholder": true, "summary": "A self-directed CFD study of a pump impeller, built at NING Research to learn how the moving reference frame method works rather than for a client.",
+        { "title": "Pump Impeller CFD with a Moving Reference Frame", "tag": "CFD · Rotating machinery", "summary": "A self-directed CFD study of a pump impeller, built at NING Research to learn how the moving reference frame method works rather than for a client.",
           "bullets": [
             "Set up the rotating zone with a moving reference frame (MRF) to model the spinning impeller.",
             "Started it after asking about MRF at a workshop, with a coursework problem in mind; I built it to understand the method properly, though it never went into the coursework itself."
           ],
-          "mediaNote": "Imagery to follow." }
+          "media": ["assets/img/Side_Projects/IsoCrossSectionPump.png", "assets/img/Side_Projects/Side Profile Pump.png"],
+          "captions": ["Isometric cross-section", "Side profile"] }
       ],
       "moreComing": "More side projects being written up."
     }
