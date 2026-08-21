@@ -177,13 +177,18 @@ ul { padding-left: 1.1em; }
 .hero__stats .n { font-family: var(--font-mono); font-size: 1.7rem; font-weight: 700; color: var(--ink); }
 .hero__stats .l { font-size: .8rem; color: var(--text-muted); font-family: var(--font-mono); }
 
-/* Portrait / hero visual card — technical "no image" hatch-fill placeholder */
+/* Portrait / hero visual card. Falls back to a hatch-fill "no image" frame
+   (see .portrait__ph, still used on any page without a real photo) when there
+   is no <img> — here there is, so object-fit: cover crops it into the frame. */
 .portrait {
   position: relative; aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden;
   background: var(--surface); border: 1px solid var(--line-strong);
-  background-image: repeating-linear-gradient(135deg, var(--line) 0, var(--line) 1px, transparent 1px, transparent 10px);
   view-transition-name: portrait;
 }
+.portrait:not(:has(img)) {
+  background-image: repeating-linear-gradient(135deg, var(--line) 0, var(--line) 1px, transparent 1px, transparent 10px);
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
 .portrait__ph { position: absolute; inset: 1.1rem; display: grid; place-items: center; text-align: center;
   color: var(--text-muted); font-family: var(--font-mono); font-weight: 600; letter-spacing: .02em; gap: .4rem;
   border: 1px dashed var(--line-strong); background: var(--paper); }
