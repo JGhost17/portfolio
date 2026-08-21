@@ -13,9 +13,6 @@
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const stripNo = (t) => String(t || "").replace(/^\s*\d+\s*·\s*/, "");
 
-  const mediaHint = (slug, i) =>
-    `assets/video/${slug}-${i}.mp4 &nbsp;·&nbsp; assets/img/${slug}-${i}.jpg`;
-
   /* ---------------------------------------------------------- media panel */
   const isVideo = (src) => /\.(mp4|webm|mov|m4v)$/i.test(src);
   function cleanName(src) {
@@ -107,7 +104,7 @@
       </section>`;
   }
 
-  function projectSlide(slug, page, p, i) {
+  function projectSlide(page, p, i) {
     const n = String(i + 1).padStart(2, "0");
     const focus = (p.tag || "").split("·").map((s) => s.trim()).filter(Boolean)
       .map((f) => `<div>${esc(f)}</div>`).join("");
@@ -118,8 +115,10 @@
       ? `<div class="d-block"><h5>Impact</h5><ul>${p.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul></div>`
       : "";
     const date = p.date ? `<div class="d-date">${esc(p.date)}</div>` : "";
+    // A project with no media yet shows a plain visitor-facing note — never the
+    // asset paths, which are a build instruction and not something to publish.
     const mediaInner = mediaPanel(p.media, p.captions)
-      || `<span class="slot">${p.placeholder ? "Add media<br>" : ""}${mediaHint(slug, i + 1)}</span>`;
+      || `<span class="slot">${esc(p.mediaNote || "Imagery to follow")}</span>`;
     const sub = p.subtitle || (p.tag || "").split("·")[0].trim();
     return `
       <section class="slide" data-slide tabindex="-1" data-title="${esc(p.title)}">
@@ -157,9 +156,9 @@
       </section>`;
   }
 
-  function pageHTML(slug, page, profile) {
+  function pageHTML(page, profile) {
     const slides = [introSlide(page)];
-    (page.projects || []).forEach((p, i) => slides.push(projectSlide(slug, page, p, i)));
+    (page.projects || []).forEach((p, i) => slides.push(projectSlide(page, p, i)));
     if (page.moreComing) slides.push(moreComingSlide(page.moreComing));
     if (page.attachments) slides.push(attachSlide(page.attachments));
     const total = slides.length;
@@ -224,7 +223,7 @@
       const data = await res.json();
       const page = data.pages[slug];
       if (!page) throw new Error("Unknown page: " + slug);
-      app.innerHTML = pageHTML(slug, page, data.profile);
+      app.innerHTML = pageHTML(page, data.profile);
       document.title = `${page.title} — ${data.profile.name}`;
     } catch (err) {
       app.innerHTML = `<div class="wrap section" style="padding-top:6rem"><div class="callout">

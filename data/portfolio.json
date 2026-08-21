@@ -111,15 +111,15 @@
             "Determined the efficiency of each layout to confirm the chillers stayed within their performance envelope.",
             "Verified the final arrangement met the client's expectations before installation."
           ],
-          "media": ["assets/img/Topayou/Ansys_Zoomed_Out.png", "assets/img/Topayou/Ansys_Zoomed_In.png", "assets/img/Topayou/FlowEFD_Out.png", "assets/img/Topayou/FloEFD_In.png"],
-          "captions": ["ANSYS, zoomed out", "ANSYS, zoomed in", "FloEFD, zoomed out", "FloEFD, zoomed in"] },
+          "media": ["assets/img/Kim_Yam/80_Kim_Yam_Iso.jpg", "assets/img/Kim_Yam/Velocity_Streamlines_Iso_View.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Side_Vel.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Top_Viewjpg.jpg"],
+          "captions": ["Isometric view", "Velocity streamlines, isometric", "Side velocity field", "Top view"] },
         { "title": "Sports Hall Thermal Comfort Study", "tag": "CFD · Built environment", "summary": "A thermal-comfort comparison for a large sports hall in Toa Payoh, testing two air-delivery methods across two solvers. Industry: sports / built-environment ventilation, Singapore.",
           "bullets": [
             "Compared thermal comfort from small perforated tubing against a porous membrane.",
             "Ran the same cases in both FloEFD and ANSYS Fluent to compare solver results."
           ],
-          "media": ["assets/img/Kim_Yam/80_Kim_Yam_Iso.jpg", "assets/img/Kim_Yam/Velocity_Streamlines_Iso_View.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Side_Vel.jpg", "assets/img/Kim_Yam/80_Kim_Yam_Top_Viewjpg.jpg"],
-          "captions": ["Isometric view", "Velocity streamlines, isometric", "Side velocity field", "Top view"] },
+          "media": ["assets/img/Topayou/Ansys_Zoomed_Out.png", "assets/img/Topayou/Ansys_Zoomed_In.png", "assets/img/Topayou/FlowEFD_Out.png", "assets/img/Topayou/FloEFD_In.png"],
+          "captions": ["ANSYS, zoomed out", "ANSYS, zoomed in", "FloEFD, zoomed out", "FloEFD, zoomed in"] },
         { "title": "Roof Rainfall Project", "tag": "CFD · Multiphase", "summary": "Multiphase CFD study of rainfall on a roof, chaining three solvers to follow water from airborne droplet to standing pool.",
           "bullets": [
             "Coupled Discrete Phase Model → Eulerian Wall Film → Volume of Fluid (DPM → EWF → VOF), so falling droplets, the thin film they form on the surface, and bulk pooling water were each handled by the appropriate physics model.",
@@ -157,7 +157,9 @@
             "Supported a material change aimed at reducing cost."
           ],
           "media": ["assets/video/Kenvue Positioning Glue Initial Animation.mp4"],
-          "captions": ["Positioning glue, simulation animation"] }
+          "captions": ["Positioning glue, simulation animation"] },
+        { "title": "GENSET and Data Hall CFD", "tag": "CAD · CFD · Thermal", "placeholder": true, "summary": "CAD and CFD study of a generator set and data hall. Industry: data centre infrastructure.",
+          "mediaNote": "Geometry imagery to follow." }
       ]
     },
 
@@ -259,7 +261,13 @@
         { "title": "Automated Fruit & Vegetable Cutting Robot", "tag": "Robotics · Automation", "summary": "A kitchen robot designed, built and programmed from scratch.", "bullets": [
           "Built and programmed the robot with Arduino and C++.",
           "Modelled and optimised components in CAD for functionality and durability.",
-          "Assembled and iteratively refined the mechanical systems and control algorithms." ] }
+          "Assembled and iteratively refined the mechanical systems and control algorithms." ] },
+        { "title": "Pump Impeller CFD with a Moving Reference Frame", "tag": "CFD · Rotating machinery", "placeholder": true, "summary": "A self-directed CFD study of a pump impeller, built at NING Research to learn how the moving reference frame method works rather than for a client.",
+          "bullets": [
+            "Set up the rotating zone with a moving reference frame (MRF) to model the spinning impeller.",
+            "Started it after asking about MRF at a workshop, with a coursework problem in mind; I built it to understand the method properly, though it never went into the coursework itself."
+          ],
+          "mediaNote": "Imagery to follow." }
       ],
       "moreComing": "More side projects being written up."
     }
