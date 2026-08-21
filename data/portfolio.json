@@ -3,7 +3,7 @@
     "name": "Joshua Alcobia Gomes",
     "first": "Joshua",
     "role": "Mechanical Engineering Student · Automotive & Aerospace",
-    "tagline": "Second-year MEng Mechanical Engineering student at UCL (predicted First), heading to McLaren on an industrial placement for 2026–27. I work across automotive and aerospace — from CFD and rocketry to pharmaceutical modelling, machine learning and AI tooling.",
+    "tagline": "Third-year MEng Mechanical Engineering student at UCL (First Class Honours predicted), on industrial placement at McLaren Automotive for 2026–27. I work across automotive and aerospace, from Computational Fluid Dynamics (CFD) and rocketry to pharmaceutical modelling, machine learning and AI tooling.",
     "email": "jg7alcobia@gmail.com",
     "linkedin": "https://www.linkedin.com/in/josh-alcobia-gomes/",
     "github": "https://github.com/JGhost17",
@@ -45,7 +45,7 @@
   "cards": [
     { "slug": "mclaren", "tag": "Automotive · Motorsport", "title": "McLaren", "blurb": "Industrial placement in automotive engineering.", "tint": "sky" },
     { "slug": "ning", "tag": "CAD / CFD / Simulation", "title": "NING Research", "blurb": "Applied CFD and engineering simulation across real client projects.", "tint": "sage" },
-    { "slug": "novartis", "tag": "R&D · Pharma / ML", "title": "Novartis", "blurb": "Scientific-modelling internship: machine learning, simulation and AI tooling.", "tint": "sand" },
+    { "slug": "novartis", "tag": "R&D · Pharma / Machine Learning", "title": "Novartis", "blurb": "Scientific-modelling internship: machine learning, simulation and AI tooling.", "tint": "sand" },
     { "slug": "ucl", "tag": "Education", "title": "UCL", "blurb": "MEng Mechanical Engineering, including competition teams and academic projects.", "tint": "sky" },
     { "slug": "side-projects", "tag": "Personal builds", "title": "Side Projects", "blurb": "The things I build for the love of it.", "tint": "sage" }
   ],
@@ -76,7 +76,7 @@
     "ning": {
       "tag": "02 · Research & Development",
       "title": "NING Research",
-      "subtitle": "Applied CFD and engineering simulation, turning real client problems into validated models.",
+      "subtitle": "Applied Computational Fluid Dynamics (CFD) and engineering simulation, turning real client problems into validated models.",
       "meta": [
         { "k": "Role", "v": "Simulation / CFD Engineer" },
         { "k": "Field", "v": "CFD & Engineering Simulation" },
@@ -142,7 +142,7 @@
           ],
           "media": ["assets/img/Safe_Sight/safesightisoview.jpg"],
           "captions": ["Isometric view"] },
-        { "title": "KiteFoil Aerodynamics", "tag": "CFD · Sports aero", "summary": "Aerodynamic modelling of a kite foil, testing surface geometries and rider positions to reduce drag. Industry: elite sports equipment.",
+        { "title": "KiteFoil Aerodynamics", "tag": "CFD · Sports aerodynamics", "summary": "Aerodynamic modelling of a kite foil, testing surface geometries and rider positions to reduce drag. Industry: elite sports equipment.",
           "bullets": [
             "Modelled the foil and investigated surface geometries to maximise aerodynamic efficiency.",
             "Reviewed research literature on drag-reduction techniques, then ran CFD studies on each.",
@@ -150,7 +150,7 @@
           ],
           "media": ["assets/img/SportSG_FOil/FoilISO.png", "assets/img/SportSG_FOil/Foil_Front.png", "assets/img/SportSG_FOil/Foil_Side.png"],
           "captions": ["Isometric view", "Front view", "Side view"] },
-        { "title": "Sanitary Pad Glue Application Thermal Study", "tag": "Thermal · Process simulation", "summary": "A thermal study of glue application on a sanitary pad production line, run alongside the FEA team to qualify cheaper materials. Industry: consumer healthcare manufacturing.",
+        { "title": "Sanitary Pad Glue Application Thermal Study", "tag": "Thermal · Process simulation", "summary": "A thermal study of glue application on a sanitary pad production line, run alongside the Finite Element Analysis (FEA) team to qualify cheaper materials. Industry: consumer healthcare manufacturing.",
           "bullets": [
             "Tested a wide range of process variables to keep production running with alternative materials.",
             "Worked in conjunction with the FEA team so thermal and structural results lined up.",
@@ -172,7 +172,7 @@
         { "k": "Role", "v": "Scientific Modelling Intern" },
         { "k": "Period", "v": "Aug – Sept 2025" },
         { "k": "Location", "v": "Basel, Switzerland" },
-        { "k": "Domain", "v": "R&D · Pharma / ML" }
+        { "k": "Domain", "v": "R&D · Pharma / Machine Learning" }
       ],
       "overview": "Over a summer internship in Basel I built machine-learning models, simulations and AI tools that removed manual work and cut costs across pharmaceutical R&D — spanning powder characterisation, process analytics and LLM-based automation.",
       "approach": [
@@ -183,10 +183,10 @@
       "projects": [
         { "title": "ML Powder Flow Classification", "tag": "Machine Learning", "summary": "Machine-learning models to predict powder flow characteristics from experimental data.", "bullets": [
           "Used LazyClassifier for rapid model selection, then Grid Search, Lasso regularisation and Bayesian optimisation for hyperparameter tuning.",
-          "Saved CHF 40,000 per batch of APIs by predicting behaviour ahead of manufacture." ] },
+          "Saved CHF 40,000 per batch of active pharmaceutical ingredients by predicting behaviour ahead of manufacture." ] },
         { "title": "MCP Servers for Internal AI Tooling", "tag": "AI Infrastructure", "placeholder": true, "summary": "Full write-up in progress." },
         { "title": "Streamlit Analytics Dashboards", "tag": "Data / Python", "summary": "Interactive Streamlit applications that eliminated manual data searching for the department.", "bullets": [
-          "Built dropdown-driven apps for dwell-time analysis and screw customisation.",
+          "Built dropdown-driven applications for dwell-time analysis and screw customisation.",
           "Developed Python programs for Loss-on-Drying calculations from sensor data, solving mass-balance equations for moisture content and drying efficiency." ] },
         { "title": "AI Project Summariser (LLMs + Agentic Workflows)", "tag": "LLMs · Agents", "summary": "An AI summariser that gathers data from internal and external databases automatically.", "bullets": [
           "Used automated workflows and LLMs to compile project context on demand.",
@@ -200,14 +200,14 @@
     "ucl": {
       "tag": "04 · Education",
       "title": "UCL",
-      "subtitle": "MEng Mechanical Engineering — the competition teams and projects that shaped how I engineer.",
+      "subtitle": "MEng Mechanical Engineering, the competition teams and projects that shaped how I engineer.",
       "meta": [
         { "k": "Degree", "v": "MEng Mechanical Engineering" },
         { "k": "Years", "v": "Sept 2024 – June 2028" },
-        { "k": "Predicted", "v": "First Class (83%)" },
+        { "k": "Predicted", "v": "First Class Honours (83% & 82%)" },
         { "k": "Domain", "v": "Education" }
       ],
-      "overview": "I'm in my second year of an MEng in Mechanical Engineering at UCL, predicted a First (83%). Alongside the degree I throw myself into engineering teams and competitions — rocketry, motorsport, design challenges and more — where the theory meets real hardware.",
+      "overview": "I'm in my third year of an MEng in Mechanical Engineering at UCL, First Class Honours predicted (83% & 82%). Alongside the degree, I throw myself into engineering teams and competitions (rocketry, motorsport, design challenges and more) where the theory meets real hardware.",
       "approach": [
         "Apply core mechanical engineering: thermofluids, solid mechanics, dynamics, materials.",
         "Specialise toward automotive and aerospace through team projects.",
@@ -216,7 +216,7 @@
       "projects": [
         { "title": "UCL Racing — Rocket", "tag": "Aerospace · Team Lead", "summary": "National Rocketry Championship team lead, aerostructures & simulations engineer.", "bullets": [
           "Led an 8-engineer team with a £1,000 budget to 8th of 50 at the National Rocketry Championship.",
-          "Validated ANSYS Fluent CFD against drag-coefficient data to 97% accuracy.",
+          "Validated Computational Fluid Dynamics (CFD) results from ANSYS Fluent against drag-coefficient data to 97% accuracy.",
           "Designed the aerostructure in Fusion 360, increasing apogee by 203 m.",
           "Ran the project in Jira with Gantt charts, risk assessments and sponsorship outreach." ] },
         { "title": "Formula Student", "tag": "Automotive · Motorsport", "placeholder": true, "summary": "Full write-up in progress." },
@@ -256,14 +256,14 @@
         "Document the result properly, challenges and all."
       ],
       "projects": [
-        { "title": "Internal Pressure of Thin-Walled Vessels During Collision", "tag": "Research · Impact", "summary": "Theoretical research and mathematical modelling on pressure vs. impact force.", "bullets": [
+        { "title": "Internal Pressure of Thin-Walled Vessels During Collision", "tag": "Research · Impact", "summary": "Theoretical research and mathematical modelling on pressure versus impact force.", "bullets": [
           "Modelled the relationship between internal pressure and impact force.",
           "Wrote a 4,000-word research paper on optimal pressure for impact reduction and its applications to safety systems." ] },
         { "title": "Automated Fruit & Vegetable Cutting Robot", "tag": "Robotics · Automation", "summary": "A kitchen robot designed, built and programmed from scratch.", "bullets": [
           "Built and programmed the robot with Arduino and C++.",
           "Modelled and optimised components in CAD for functionality and durability.",
           "Assembled and iteratively refined the mechanical systems and control algorithms." ] },
-        { "title": "Pump Impeller CFD with a Moving Reference Frame", "tag": "CFD · Rotating machinery", "summary": "A self-directed CFD study of a pump impeller, built at NING Research to learn how the moving reference frame method works rather than for a client.",
+        { "title": "Pump Impeller CFD with a Moving Reference Frame", "tag": "CFD · Rotating machinery", "summary": "A self-directed Computational Fluid Dynamics (CFD) study of a pump impeller, built at NING Research to learn how the moving reference frame method works rather than for a client.",
           "bullets": [
             "Set up the rotating zone with a moving reference frame (MRF) to model the spinning impeller.",
             "Started it after asking about MRF at a workshop, with a coursework problem in mind; I built it to understand the method properly, though it never went into the coursework itself."
