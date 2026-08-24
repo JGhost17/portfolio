@@ -140,7 +140,7 @@
             "Modelled the internal components and their heat loads in FloEFD.",
             "Assessed whether the current cooling approach held components within their operating temperature range."
           ],
-          "media": ["assets/img/Safe_Sight/safesightisoview.jpg"],
+          "media": ["assets/img/Safe_Sight/SafeSight_Iso.jpg"],
           "captions": ["Isometric view"] },
         { "title": "KiteFoil Aerodynamics", "tag": "CFD · Sports aerodynamics", "summary": "Aerodynamic modelling of a kite foil, testing surface geometries and rider positions to reduce drag. Industry: elite sports equipment.",
           "bullets": [
@@ -159,7 +159,7 @@
           "media": ["assets/video/Kenvue Positioning Glue Initial Animation.mp4"],
           "captions": ["Positioning glue, simulation animation"] },
         { "title": "GENSET and Data Hall CFD", "tag": "CAD · CFD · Thermal", "placeholder": true, "summary": "CAD and CFD study of a generator set and data hall. Industry: data centre infrastructure.",
-          "media": ["assets/img/GENSET_DataHall/GENSETandDATAHallIsoView.png", "assets/img/GENSET_DataHall/GENSETandDataHallPlanView.png"],
+          "media": ["assets/img/GENSET_DataHall/GENSET_DataHall_Iso.jpg", "assets/img/GENSET_DataHall/GENSET_DataHall_Plan.jpg"],
           "captions": ["Isometric view", "Site plan view"] }
       ]
     },
