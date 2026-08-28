@@ -323,6 +323,27 @@ html.snap-mode .slide.enter .slide__media  { animation: slideEnter .58s var(--sp
 html.snap-mode .slide.enter .slide__detail { animation: slideEnter .64s var(--spring) .1s; }
 html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transform; }
 .deck { position: relative; }
+/* Subject sketch, pinned in the dead ground below the rail. Kept faint and
+   behind everything: it should read as an under-drawing on the sheet, not as
+   an illustration competing with the work. Hidden on narrow screens, where
+   that empty column doesn't exist. */
+.deck__sketch {
+  position: fixed; pointer-events: none; user-select: none;
+  /* z-index -1 would be buried: body carries an opaque background, and
+     block-level backgrounds paint AFTER negative-z-index children. So the
+     sketch sits at 0 and the slides are lifted to 1 over it. The rail is
+     left alone at its own z-index 60 — restyling it would clobber the
+     position:fixed it depends on. */
+  z-index: 0;
+  left: clamp(1rem, 4vw, 3rem); top: 47%; transform: translateY(-50%);
+  /* Bounded by HEIGHT, not width: these drawings range from a tall rocket to
+     a wide car, and only a height cap keeps them clear of the rail above and
+     the big slide title below. */
+  width: clamp(180px, 22vw, 340px); max-height: 42vh; height: auto;
+  object-fit: contain; object-position: left center; opacity: .14;
+}
+@media (max-width: 1200px) { .deck__sketch { opacity: .09; max-height: 32vh; } }
+@media (max-width: 900px)  { .deck__sketch { display: none; } }
 .deck__rail { position: fixed; top: 76px; left: clamp(1rem,4vw,2.5rem); z-index: 60; max-width: 230px; }
 .deck__rail .co { font-family: var(--font-head); font-weight: 700; font-size: 1rem; color: var(--ink); }
 .deck__rail .tag { color: var(--text-muted); font-size: .74rem; font-family: var(--font-mono); margin-top: .2rem; }
@@ -344,7 +365,8 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
    (max 36px top / 48px bottom) so the space actually available to the columns
    is a known quantity — calc(100vh - 148px) — which the media and detail caps
    below are derived from. Change the padding maxima and those must follow. */
-.slide { min-height: calc(100vh - 64px); display: grid; align-items: center;
+.slide { position: relative; z-index: 1;      /* above .deck__sketch */
+  min-height: calc(100vh - 64px); display: grid; align-items: center;
   grid-template-columns: 1fr minmax(280px, 480px) minmax(320px, 420px); grid-template-rows: 1fr auto;
   grid-template-areas: ".  media  detail" "title  media  detail";
   gap: clamp(1rem,3vw,2.5rem);
@@ -377,20 +399,34 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
   max-width: 100%; max-height: min(56vh, calc(100vh - 200px)); object-fit: contain;
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg); background: var(--paper-alt); border: 1px solid var(--line); }
-/* ---- Brand mark on the overview slide --------------------------------
-   The organisation's mark, stamped on a white plate like a title block.
-   Both supplied logos sit on pure white, so --surface carries them without
-   a visible seam; a photograph instead fills the plate edge to edge. */
-.brand {
-  margin: 0; display: flex; overflow: hidden; max-width: 100%;
-  width: min(42vw, 460px);
-  border: 1px solid var(--line); border-radius: var(--radius);
-  background: var(--surface); box-shadow: var(--shadow-lg);
+/* ---- Marginalia (home page) ------------------------------------------
+   The home page's content is capped at --maxw and centred, which on a wide
+   screen leaves a clear gutter either side. These drawings live out there,
+   the way a doodle sits in the margin of a notebook, so they never overlap
+   a word. Below the width where the gutter exists, they simply go away. */
+.marginalia {
+  position: absolute; z-index: 0; pointer-events: none; user-select: none;
+  width: clamp(130px, 12.5vw, 200px); height: auto; opacity: .16;
 }
+.marginalia--l { right: calc(100% + 1.6rem); }
+.marginalia--r { left: calc(100% + 1.6rem); }
+@media (max-width: 1420px) { .marginalia { display: none; } }
+
+/* ---- Brand mark on the overview slide --------------------------------
+   The mark sits directly on the sheet: no plate, no card, no hatch. The
+   logo files have had their white field keyed out to transparency, so
+   nothing shows behind them but paper. A photograph keeps a hairline
+   frame, since a photo needs an edge where a logo does not. */
+.slide__media--bare {
+  background: none; border: 0; padding: 0; overflow: visible;
+  aspect-ratio: auto; align-self: center;
+}
+.brand { margin: 0; display: flex; max-width: 100%; width: min(42vw, 440px); }
 .brand img { display: block; width: 100%; height: auto; }
-.brand--mark { padding: clamp(1.4rem, 3.4vw, 2.6rem); }
-.brand--mark img { object-fit: contain; max-height: min(30vh, 260px); }
-.brand--photo img { object-fit: cover; }
+.brand--mark img { object-fit: contain; max-height: min(30vh, 250px); }
+.brand--photo {
+  border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden;
+}
 @media (max-width: 900px) { .brand { width: 100%; } }
 
 /* ---- CAD model panel -------------------------------------------------
@@ -510,7 +546,8 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
 /* =========================================================================
    Footer — a real title block, in the tradition of an engineering drawing sheet
    ========================================================================= */
-.footer { border-top: 1px solid var(--line-strong); background: var(--paper-alt); margin-top: 2rem; }
+.footer { position: relative; z-index: 1;     /* above .deck__sketch */
+  border-top: 1px solid var(--line-strong); background: var(--paper-alt); margin-top: 2rem; }
 .titleblock { padding: clamp(2.5rem,5vw,4rem) 0 0; }
 .tb-row--lead { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding-bottom: 2.5rem; }
 .footer h4 { font-size: 1.3rem; margin-bottom: .4rem; }

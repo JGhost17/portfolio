@@ -107,7 +107,7 @@
           <h2>${esc(page.title)}</h2>
           <div class="sub">Overview</div>
         </div>
-        <div class="slide__media">${brand}</div>
+        <div class="slide__media${page.brand ? " slide__media--bare" : ""}">${brand}</div>
         <aside class="slide__detail">
           <div class="d-role">${esc(page.subtitle || "")}</div>
           <div class="d-block"><h5>Overview</h5><p>${overview}</p></div>
@@ -211,8 +211,13 @@
       ...(page.moreComing ? ["More soon"] : []), ...(page.attachments ? ["Documents"] : [])];
     const dots = slides.map((_, i) =>
       `<button class="dot" data-i="${i}" aria-label="${esc(titles[i] || `Section ${i + 1}`)}" title="${esc(titles[i] || "")}"></button>`).join("");
+    // A drawing of the page's subject, sat in the empty ground the deck leaves
+    // between the rail and the big title. Decorative only, hence aria-hidden.
+    const sketch = page.sketch
+      ? `<img class="deck__sketch" src="${encodeURI(page.sketch)}" alt="" aria-hidden="true">` : "";
     return `
       <div class="deck">
+        ${sketch}
         <div class="deck__rail">
           <h1 class="co">${esc(page.title)}</h1>
           <div class="tag">${esc(stripNo(page.tag))}</div>

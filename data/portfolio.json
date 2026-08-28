@@ -53,6 +53,7 @@
     "mclaren": {
       "tag": "01 · Automotive / Motorsport",
       "title": "McLaren",
+      "sketch": "assets/sketch/car.svg",
       "subtitle": "My industrial placement year in high-performance automotive engineering.",
       "meta": [
         { "k": "Role", "v": "Industrial Placement" },
@@ -76,7 +77,8 @@
     "ning": {
       "tag": "02 · Research & Development",
       "title": "NING Research",
-      "brand": { "src": "assets/img/brand/NING-Research.jpg", "alt": "NING Research logo" },
+      "sketch": "assets/sketch/impeller.svg",
+      "brand": { "src": "assets/img/brand/NING-Research.png", "alt": "NING Research logo" },
       "subtitle": "Applied Computational Fluid Dynamics (CFD) and engineering simulation, turning real client problems into validated models.",
       "meta": [
         { "k": "Role", "v": "Simulation / CFD Engineer" },
@@ -168,7 +170,8 @@
     "novartis": {
       "tag": "03 · Pharma / Machine Learning",
       "title": "Novartis",
-      "brand": { "src": "assets/img/brand/Novartis.jpg", "alt": "Novartis logo" },
+      "sketch": "assets/sketch/flask.svg",
+      "brand": { "src": "assets/img/brand/Novartis.png", "alt": "Novartis logo" },
       "subtitle": "Scientific Modelling Intern: machine learning, simulation and AI tooling in pharmaceutical manufacturing.",
       "meta": [
         { "k": "Role", "v": "Scientific Modelling Intern" },
@@ -202,6 +205,7 @@
     "ucl": {
       "tag": "04 · Education",
       "title": "UCL",
+      "sketch": "assets/sketch/rocket.svg",
       "brand": { "src": "assets/img/brand/UCL-Racing.jpg", "alt": "UCL Racing team photograph", "fit": "cover" },
       "subtitle": "MEng Mechanical Engineering, the competition teams and projects that shaped how I engineer.",
       "meta": [
@@ -278,6 +282,7 @@
     "side-projects": {
       "tag": "05 · Personal builds",
       "title": "Side Projects",
+      "sketch": "assets/sketch/robot_arm.svg",
       "subtitle": "The things I build for the love of it: research, robotics and everything between.",
       "meta": [
         { "k": "Themes", "v": "Aerospace · Robotics · Research" },
