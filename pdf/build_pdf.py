@@ -87,6 +87,11 @@ h2.title{ font-size:24pt; margin:4mm 0 2mm; }
 .proj p{ color:var(--muted); font-size:9.5pt; margin-top:1.5mm; }
 .proj ul{ margin:2mm 0 0; padding-left:5mm; } .proj li{ margin-bottom:1mm; color:var(--ink-soft); font-size:9.5pt; }
 .ph-txt{ color:var(--muted); font-style:italic; }
+/* Printed pages can't be clicked: spell the URL out in full so a reader
+   holding paper can still reach the material. */
+.proj__lnk{ margin-top:2.5mm; font-size:8.5pt; color:var(--muted); }
+.proj__lnk b{ color:var(--ink-soft); font-weight:600; }
+.proj__lnk span{ font-family:var(--font-mono); word-break:break-all; }
 .attach{ border:1px solid var(--line); border-radius:1mm; padding:5mm; background:#fff; margin-top:3mm; break-inside:avoid; }
 .attach .item{ padding:2.5mm 0; border-top:1px solid var(--line); color:var(--ink-soft); font-size:9.5pt; }
 .attach .item:first-of-type{ border-top:0; }
@@ -107,8 +112,11 @@ def project_block(p):
     summ = (f'<p class="ph-txt">{escape(p.get("summary",""))}</p>' if p.get("placeholder")
             else f'<p>{escape(p.get("summary",""))}</p>')
     bullets = ("<ul>" + "".join(f"<li>{escape(b)}</li>" for b in p["bullets"]) + "</ul>") if p.get("bullets") else ""
+    links = "".join(
+        f'<div class="proj__lnk"><b>{escape(l["label"])}:</b> <span>{escape(l["href"])}</span></div>'
+        for l in p.get("links", []))
     return (f'<div class="proj{ph}">{img_html}'
-            f'<h3>{escape(p.get("title",""))}</h3><span class="tag">{escape(p.get("tag",""))}</span>{summ}{bullets}</div>')
+            f'<h3>{escape(p.get("title",""))}</h3><span class="tag">{escape(p.get("tag",""))}</span>{summ}{bullets}{links}</div>')
 
 
 def meta_row(meta):

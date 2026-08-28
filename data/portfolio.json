@@ -218,7 +218,19 @@
           "Led an 8-engineer team with a £1,000 budget to 8th of 50 at the National Rocketry Championship.",
           "Validated Computational Fluid Dynamics (CFD) results from ANSYS Fluent against drag-coefficient data to 97% accuracy.",
           "Designed the aerostructure in Fusion 360, increasing apogee by 203 m.",
-          "Ran the project in Jira with Gantt charts, risk assessments and sponsorship outreach." ] },
+          "Ran the project in Jira with Gantt charts, risk assessments and sponsorship outreach." ],
+          "media": [
+            "assets/img/UCL/RocketFlight.jpg",
+            "assets/img/UCL/OpenRocket.jpg",
+            "assets/img/UCL/RocketIRL.jpg",
+            "assets/img/UCL/RocketTeam.jpg"
+          ],
+          "captions": [
+            "Keraunos launching off the rail",
+            "OpenRocket stability and flight simulation",
+            "On the pad at the National Rocketry Championship",
+            "The team on competition day"
+          ] },
         { "title": "Formula Student", "tag": "Automotive · Motorsport", "summary": "Suspension and powertrain-mounting design for the team's Formula Student EV.", "bullets": [
           "Restructured the rear suspension within budget, cutting manufacturing cost while keeping packaging space clear for the new EV system.",
           "Designed a motor mount for the EMRAX motor, simulating both cooling performance and structural stability."
@@ -227,16 +239,30 @@
           "Secured National Final qualification as one of only two teams to achieve perfect accuracy.",
           "Won both the Design Award and the Challenge Competition.",
           "Used Fusion 360 Generative Design to cut mass by 115.87 g (60%) at a safety factor of 2.",
-          "Produced a full Bill of Materials with data visualisation to identify cost drivers." ] },
+          "Produced a full Bill of Materials with data visualisation to identify cost drivers." ],
+          "media": [ "assets/img/UCL/IMechE_Poster.jpg" ],
+          "captions": [ "National Final poster, Team UCL A" ],
+          "links": [ { "label": "Watch the video presentation", "href": "https://youtu.be/0iSA97uIQMc" } ] },
         { "title": "UCL Mechathon 2025", "tag": "Turbines · Competition", "summary": "Won the competition (team of 6) with a 76 mm-radius wind-turbine design.", "bullets": [
           "Achieved 29% efficiency at 3.3 V.",
           "Used QBlade to analyse aerofoil lift-to-drag ratios and optimal angle of attack (95.8% accurate).",
-          "Developed manufacturing methods across milling, 3D printing and laser cutting." ] }
+          "Developed manufacturing methods across milling, 3D printing and laser cutting." ],
+          "media": [
+            "assets/img/UCL/Turbine_close_up.jpeg",
+            "assets/img/UCL/Turbine_team_photo.jpeg"
+          ],
+          "captions": [
+            "The assembled turbine, laser-cut frame with 3D-printed blades",
+            "The team with the finished turbine"
+          ] }
       ],
       "moreComing": "More UCL coursework and projects being written up.",
       "attachments": {
-        "note": "Presentation and coursework uploads are coming soon. Get in touch if you'd like to see the work sooner.",
-        "items": []
+        "note": "More presentations and coursework to follow. Get in touch if you'd like to see the work sooner.",
+        "items": [
+          { "label": "IMechE Design Challenge, National Final poster (PDF)", "file": "assets/docs/IMechE-Design-Challenge-National-Final-Poster.pdf" },
+          { "label": "IMechE Design Challenge, full assembly (STEP, 26 MB)", "file": "assets/docs/IMechE-Design-Challenge-Full-Assembly.step" }
+        ]
       }
     },
 

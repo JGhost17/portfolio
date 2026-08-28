@@ -115,6 +115,13 @@
       ? `<div class="d-block"><h5>Impact</h5><ul>${p.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul></div>`
       : "";
     const date = p.date ? `<div class="d-date">${esc(p.date)}</div>` : "";
+    // Off-site material (a hosted video, a write-up) carries "↗", not the "↓"
+    // the Documents slide uses — the arrow tells the visitor whether the click
+    // leaves the site or lands a file on their machine.
+    const links = (Array.isArray(p.links) && p.links.length)
+      ? `<div class="d-block"><h5>Links</h5><div class="d-list">${p.links.map((l) =>
+          `<div><a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a></div>`).join("")}</div></div>`
+      : "";
     // A project with no media yet shows a plain visitor-facing note — never the
     // asset paths, which are a build instruction and not something to publish.
     const mediaInner = mediaPanel(p.media, p.captions)
@@ -135,6 +142,7 @@
           ${desc}
           <div class="d-block"><h5>Focus</h5><div class="d-list">${focus}</div></div>
           ${impact}
+          ${links}
         </aside>
       </section>`;
   }
