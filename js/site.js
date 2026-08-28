@@ -311,11 +311,18 @@
         if (k === i) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current");
       });
       if (countEl) countEl.textContent = i + 1;
-      // Already the single place every path funnels through — the spring
-      // animation, native scroll and rail clicks all land here — so the
-      // margin drawing tracks the section without any extra listener.
-      if (onSection) onSection(i);
+      notifySection(i);
     };
+    // setDots runs on EVERY animation frame, and a long jump sweeps through
+    // every section on the way. Firing the margin drawing from it directly
+    // meant one rail click kicked off five fetches, five decodes and five
+    // crossfades for sections nobody stopped at. Settle first, then swap once.
+    let sectionTimer = 0, sectionShown = -1;
+    function notifySection(i) {
+      if (!onSection || i === sectionShown) return;
+      clearTimeout(sectionTimer);
+      sectionTimer = setTimeout(() => { sectionShown = i; onSection(i); }, 120);
+    }
     const nearestIndex = () => {
       const mid = window.innerHeight / 2; let best = 0, bd = Infinity;
       slides.forEach((s, i) => {
@@ -328,6 +335,18 @@
     slides[0].classList.add("active");
     setDots(0);
     if (deckMode()) document.documentElement.classList.add("snap-mode");
+
+    // The page sets `scroll-behavior: smooth` so the home page's "Explore my
+    // work" anchor glides. That also applies to scrollTo() calls made from
+    // script — which meant the browser was animating each of the ~60 writes
+    // the spring makes per second, chasing a target that had already moved.
+    // The two animators fought: the real position lagged what the spring
+    // believed, so the section index read stale (skipped sections), goToIndex
+    // re-seeded from that lagging value (the wiggle), and when the spring
+    // declared itself settled the browser was still gliding toward an old
+    // target (it wouldn't sit still). Every write the deck makes is instant;
+    // the anchor keeps its glide.
+    const jump = (v) => window.scrollTo({ top: v, left: 0, behavior: "instant" });
 
     // ---- Spring integrator (damping 1.0, response ~0.08s) ----
     const RESPONSE = 0.08, DAMP = 1.0;
@@ -343,10 +362,10 @@
         vel += (-K * (y - target) - C * vel) * h;
         y += vel * h;
       }
-      window.scrollTo(0, y);
+      jump(y);
       setDots(nearestIndex());                  // dashes track the motion continuously
       if (Math.abs(y - target) < 0.4 && Math.abs(vel) < 8) {
-        y = target; window.scrollTo(0, y); vel = 0; running = false; last = 0; return;
+        y = target; jump(y); vel = 0; running = false; last = 0; return;
       }
       requestAnimationFrame(frame);
     }
@@ -358,7 +377,7 @@
       slides.forEach((el, k) => el.classList.toggle("active", k === index));
       if (deckMode() && animate) { s.classList.remove("enter"); void s.offsetWidth; s.classList.add("enter"); }
       target = slideTop(s);
-      if (reduce || !animate) { y = target; vel = 0; window.scrollTo(0, y); setDots(index); return; }
+      if (reduce || !animate) { y = target; vel = 0; jump(y); setDots(index); return; }
       y = window.scrollY;              // seed from the presentation (live) value
       run();                          // vel is *kept* → velocity carries through the re-target
     }
@@ -367,7 +386,18 @@
     // At the last slide, scrolling further down must fall through to native
     // scroll so the page footer (contact info) below the deck stays reachable
     // — the deck must never trap the visitor past its own last section.
-    let lastStep = 0;
+    // A trackpad reports a stream of small deltas, so a 4px gate let the
+    // faintest touch throw the deck a whole section, and a 90ms throttle let
+    // one flick's momentum march through several. Deltas are accumulated
+    // instead: a section moves only once a real gesture's worth has built up,
+    // and a short floor between steps keeps decaying momentum from marching on.
+    // One gesture moves one section. After a step the deck disarms, and only
+    // re-arms once the wheel has been quiet for QUIET ms — so a flick's
+    // momentum, which keeps firing for the best part of a second, cannot march
+    // through four more sections. Sustained deliberate scrolling still gets
+    // through: SUSTAIN px of further travel re-arms without waiting.
+    const STEP = 42, QUIET = 150, SUSTAIN = 520, GESTURE_END = 220;
+    let acc = 0, sinceStep = 0, armed = true, rearm = 0, lastWheel = 0;
     window.addEventListener("wheel", (e) => {
       if (!deckMode()) return;
       const down = e.deltaY > 0;
@@ -378,12 +408,32 @@
         if (down && Math.ceil(r.bottom) > window.innerHeight + 1) return;
         if (!down && Math.floor(r.top) < NAV_H - 1) return;
       }
-      if (Math.abs(e.deltaY) < 4) return;
       e.preventDefault();
       const now = performance.now();
-      if (now - lastStep < 90) return;           // throttle — but never a hard lock
-      lastStep = now;
-      goToIndex((running ? nearestIndex() : index) + (down ? 1 : -1));
+      // A pause, or a reversal, starts a fresh gesture rather than adding to
+      // whatever was left over from the last one.
+      if (now - lastWheel > GESTURE_END || (acc !== 0 && Math.sign(e.deltaY) !== Math.sign(acc))) {
+        acc = 0; sinceStep = 0;
+      }
+      lastWheel = now;
+
+      if (!armed) {
+        // Still riding out the last step. Push the re-arm back on every event
+        // so momentum has to actually die before another section can move.
+        sinceStep += Math.abs(e.deltaY);
+        clearTimeout(rearm);
+        if (sinceStep > SUSTAIN) { armed = true; acc = 0; sinceStep = 0; }
+        else rearm = setTimeout(() => { armed = true; acc = 0; sinceStep = 0; }, QUIET);
+        return;
+      }
+
+      acc += e.deltaY;
+      if (Math.abs(acc) < STEP) return;
+      const dir = acc > 0 ? 1 : -1;
+      acc = 0; sinceStep = 0; armed = false;
+      clearTimeout(rearm);
+      rearm = setTimeout(() => { armed = true; acc = 0; sinceStep = 0; }, QUIET);
+      goToIndex((running ? nearestIndex() : index) + dir);
     }, { passive: false });
 
     window.addEventListener("keydown", (e) => {
