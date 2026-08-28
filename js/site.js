@@ -348,8 +348,11 @@
     // the anchor keeps its glide.
     const jump = (v) => window.scrollTo({ top: v, left: 0, behavior: "instant" });
 
-    // ---- Spring integrator (damping 1.0, response ~0.08s) ----
-    const RESPONSE = 0.08, DAMP = 1.0;
+    // ---- Spring integrator (critically damped, no overshoot) ----
+    // RESPONSE is the spring's period, not the move's duration: a step
+    // settles in roughly 1.8x it. 0.08 settled in ~130ms, which read as an
+    // instant cut once the browser's smooth-scroll stopped gliding over it.
+    const RESPONSE = 0.5, DAMP = 1.0;
     const omega = 2 * Math.PI / RESPONSE, K = omega * omega, C = 2 * DAMP * omega;
     let target = window.scrollY, y = window.scrollY, vel = 0, running = false, last = 0;
 
@@ -364,7 +367,7 @@
       }
       jump(y);
       setDots(nearestIndex());                  // dashes track the motion continuously
-      if (Math.abs(y - target) < 0.4 && Math.abs(vel) < 8) {
+      if (Math.abs(y - target) < 0.4 && Math.abs(vel) < 5) {
         y = target; jump(y); vel = 0; running = false; last = 0; return;
       }
       requestAnimationFrame(frame);
@@ -433,7 +436,11 @@
       acc = 0; sinceStep = 0; armed = false;
       clearTimeout(rearm);
       rearm = setTimeout(() => { armed = true; acc = 0; sinceStep = 0; }, QUIET);
-      goToIndex((running ? nearestIndex() : index) + dir);
+      // Step from the commanded target, not the visual position. Mid-glide
+      // the visual position is still short of it, so nearestIndex() would
+      // return the section being left and the step would re-target where the
+      // deck was already heading — a second notch that appeared to do nothing.
+      goToIndex(index + dir);
     }, { passive: false });
 
     window.addEventListener("keydown", (e) => {
