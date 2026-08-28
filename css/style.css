@@ -198,11 +198,6 @@ ul { padding-left: 1.1em; }
   color: var(--text-muted); font-family: var(--font-mono); font-weight: 600; letter-spacing: .02em; gap: .4rem;
   border: 1px dashed var(--line-strong); background: var(--paper); }
 .portrait__ph small { display: block; font-weight: 400; opacity: .85; font-size: .76rem; }
-.floaty { position: absolute; z-index: 2; background: var(--surface); border: 1px solid var(--line-strong);
-  border-radius: var(--radius-sm); padding: .55rem .8rem; box-shadow: var(--shadow); font-size: .78rem; font-weight: 600;
-  font-family: var(--font-mono); display: flex; align-items: center; gap: .5rem; }
-.floaty .tick { width: 10px; height: 1px; background: var(--accent); }
-.floaty.f1 { top: 8%; left: -6%; } .floaty.f2 { bottom: 12%; right: 4%; }
 
 /* =========================================================================
    About
@@ -382,6 +377,22 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
   max-width: 100%; max-height: min(56vh, calc(100vh - 200px)); object-fit: contain;
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg); background: var(--paper-alt); border: 1px solid var(--line); }
+/* ---- Brand mark on the overview slide --------------------------------
+   The organisation's mark, stamped on a white plate like a title block.
+   Both supplied logos sit on pure white, so --surface carries them without
+   a visible seam; a photograph instead fills the plate edge to edge. */
+.brand {
+  margin: 0; display: flex; overflow: hidden; max-width: 100%;
+  width: min(42vw, 460px);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); box-shadow: var(--shadow-lg);
+}
+.brand img { display: block; width: 100%; height: auto; }
+.brand--mark { padding: clamp(1.4rem, 3.4vw, 2.6rem); }
+.brand--mark img { object-fit: contain; max-height: min(30vh, 260px); }
+.brand--photo img { object-fit: cover; }
+@media (max-width: 900px) { .brand { width: 100%; } }
+
 /* ---- CAD model panel -------------------------------------------------
    Occupies the same box an image would, so a model sitting in a carousel
    doesn't reflow the slide when the visitor pages onto it. Before loading

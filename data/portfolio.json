@@ -76,6 +76,7 @@
     "ning": {
       "tag": "02 · Research & Development",
       "title": "NING Research",
+      "brand": { "src": "assets/img/brand/NING-Research.jpg", "alt": "NING Research logo" },
       "subtitle": "Applied Computational Fluid Dynamics (CFD) and engineering simulation, turning real client problems into validated models.",
       "meta": [
         { "k": "Role", "v": "Simulation / CFD Engineer" },
@@ -167,6 +168,7 @@
     "novartis": {
       "tag": "03 · Pharma / Machine Learning",
       "title": "Novartis",
+      "brand": { "src": "assets/img/brand/Novartis.jpg", "alt": "Novartis logo" },
       "subtitle": "Scientific Modelling Intern: machine learning, simulation and AI tooling in pharmaceutical manufacturing.",
       "meta": [
         { "k": "Role", "v": "Scientific Modelling Intern" },
@@ -200,6 +202,7 @@
     "ucl": {
       "tag": "04 · Education",
       "title": "UCL",
+      "brand": { "src": "assets/img/brand/UCL-Racing.jpg", "alt": "UCL Racing team photograph", "fit": "cover" },
       "subtitle": "MEng Mechanical Engineering, the competition teams and projects that shaped how I engineer.",
       "meta": [
         { "k": "Degree", "v": "MEng Mechanical Engineering" },

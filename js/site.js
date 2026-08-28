@@ -93,13 +93,21 @@
     const overview = (page.overview || "")
       + (page.overviewPlaceholder ? ' <span class="placeholder">confirm / expand</span>' : "");
     const approachNote = page.approachPlaceholder ? '<p class="placeholder" style="margin-top:.5rem">confirm these steps</p>' : "";
+    // The overview slide's media panel was a bare title placeholder. Where a
+    // page has an organisation behind it, its mark belongs here — the first
+    // thing the visitor sees on the sheet, stamped like a title block.
+    const brand = page.brand
+      ? `<figure class="brand brand--${page.brand.fit === "cover" ? "photo" : "mark"}">
+           <img src="${encodeURI(page.brand.src)}" alt="${esc(page.brand.alt || page.title)}">
+         </figure>`
+      : `<span class="slot">${esc(page.title)}</span>`;
     return `
       <section class="slide slide--intro" data-slide tabindex="-1">
         <div class="slide__title">
           <h2>${esc(page.title)}</h2>
           <div class="sub">Overview</div>
         </div>
-        <div class="slide__media"><span class="slot">${esc(page.title)}</span></div>
+        <div class="slide__media">${brand}</div>
         <aside class="slide__detail">
           <div class="d-role">${esc(page.subtitle || "")}</div>
           <div class="d-block"><h5>Overview</h5><p>${overview}</p></div>
