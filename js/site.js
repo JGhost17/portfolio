@@ -211,10 +211,17 @@
       ...(page.moreComing ? ["More soon"] : []), ...(page.attachments ? ["Documents"] : [])];
     const dots = slides.map((_, i) =>
       `<button class="dot" data-i="${i}" aria-label="${esc(titles[i] || `Section ${i + 1}`)}" title="${esc(titles[i] || "")}"></button>`).join("");
-    // A drawing of the page's subject, sat in the empty ground the deck leaves
-    // between the rail and the big title. Decorative only, hence aria-hidden.
-    const sketch = page.sketch
-      ? `<img class="deck__sketch" src="${encodeURI(page.sketch)}" alt="" aria-hidden="true">` : "";
+    // Drawings for the empty ground the deck leaves between the rail and the
+    // big title. One per section: moving through the deck changes the subject,
+    // the way the home page shows a new drawing beside each block. The list is
+    // cycled when a page has more sections than drawings. Decorative, so the
+    // whole thing is hidden from assistive tech.
+    const sketchList = Array.isArray(page.sketches) ? page.sketches
+      : (page.sketch ? [page.sketch] : []);
+    const sketch = sketchList.length
+      ? `<div class="deck__sketch" aria-hidden="true"
+             data-sketches="${esc(sketchList.map(encodeURI).join("|"))}"></div>`
+      : "";
     return `
       <div class="deck">
         ${sketch}
@@ -286,7 +293,7 @@
      Section snapping driven by a critically-damped SPRING that animates from
      the live scroll position. It is interruptible and velocity-carrying: a new
      gesture just re-targets and keeps moving — input is never locked (§3–§6). */
-  function initDeck() {
+  function initDeck(onSection) {
     const dotsWrap = document.querySelector(".deck__dots");
     const slides = [...document.querySelectorAll("[data-slide]")];
     if (!dotsWrap || !slides.length) return;
@@ -304,6 +311,10 @@
         if (k === i) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current");
       });
       if (countEl) countEl.textContent = i + 1;
+      // Already the single place every path funnels through — the spring
+      // animation, native scroll and rail clicks all land here — so the
+      // margin drawing tracks the section without any extra listener.
+      if (onSection) onSection(i);
     };
     const nearestIndex = () => {
       const mid = window.innerHeight / 2; let best = 0, bd = Infinity;
@@ -403,6 +414,54 @@
       };
       requestAnimationFrame(focusWhenSettled);
     }));
+  }
+
+  /* ----------------------------------------------------- scrolling sketches
+     Returns a function taking a section index and crossfading the margin
+     drawing to that section's subject. Each file is fetched the first time
+     it is actually needed and decoded BEFORE the swap, so changing sections
+     never flashes a half-drawn or empty frame. Scrolling fast is fine: a
+     newer request invalidates an older one still waiting on its decode. */
+  function initSketches() {
+    const box = document.querySelector(".deck__sketch[data-sketches]");
+    if (!box) return () => {};
+    const list = box.getAttribute("data-sketches").split("|").filter(Boolean);
+    if (!list.length) return () => {};
+
+    // Built but not appended: an <img> sitting in the DOM with no src counts
+    // as a broken image, so each layer joins the page only once it has one.
+    const mk = () => {
+      const el = document.createElement("img");
+      el.className = "deck__sketch-img";
+      el.alt = "";
+      return el;
+    };
+    let front = mk(), back = mk();
+    const cache = new Map();
+    let shown = "", token = 0;
+
+    return function show(i) {
+      const src = list[((i % list.length) + list.length) % list.length];
+      if (src === shown) return;
+      shown = src;
+      const mine = ++token;
+      let img = cache.get(src);
+      if (!img) { img = new Image(); img.src = src; cache.set(src, img); }
+      const swap = () => {
+        if (mine !== token) return;          // a later section already won
+        back.src = src;
+        if (!back.parentNode) box.appendChild(back);
+        requestAnimationFrame(() => {
+          if (mine !== token) return;
+          back.classList.add("is-on");
+          front.classList.remove("is-on");
+          const t = front; front = back; back = t;
+        });
+      };
+      if (img.decode) img.decode().then(swap, swap);
+      else if (img.complete) swap();
+      else { img.onload = swap; img.onerror = swap; }
+    };
   }
 
   /* ------------------------------------------------------ CAD model viewer
@@ -532,7 +591,7 @@
     const app = document.querySelector("main#app[data-page]");
     if (app && app.dataset.page !== "home") {
       await renderPage(app);
-      initDeck();
+      initDeck(initSketches());
       initMedia();
       bindModels(document);      // single-item panels never go through initMedia
     }

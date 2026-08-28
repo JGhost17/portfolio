@@ -53,7 +53,7 @@
     "mclaren": {
       "tag": "01 · Automotive / Motorsport",
       "title": "McLaren",
-      "sketch": "assets/sketch/car.svg",
+      "sketches": [ "assets/sketch/car.svg", "assets/sketch/brake_disc.svg", "assets/sketch/coilover.svg", "assets/sketch/piston.svg" ],
       "subtitle": "My industrial placement year in high-performance automotive engineering.",
       "meta": [
         { "k": "Role", "v": "Industrial Placement" },
@@ -77,7 +77,7 @@
     "ning": {
       "tag": "02 · Research & Development",
       "title": "NING Research",
-      "sketch": "assets/sketch/impeller.svg",
+      "sketches": [ "assets/sketch/impeller.svg", "assets/sketch/turbofan.svg", "assets/sketch/mixing_tank.svg", "assets/sketch/heat_exchanger.svg", "assets/sketch/wind_turbine.svg", "assets/sketch/bearing.svg", "assets/sketch/gears.svg", "assets/sketch/microscope.svg", "assets/sketch/aerofoil.svg", "assets/sketch/caliper.svg", "assets/sketch/aircraft.svg" ],
       "brand": { "src": "assets/img/brand/NING-Research.png", "alt": "NING Research logo" },
       "subtitle": "Applied Computational Fluid Dynamics (CFD) and engineering simulation, turning real client problems into validated models.",
       "meta": [
@@ -170,7 +170,7 @@
     "novartis": {
       "tag": "03 · Pharma / Machine Learning",
       "title": "Novartis",
-      "sketch": "assets/sketch/flask.svg",
+      "sketches": [ "assets/sketch/flask.svg", "assets/sketch/microscope.svg", "assets/sketch/bearing.svg", "assets/sketch/caliper.svg", "assets/sketch/gears.svg", "assets/sketch/heat_exchanger.svg" ],
       "brand": { "src": "assets/img/brand/Novartis.png", "alt": "Novartis logo" },
       "subtitle": "Scientific Modelling Intern: machine learning, simulation and AI tooling in pharmaceutical manufacturing.",
       "meta": [
@@ -205,7 +205,7 @@
     "ucl": {
       "tag": "04 · Education",
       "title": "UCL",
-      "sketch": "assets/sketch/rocket.svg",
+      "sketches": [ "assets/sketch/cubesat.svg", "assets/sketch/rocket.svg", "assets/sketch/wishbone.svg", "assets/sketch/gears.svg", "assets/sketch/wind_turbine.svg", "assets/sketch/aircraft.svg", "assets/sketch/caliper.svg" ],
       "brand": { "src": "assets/img/brand/UCL-Racing.jpg", "alt": "UCL Racing team photograph", "fit": "cover" },
       "subtitle": "MEng Mechanical Engineering, the competition teams and projects that shaped how I engineer.",
       "meta": [
@@ -282,7 +282,7 @@
     "side-projects": {
       "tag": "05 · Personal builds",
       "title": "Side Projects",
-      "sketch": "assets/sketch/robot_arm.svg",
+      "sketches": [ "assets/sketch/quadcopter.svg", "assets/sketch/impeller.svg", "assets/sketch/heat_exchanger.svg", "assets/sketch/robot_arm.svg", "assets/sketch/gears.svg" ],
       "subtitle": "The things I build for the love of it: research, robotics and everything between.",
       "meta": [
         { "k": "Themes", "v": "Aerospace · Robotics · Research" },

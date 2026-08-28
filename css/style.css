@@ -336,14 +336,26 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
      position:fixed it depends on. */
   z-index: 0;
   left: clamp(1rem, 4vw, 3rem); top: 47%; transform: translateY(-50%);
-  /* Bounded by HEIGHT, not width: these drawings range from a tall rocket to
-     a wide car, and only a height cap keeps them clear of the rail above and
-     the big slide title below. */
-  width: clamp(180px, 22vw, 340px); max-height: 42vh; height: auto;
-  object-fit: contain; object-position: left center; opacity: .14;
+  /* A fixed box, because the layers inside are absolutely positioned and a
+     shrink-to-fit container would collapse. Bounded by HEIGHT as well as
+     width: the drawings run from a tall rocket to a wide car, and only a
+     height cap keeps them clear of the rail above and the title below. */
+  width: clamp(180px, 22vw, 340px); height: 42vh;
 }
-@media (max-width: 1200px) { .deck__sketch { opacity: .09; max-height: 32vh; } }
+/* Two stacked layers crossfading, so changing section never blinks through
+   the paper. object-fit keeps each drawing's own proportions inside the box. */
+.deck__sketch-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain; object-position: left center;
+  opacity: 0; transition: opacity .55s var(--ease);
+}
+.deck__sketch-img.is-on { opacity: .14; }
+@media (max-width: 1200px) {
+  .deck__sketch { height: 32vh; }
+  .deck__sketch-img.is-on { opacity: .09; }
+}
 @media (max-width: 900px)  { .deck__sketch { display: none; } }
+@media (prefers-reduced-motion: reduce) { .deck__sketch-img { transition: none; } }
 .deck__rail { position: fixed; top: 76px; left: clamp(1rem,4vw,2.5rem); z-index: 60; max-width: 230px; }
 .deck__rail .co { font-family: var(--font-head); font-weight: 700; font-size: 1rem; color: var(--ink); }
 .deck__rail .tag { color: var(--text-muted); font-size: .74rem; font-family: var(--font-mono); margin-top: .2rem; }
