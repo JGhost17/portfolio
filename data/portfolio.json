@@ -240,9 +240,16 @@
           "Won both the Design Award and the Challenge Competition.",
           "Used Fusion 360 Generative Design to cut mass by 115.87 g (60%) at a safety factor of 2.",
           "Produced a full Bill of Materials with data visualisation to identify cost drivers." ],
-          "media": [ "assets/img/UCL/IMechE_Poster.jpg" ],
-          "captions": [ "National Final poster, Team UCL A" ],
-          "links": [ { "label": "Watch the video presentation", "href": "https://youtu.be/0iSA97uIQMc" } ] },
+          "media": [
+            "assets/img/UCL/IMechE_Poster.jpg",
+            "assets/model/IMechE-Design-Challenge-Full-Assembly.glb"
+          ],
+          "captions": [
+            "National Final poster, Team UCL A",
+            "Full assembly, tessellated from the STEP file"
+          ],
+          "links": [ { "label": "Watch the video presentation", "href": "https://youtu.be/0iSA97uIQMc" } ],
+          "files": [ { "label": "Full assembly (STEP, 26 MB)", "file": "assets/docs/IMechE-Design-Challenge-Full-Assembly.step" } ] },
         { "title": "UCL Mechathon 2025", "tag": "Turbines · Competition", "summary": "Won the competition (team of 6) with a 76 mm-radius wind-turbine design.", "bullets": [
           "Achieved 29% efficiency at 3.3 V.",
           "Used QBlade to analyse aerofoil lift-to-drag ratios and optimal angle of attack (95.8% accurate).",
@@ -260,8 +267,7 @@
       "attachments": {
         "note": "More presentations and coursework to follow. Get in touch if you'd like to see the work sooner.",
         "items": [
-          { "label": "IMechE Design Challenge, National Final poster (PDF)", "file": "assets/docs/IMechE-Design-Challenge-National-Final-Poster.pdf" },
-          { "label": "IMechE Design Challenge, full assembly (STEP, 26 MB)", "file": "assets/docs/IMechE-Design-Challenge-Full-Assembly.step" }
+          { "label": "IMechE Design Challenge, National Final poster (PDF)", "file": "assets/docs/IMechE-Design-Challenge-National-Final-Poster.pdf" }
         ]
       }
     },

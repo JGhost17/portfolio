@@ -9,21 +9,40 @@
 (function () {
   "use strict";
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // A dynamic import() inside a classic script resolves against the DOCUMENT's
+  // base URL, not this file's — so "./model-viewer.js" would be looked for at
+  // the site root. Capture this script's own directory now, while
+  // document.currentScript is still valid (it is null once we're async).
+  const SCRIPT_DIR = (document.currentScript && document.currentScript.src)
+    ? document.currentScript.src.replace(/[^/]+(\?.*)?$/, "")
+    : "js/";
   const esc = (s) => String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const stripNo = (t) => String(t || "").replace(/^\s*\d+\s*·\s*/, "");
 
   /* ---------------------------------------------------------- media panel */
   const isVideo = (src) => /\.(mp4|webm|mov|m4v)$/i.test(src);
+  const isModel = (src) => /\.glb$/i.test(src);
   function cleanName(src) {
     return src.split("/").pop().replace(/\.[^.]+$/, "")
-      .replace(/[_-]+/g, " ").replace(/\b(jpg|jpeg|png|mp4)\b/gi, "").trim();
+      .replace(/[_-]+/g, " ").replace(/\b(jpg|jpeg|png|mp4|glb)\b/gi, "").trim();
   }
   function mediaItemEl(src, altOverride) {
     const url = encodeURI(src);
-    return isVideo(src)
-      ? `<video src="${url}" controls preload="metadata" playsinline></video>`
-      : `<img src="${url}" loading="lazy" alt="${esc(altOverride || cleanName(src))}">`;
+    if (isVideo(src)) return `<video src="${url}" controls preload="metadata" playsinline></video>`;
+    // A model is never fetched on page load: three.js plus the geometry is far
+    // too much to spend on a visitor who may never scroll to this slide. The
+    // poster frame stands in until someone actually asks for it.
+    if (isModel(src)) {
+      return `<div class="model" data-model="${esc(url)}">
+        <button class="model__load" type="button">
+          <span class="model__cue">3D</span>
+          <span>Load the CAD assembly</span>
+          <small>Tessellated from the STEP file &middot; 1.7&nbsp;MB</small>
+        </button>
+      </div>`;
+    }
+    return `<img src="${url}" loading="lazy" alt="${esc(altOverride || cleanName(src))}">`;
   }
   // `captions[i]` overrides the filename-derived caption for media[i] — needed
   // wherever a real filename would leak information the title has been
@@ -122,6 +141,12 @@
       ? `<div class="d-block"><h5>Links</h5><div class="d-list">${p.links.map((l) =>
           `<div><a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a></div>`).join("")}</div></div>`
       : "";
+    // Downloads that belong to this project specifically, rather than to the
+    // page's Documents slide — "↓", because these land a file on the machine.
+    const files = (Array.isArray(p.files) && p.files.length)
+      ? `<div class="d-block"><h5>Files</h5><div class="d-list">${p.files.map((f) =>
+          `<div><a href="${esc(f.file)}" download>${esc(f.label)} ↓</a></div>`).join("")}</div></div>`
+      : "";
     // A project with no media yet shows a plain visitor-facing note — never the
     // asset paths, which are a build instruction and not something to publish.
     const mediaInner = mediaPanel(p.media, p.captions)
@@ -143,6 +168,7 @@
           <div class="d-block"><h5>Focus</h5><div class="d-list">${focus}</div></div>
           ${impact}
           ${links}
+          ${files}
         </aside>
       </section>`;
   }
@@ -366,6 +392,47 @@
     }));
   }
 
+  /* ------------------------------------------------------ CAD model viewer
+     The viewer module and its three.js dependency are pulled in by dynamic
+     import on the first press of Load, so a visitor who never opens a model
+     pays nothing for it. A live viewer holds a WebGL context, so swapping
+     the carousel away from a model disposes it rather than leaking one. */
+  function bindModels(scope) {
+    scope.querySelectorAll(".model[data-model]").forEach((box) => {
+      if (box.dataset.bound) return;
+      box.dataset.bound = "1";
+      const btn = box.querySelector(".model__load");
+      if (!btn) return;
+      const label = btn.querySelector("span:not(.model__cue)");
+      btn.addEventListener("click", async () => {
+        btn.disabled = true;
+        label.textContent = "Loading the assembly…";
+        try {
+          const { mountModel } = await import(SCRIPT_DIR + "model-viewer.js");
+          const stage = document.createElement("div");
+          stage.className = "model__stage";
+          box.appendChild(stage);
+          box.view = await mountModel(stage, box.dataset.model);
+          btn.remove();
+          box.classList.add("is-live");
+          const hint = document.createElement("p");
+          hint.className = "model__hint";
+          hint.textContent = "Drag to orbit";
+          box.appendChild(hint);
+        } catch (err) {
+          btn.disabled = false;
+          label.textContent = "The model couldn't load";
+          console.error("model viewer:", err);
+        }
+      });
+    });
+  }
+  function disposeModels(scope) {
+    scope.querySelectorAll(".model").forEach((box) => {
+      if (box.view) { box.view.dispose(); box.view = null; }
+    });
+  }
+
   /* --------------------------------------------------- media carousels */
   function initMedia() {
     document.querySelectorAll("[data-media]").forEach((box) => {
@@ -378,7 +445,9 @@
       let cur = 0;
       const show = (i) => {
         cur = (i + items.length) % items.length;
+        disposeModels(stage);            // release the WebGL context before the swap
         stage.innerHTML = mediaItemEl(items[cur], captionFor(items, captions, cur));
+        bindModels(stage);
         if (cap) cap.textContent = captionFor(items, captions, cur);
         dots.forEach((d, k) => d.classList.toggle("active", k === cur));
       };
@@ -452,6 +521,7 @@
       await renderPage(app);
       initDeck();
       initMedia();
+      bindModels(document);      // single-item panels never go through initMedia
     }
     initInteractions();
     document.querySelectorAll(".year").forEach((e) => (e.textContent = new Date().getFullYear()));

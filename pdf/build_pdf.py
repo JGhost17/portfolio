@@ -26,6 +26,10 @@ GEN = ROOT / "pdf" / "portfolio.generated.html"
 OUT = ROOT / "assets" / "portfolio.pdf"
 
 VIDEO_RE = re.compile(r"\.(mp4|webm|mov|m4v)$", re.I)
+# Media the print sheet cannot show: video frames and 3D models both need a
+# viewer. first_image() skips past them to the first still it can actually
+# place, rather than emitting an <img> that resolves to nothing.
+NONPRINT_RE = re.compile(r"\.(mp4|webm|mov|m4v|glb|gltf)$", re.I)
 
 CSS = """
 :root{
@@ -100,7 +104,7 @@ h2.title{ font-size:24pt; margin:4mm 0 2mm; }
 
 def first_image(p):
     for m in (p.get("media") or []):
-        if not VIDEO_RE.search(m):
+        if not NONPRINT_RE.search(m):
             return "../" + quote(m)   # relative to pdf/portfolio.generated.html
     return None
 
@@ -115,6 +119,9 @@ def project_block(p):
     links = "".join(
         f'<div class="proj__lnk"><b>{escape(l["label"])}:</b> <span>{escape(l["href"])}</span></div>'
         for l in p.get("links", []))
+    links += "".join(
+        f'<div class="proj__lnk"><b>{escape(f["label"])}:</b> <span>{escape(f["file"])}</span></div>'
+        for f in p.get("files", []))
     return (f'<div class="proj{ph}">{img_html}'
             f'<h3>{escape(p.get("title",""))}</h3><span class="tag">{escape(p.get("tag",""))}</span>{summ}{bullets}{links}</div>')
 

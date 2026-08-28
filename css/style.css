@@ -382,6 +382,41 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
   max-width: 100%; max-height: min(56vh, calc(100vh - 200px)); object-fit: contain;
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg); background: var(--paper-alt); border: 1px solid var(--line); }
+/* ---- CAD model panel -------------------------------------------------
+   Occupies the same box an image would, so a model sitting in a carousel
+   doesn't reflow the slide when the visitor pages onto it. Before loading
+   it's a hatched plate with a call to action; after, the canvas fills it. */
+.model {
+  position: relative; display: flex; overflow: hidden;
+  width: min(58vw, 720px); height: min(56vh, calc(100vh - 200px));
+  border-radius: var(--radius); border: 1px solid var(--line);
+  background-color: var(--paper-alt); box-shadow: var(--shadow-lg);
+  background-image: repeating-linear-gradient(135deg, var(--line) 0, var(--line) 1px, transparent 1px, transparent 10px);
+}
+.model__stage { position: absolute; inset: 0; }
+.model__stage canvas { display: block; width: 100%; height: 100%; }
+.model__load {
+  margin: auto; display: grid; justify-items: center; gap: .5rem; cursor: pointer;
+  padding: 1.4rem 1.8rem; background: var(--paper);
+  border: 1px dashed var(--line-strong); border-radius: var(--radius);
+  font-family: var(--font-mono); font-size: .84rem; font-weight: 600; color: var(--ink);
+  transition: border-color .2s, transform .12s var(--ease-out);
+}
+.model__load:hover { border-color: var(--accent); }
+.model__load:active { transform: scale(.98); }
+.model__load[disabled] { cursor: progress; color: var(--text-muted); }
+.model__cue {
+  font-size: .7rem; letter-spacing: .12em; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: var(--radius-sm); padding: .1rem .4rem;
+}
+.model__load small { font-weight: 400; color: var(--text-muted); font-size: .72rem; letter-spacing: 0; }
+.model__hint {
+  position: absolute; left: .6rem; bottom: .5rem; margin: 0; pointer-events: none;
+  font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted);
+}
+.model.is-live { background-image: none; }
+@media (max-width: 900px) { .model { width: 100%; height: 62vw; } }
+
 /* Caption + dots share one row beneath the frame, inset by the arrow gutter so
    they line up with the image edges rather than the wider control row. */
 .media__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
