@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=9" />
+  <link rel="stylesheet" href="css/style.css?v=10" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%2317181A'/%3E%3Ctext x='16' y='22' font-size='13' text-anchor='middle' fill='%23FAFAF8' font-family='monospace' font-weight='700'%3EJA%3C/text%3E%3C/svg%3E" />
 </head>
 <body data-page="home">
@@ -33,7 +33,7 @@
     <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     <div class="nav__links">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="mclaren.html">McLaren</a>
+      <span class="soon" title="Under construction">McLaren<span class="sr">, under construction</span></span>
       <a href="ning.html">NING Research</a>
       <a href="novartis.html">Novartis</a>
       <a href="ucl.html">UCL</a>
@@ -121,13 +121,13 @@
       <p class="lead">Each space below opens into its own scrollable page — the overview, the approach, and every project.</p>
     </div>
     <div class="cards">
-      <a class="card" href="mclaren.html" data-reveal>
+      <div class="card card--soon" data-reveal>
         <span class="card__code">M · 01</span>
         <h3>McLaren</h3>
         <div class="card__tag">Automotive · Motorsport</div>
         <p>Industrial placement in automotive engineering.</p>
-        <span class="card__go">Open page <span class="arrow">→</span></span>
-      </a>
+        <span class="card__soon">Under construction</span>
+      </div>
       <a class="card" href="ning.html" data-reveal data-delay="1">
         <span class="card__code">N · 02</span>
         <h3>NING Research</h3>
@@ -178,7 +178,7 @@
         <div class="footer__cols">
           <div>
             <h5>Pages</h5>
-            <a class="link" href="mclaren.html">McLaren</a><br />
+            <span class="soon" title="Under construction">McLaren</span><br />
             <a class="link" href="ning.html">NING Research</a><br />
             <a class="link" href="novartis.html">Novartis</a><br />
             <a class="link" href="ucl.html">UCL</a><br />
@@ -202,6 +202,6 @@
     </div>
   </footer>
 
-  <script src="js/site.js?v=9"></script>
+  <script src="js/site.js?v=10"></script>
 </body>
 </html>

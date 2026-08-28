@@ -199,7 +199,7 @@
               <div>
                 <h5>Pages</h5>
                 <a class="link" href="index.html">Home</a><br />
-                <a class="link" href="mclaren.html">McLaren</a><br />
+                <span class="soon" title="Under construction">McLaren</span><br />
                 <a class="link" href="ning.html">NING Research</a><br />
                 <a class="link" href="novartis.html">Novartis</a><br />
                 <a class="link" href="ucl.html">UCL</a><br />

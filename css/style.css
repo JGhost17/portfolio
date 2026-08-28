@@ -58,6 +58,10 @@ body {
   overflow-x: hidden;
 }
 img, svg, video { display: block; max-width: 100%; }
+/* Text for screen readers only — carries state that colour and hatch convey
+   visually but that a non-sighted reader would otherwise miss. */
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.06; font-weight: 700; letter-spacing: -.02em;
   color: var(--ink); font-optical-sizing: auto; }
@@ -241,6 +245,46 @@ ul { padding-left: 1.1em; }
 .card__go { margin-top: auto; display: inline-flex; align-items: center; gap: .45rem;
   font-weight: 600; font-size: .88rem; font-family: var(--font-mono); color: var(--ink); }
 .card:hover .card__go .arrow { transform: translateX(5px); }
+
+/* ---- Under construction ----------------------------------------------
+   A chapter that exists but isn't ready to be read. Rendered inert (a div,
+   never an anchor) so there is genuinely nothing to click, then dressed in
+   the sheet's own vocabulary for "not drawn yet": hatch over the empty
+   ground, with the label sitting in a dashed box on solid paper. That is
+   the same hatch/.slot pairing the deck's empty media panels already use,
+   so it reads as one system rather than a bolted-on notice. */
+.card--soon {
+  cursor: default;
+  border-style: dashed; border-color: var(--line-strong);
+  background-color: var(--paper-alt);
+  background-image: repeating-linear-gradient(135deg, var(--line) 0, var(--line) 1px, transparent 1px, transparent 10px);
+}
+.card--soon::before { content: none; }                 /* no accent wipe: nothing to open */
+.card--soon:hover { transform: none; box-shadow: none; border-color: var(--line-strong); }
+.card--soon h3 { color: var(--ink-soft); }
+.card--soon .card__code { background: var(--paper); }  /* keep the code chip off the hatch */
+.card__soon {
+  margin-top: auto; align-self: flex-start;
+  font-family: var(--font-mono); font-size: .76rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted);
+  padding: .42rem .7rem; background: var(--paper);
+  border: 1px dashed var(--line-strong); border-radius: var(--radius-sm);
+}
+
+/* The same state in the nav and title-block footer: still listed, so the
+   site's structure stays legible, but inert — no href, no hover rule, and
+   no tab stop. The little hatched swatch is the shared tell. */
+.nav__links .soon, .footer .soon {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--font-mono); font-weight: 500; color: var(--text-muted);
+  cursor: default; user-select: none;
+}
+.nav__links .soon { padding: .5rem .75rem; font-size: .88rem; }
+.footer .soon { padding: .2rem 0; font-size: .88rem; }
+.nav__links .soon::after, .footer .soon::after {
+  content: ""; width: 8px; height: 8px; flex: none; border: 1px solid var(--line-strong);
+  background-image: repeating-linear-gradient(135deg, var(--line-strong) 0, var(--line-strong) 1px, transparent 1px, transparent 3px);
+}
 
 /* =========================================================================
    Content blocks
@@ -468,7 +512,7 @@ html.snap-mode .slide__media, html.snap-mode .slide__title { will-change: transf
     background: var(--paper); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: .6rem; gap: .2rem;
     box-shadow: var(--shadow); transform: scale(.96); opacity: 0; pointer-events: none; transition: .25s var(--ease-out); }
   .nav__links.open { transform: none; opacity: 1; pointer-events: auto; }
-  .nav__links a { padding: .7rem .9rem; }
+  .nav__links a, .nav__links .soon { padding: .7rem .9rem; }
   .nav__toggle { display: block; }
 }
 @media (max-width: 560px) {
